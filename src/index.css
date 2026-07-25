@@ -1,0 +1,144 @@
+/* Custom Design System & CSS Utilities */
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Primary Brand Palette (Derived from KRS Logo) */
+  --primary-900: #04251B;
+  --primary-800: #0B3E2F;
+  --primary-700: #10523F;
+  --primary-600: #16654E;
+  --primary-500: #1B7A60;
+  --primary-400: #259B7C;
+  --primary-300: #38C6A1;
+  --primary-200: #6FE3C7;
+  --primary-100: #BFF2E5;
+  --primary-50:  #E8FAF6;
+
+  /* Accent Mint & Gold */
+  --accent-mint: #2DD4BF;
+  --accent-cyan: #06B6D4;
+  --accent-gold: #F59E0B;
+  --accent-rose: #F43F5E;
+
+  /* Surface Neutrals */
+  --bg-dark: #070F16;
+  --bg-card: rgba(15, 27, 40, 0.75);
+  --bg-glass: rgba(20, 36, 52, 0.65);
+  --border-glass: rgba(45, 212, 191, 0.15);
+  --border-light: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: #F1F5F9;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #070F16;
+}
+::-webkit-scrollbar-thumb {
+  background: #16654E;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2DD4BF;
+}
+
+/* Custom Animations & Effects */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(45, 212, 191, 0.3), inset 0 0 10px rgba(45, 212, 191, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(45, 212, 191, 0.6), inset 0 0 20px rgba(45, 212, 191, 0.2);
+  }
+}
+
+@keyframes floatAnim {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: floatAnim 4s infinite ease-in-out;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(15, 27, 40, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(20, 38, 54, 0.85) 0%, rgba(11, 25, 37, 0.95) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(45, 212, 191, 0.12);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(45, 212, 191, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(22, 101, 78, 0.35);
+}
+
+/* Gradient Text Utilities */
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #6FE3C7 0%, #2DD4BF 50%, #38C6A1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-hero {
+  background: radial-gradient(circle at 50% 20%, rgba(22, 101, 78, 0.35) 0%, rgba(7, 15, 22, 0.95) 70%);
+}
+
+/* Custom Modal Backdrop */
+.modal-backdrop {
+  background: rgba(4, 15, 22, 0.88);
+  backdrop-filter: blur(10px);
+}
