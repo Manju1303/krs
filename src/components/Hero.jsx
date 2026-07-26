@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, ShieldAlert, Phone, Play, Clock, UserCheck, Stethoscope, ChevronRight } from 'lucide-react';
+import { Calendar, ShieldAlert, Phone, Clock, UserCheck, Stethoscope, ChevronRight } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
 const getImg = (path) => {
@@ -122,24 +122,6 @@ export default function Hero({ onOpenBooking }) {
                 <ShieldAlert className="w-4 h-4" />
                 Emergency: {hospitalInfo.hospitalMobile}
               </a>
-            </div>
-
-            {/* Video Preview Thumbnail */}
-            <div className="pt-2 hidden sm:block">
-              <div className="inline-flex items-center gap-4 p-2.5 pr-6 rounded-2xl bg-emerald-950/60 backdrop-blur-xl border border-emerald-400/25 shadow-2xl max-w-md">
-                <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 group cursor-pointer" onClick={onOpenBooking}>
-                  <img src={getImg('images/medical_tech_lab.png')} alt="KRS Hospital Virtual Tour" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-                  <div className="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
-                    <div className="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                      <Play className="w-3.5 h-3.5 fill-white ml-0.5" />
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white leading-tight">State-of-the-Art Diagnostic Care</h4>
-                  <p className="text-[11px] text-emerald-200 mt-1 leading-snug">Comprehensive 15+ specialties & sterile surgical suites</p>
-                </div>
-              </div>
             </div>
 
           </div>
