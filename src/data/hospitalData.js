@@ -6,10 +6,13 @@ export const hospitalInfo = {
   founded: 1996,
   founder: "Dr. K. Ravisuthan",
   emergencyPhone: "+91 94432 55555",
-  landlinePhone: "04283 234567",
-  email: "care@krshospital.com",
-  whatsapp: "+91 94432 55555",
-  workingHours: "24 Hours / 7 Days Open (Emergency & Trauma Available 24/7)",
+  hospitalMobile: "+91 63808 98608",
+  landlinePhone: "04283 222266",
+  labPhone: "+91 99444 49559",
+  email: "krsmultispecialityh@gmail.com",
+  facebook: "https://www.facebook.com/profile.php?id=61583509866582",
+  whatsapp: "+91 63808 98608",
+  workingHours: "24 Hours / 7 Days Open (Emergency, ICU & Lab Available 24/7)",
   tagline: "A Trusted Name, A Deserved Care",
   stats: [
     { label: "Years of Trust", value: "28+", desc: "Serving families since 1996" },
@@ -556,6 +559,13 @@ export const facilities = [
     image: "/images/ot_main.jpeg"
   },
   {
+    title: "24/7 Diagnostic Pathology Lab",
+    desc: "In-house diagnostic laboratory operating round the clock for blood work, hormone panels, and emergency testing.",
+    icon: "FlaskConical",
+    badge: "Lab Helpline: 99444 49559",
+    image: "/images/nursing_station.jpeg"
+  },
+  {
     title: "24/7 Pharmacy & Medication Services",
     desc: "Comprehensive hospital pharmacy stocking genuine lifesaving drugs, surgical supplies, and patient prescription support.",
     icon: "Pill",
@@ -575,13 +585,6 @@ export const facilities = [
     icon: "Activity",
     badge: "High Precision",
     image: "/images/nursing_station.jpeg"
-  },
-  {
-    title: "Physiotherapy & Rehabilitation",
-    desc: "Specialized rehab unit with post-surgery physical therapists for joint replacement, stroke, and sports recovery.",
-    icon: "Dumbbell",
-    badge: "Recovery Hub",
-    image: "/images/icu_ventilator.jpeg"
   },
   {
     title: "Digital Records & Smart Healthcare",
@@ -668,8 +671,12 @@ export const whyChooseUs = [
 
 export const faqs = [
   {
-    question: "What are the emergency contact numbers for KRS Hospital Edappadi?",
-    answer: "Our 24/7 Emergency & Trauma Hotline is available at +91 94432 55555 and landline 04283 234567. Ambulances and emergency trauma doctors are on standby 24 hours a day."
+    question: "What are the contact numbers for KRS Hospital Edappadi?",
+    answer: "Our Main Landline is 04283 222266, Hospital Mobile is 6380898608, 24/7 Emergency Hotline is +91 94432 55555, and 24/7 Diagnostic Lab Helpline is 9944449559."
+  },
+  {
+    question: "How can I contact the 24/7 Diagnostic Lab directly?",
+    answer: "You can reach our 24/7 Lab directly at +91 99444 49559 for lab report status, home collection inquiries, and pathology test details."
   },
   {
     question: "Can I book an appointment with a specialist doctor online?",
@@ -680,7 +687,7 @@ export const faqs = [
     answer: "KRS Hospital provides 15+ specialties including General Medicine, Diabetology, Orthopedics & Arthroscopy, Neurology, Obstetrics & Gynaecology, Pulmonology, Dermatology, General/Laparoscopic Surgery, Urology, Surgical Oncology, Pediatrics, Dental, Endocrinology, and Gastroenterology."
   },
   {
-    question: "Are diagnostic labs and pharmacy open 24/7?",
-    answer: "Yes, our Advanced Diagnostic Laboratory, Digital X-Ray, ECG, and Pharmacy operate 24 hours a day, 7 days a week to support both outpatient and emergency needs."
+    question: "What is the official email address and Facebook page of KRS Hospital?",
+    answer: "Our official email address is krsmultispecialityh@gmail.com and our Facebook page is https://www.facebook.com/profile.php?id=61583509866582."
   }
 ];
