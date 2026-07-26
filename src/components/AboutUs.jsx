@@ -13,10 +13,10 @@ export default function AboutUs() {
           {/* Left: Hospital Image */}
           <div className="lg:col-span-5 space-y-5">
             <div className="rounded-2xl overflow-hidden border p-2" style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
-              <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ aspectRatio: '16/10', background: '#0b1e36' }}>
+              <div className="relative rounded-xl overflow-hidden shadow-lg bg-slate-900">
                 <img src={aboutData.buildingImage} alt="KRS Multispeciality Hospital Building Edappadi"
-                  className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.45) 0%, transparent 60%)' }} />
+                  className="w-full h-auto block transform hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.45) 0%, transparent 60%)' }} />
                 <div className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shadow-md"
                   style={{ background: '#d1fae5', border: '1px solid #a7f3d0', color: '#047857' }}>
                   <Award className="w-3.5 h-3.5" />
