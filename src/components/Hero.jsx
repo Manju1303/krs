@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Calendar, ShieldAlert, Award, FlaskConical, Phone, Building2, ChevronLeft, ChevronRight, HeartPulse, CheckCircle2 } from 'lucide-react';
+import { Calendar, ShieldAlert, Award, FlaskConical, Phone, ChevronLeft, ChevronRight, HeartPulse, CheckCircle2 } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
 const getImg = (path) => {
@@ -9,12 +9,6 @@ const getImg = (path) => {
 };
 
 const slides = [
-  {
-    url: getImg('images/building_clean.png'),
-    caption: 'KRS Multispeciality Hospital — Edappadi Main Campus',
-    sub: 'Salem Main Road, Vellandivalasu, Edappadi',
-    icon: Building2,
-  },
   {
     url: getImg('images/ot_main.jpeg'),
     caption: 'Advanced Modular Operation Theatre',
