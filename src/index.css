@@ -11,18 +11,25 @@
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
-  /* ── Brand ── */
-  --brand:        #059669;
-  --brand-dark:   #047857;
-  --brand-light:  #d1fae5;
-  --brand-teal:   #0d9488;
-  --brand-accent: #0f766e;
+  /* ── Slate-Blue Clinical Theme (Reference Template Palette) ── */
+  --slate-bg:        #4A6D8C;
+  --slate-dark:      #395670;
+  --slate-light:     #638499;
+  --slate-subtle:    #eef3f7;
+  --deep-navy:       #0b1e36;
+  
+  /* ── Brand & Accents ── */
+  --brand:        #0d9488;
+  --brand-dark:   #0f766e;
+  --brand-light:  #ccfbf1;
+  --brand-teal:   #059669;
+  --brand-accent: #0284c7;
 
   /* ── Light Surfaces ── */
-  --bg-base:    #f0f4f8;
+  --bg-base:    #f4f7f9;
   --bg-surface: #ffffff;
   --bg-muted:   #f8fafc;
-  --bg-subtle:  #f1f5f9;
+  --bg-subtle:  #eef3f7;
 
   /* ── Text ── */
   --text-primary:   #0f172a;
@@ -33,13 +40,13 @@
   /* ── Borders ── */
   --border:        rgba(15, 23, 42, 0.08);
   --border-medium: rgba(15, 23, 42, 0.12);
-  --border-brand:  rgba(5, 150, 105, 0.25);
+  --border-brand:  rgba(13, 148, 136, 0.25);
 
   /* ── Shadows ── */
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.05);
-  --shadow:    0 4px 24px rgba(0,0,0,0.07);
-  --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
-  --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
+  --shadow-sm: 0 2px 8px rgba(11, 30, 54, 0.04);
+  --shadow:    0 4px 24px rgba(11, 30, 54, 0.08);
+  --shadow-md: 0 8px 32px rgba(11, 30, 54, 0.12);
+  --shadow-lg: 0 16px 48px rgba(11, 30, 54, 0.16);
 
   /* ── Ease ── */
   --ease-out:   cubic-bezier(0.0, 0.0, 0.2, 1.0);

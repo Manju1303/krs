@@ -31,28 +31,28 @@ export default function Navbar({ onOpenBooking }) {
 
       {/* ── Top Info Bar ── */}
       <div className="hidden md:flex items-center justify-between px-6 lg:px-12 text-xs py-2"
-        style={{ background: '#047857', borderBottom: '1px solid rgba(255,255,255,0.15)' }}>
-        <div className="flex items-center gap-5 text-emerald-100/90">
+        style={{ background: '#0b1e36', borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+        <div className="flex items-center gap-5 text-slate-200">
           <div className="flex items-center gap-1.5">
-            <ShieldAlert className="w-3.5 h-3.5 text-rose-300 animate-pulse" />
-            <span className="font-semibold text-rose-100">24/7 Emergency Active</span>
+            <ShieldAlert className="w-3.5 h-3.5 text-rose-400 animate-pulse" />
+            <span className="font-semibold text-rose-200">24/7 Emergency Active</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <MapPin className="w-3 h-3 text-emerald-200" />
+            <MapPin className="w-3 h-3 text-teal-300" />
             <span>Salem Main Road, Edappadi</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <FlaskConical className="w-3 h-3 text-emerald-200" />
+            <FlaskConical className="w-3 h-3 text-teal-300" />
             <span>Lab: <strong className="text-white">{hospitalInfo.labPhone}</strong></span>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <a href={hospitalInfo.facebook} target="_blank" rel="noreferrer"
-            className="flex items-center gap-1.5 text-emerald-100 hover:text-white px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] transition-colors">
+            className="flex items-center gap-1.5 text-slate-200 hover:text-white px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] transition-colors">
             <Facebook className="w-3 h-3" /> Facebook
           </a>
           <a href={`mailto:${hospitalInfo.email}`}
-            className="hidden lg:flex items-center gap-1.5 text-emerald-100 hover:text-white px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] transition-colors">
+            className="hidden lg:flex items-center gap-1.5 text-slate-200 hover:text-white px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] transition-colors">
             <Mail className="w-3 h-3" /> {hospitalInfo.email}
           </a>
           <a href={`tel:${hospitalInfo.hospitalMobile}`}

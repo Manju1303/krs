@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { hospitalInfo } from '../data/hospitalData';
-import { Calendar, Users, Award, Stethoscope } from 'lucide-react';
-
-const icons = [Award, Stethoscope, Users, Calendar];
+import { Calendar, Users, Award, Stethoscope, ArrowRight } from 'lucide-react';
 
 export default function Stats() {
   const [visible, setVisible] = useState(false);
@@ -18,47 +16,55 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={ref} className="relative z-20 -mt-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-0 overflow-hidden rounded-2xl"
-        style={{
-          background: '#ffffff',
-          boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)',
-          border: '1px solid rgba(15,23,42,0.08)',
-        }}>
-        {hospitalInfo.stats.map((stat, idx) => {
-          const Icon = icons[idx % icons.length];
-          return (
-            <div key={idx} className="relative flex flex-col items-center justify-center p-6 sm:p-8 text-center group"
+    <section ref={ref} className="relative z-20 py-16 bg-white border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+          {/* ── Left Column: Giant "28+" Experience Feature (Matching Heltro Template) ── */}
+          <div className="lg:col-span-6 flex flex-col md:flex-row items-center gap-6">
+            <div className="text-[5.5rem] sm:text-[7rem] font-black font-heading leading-none tracking-tight"
               style={{
-                borderRight: idx < 3 ? '1px solid rgba(15,23,42,0.07)' : 'none',
-                opacity: visible ? 1 : 0,
-                transform: visible ? 'translateY(0)' : 'translateY(16px)',
-                transition: `opacity 0.6s ease ${idx * 0.12}s, transform 0.6s ease ${idx * 0.12}s`,
+                color: '#4A6D8C',
               }}>
-              {/* Top accent */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-0.5 rounded-full"
-                style={{ background: 'linear-gradient(90deg, transparent, #059669, transparent)' }} />
-
-              {/* Icon */}
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110"
-                style={{ background: '#d1fae5', border: '1px solid #a7f3d0' }}>
-                <Icon className="w-5 h-5" style={{ color: '#059669' }} />
-              </div>
-
-              {/* Value */}
-              <div className="text-3xl sm:text-4xl font-extrabold font-heading mb-1" style={{
-                background: 'linear-gradient(135deg, #059669, #0d9488)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
-                {stat.value}
-              </div>
-              <div className="text-sm font-bold mb-0.5" style={{ color: '#0f172a' }}>{stat.label}</div>
-              <div className="text-xs leading-snug" style={{ color: '#64748b' }}>{stat.desc}</div>
+              28+
             </div>
-          );
-        })}
+            <div className="space-y-2 text-center md:text-left">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                Established 1996
+              </span>
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug font-heading">
+                Trusted medical professionals united by one purpose — delivering compassionate, quality healthcare.
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                We bring together experienced doctors, skilled nurses, and dedicated healthcare staff to provide accurate diagnosis and treatment.
+              </p>
+            </div>
+          </div>
+
+          {/* ── Right Column: Stat Highlight Cards (Matching Heltro 90% / 135+ cards) ── */}
+          <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
+            
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 text-center hover:shadow-md transition-all">
+              <div className="text-3xl sm:text-4xl font-black text-slate-900 font-heading">98%</div>
+              <div className="text-xs font-bold text-slate-800 mt-1">Patient Satisfaction</div>
+              <div className="text-[11px] text-slate-500 mt-0.5">Based on discharge reviews</div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 text-center hover:shadow-md transition-all">
+              <div className="text-3xl sm:text-4xl font-black text-teal-600 font-heading">15+</div>
+              <div className="text-xs font-bold text-slate-800 mt-1">Specialties</div>
+              <div className="text-[11px] text-slate-500 mt-0.5">Under one roof care</div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 text-center col-span-2 sm:col-span-1 hover:shadow-md transition-all">
+              <div className="text-3xl sm:text-4xl font-black text-slate-900 font-heading">50,000+</div>
+              <div className="text-xs font-bold text-slate-800 mt-1">Patients Treated</div>
+              <div className="text-[11px] text-slate-500 mt-0.5">Since 1996 in Edappadi</div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </section>
   );

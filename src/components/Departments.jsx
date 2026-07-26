@@ -18,7 +18,7 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
   const deptDoctors = doctors.filter(doc => doc.departmentId === activeDept.id);
 
   return (
-    <section id="departments" className="py-24 relative overflow-hidden" style={{ background: '#04080f' }}>
+    <section id="departments" className="py-24 relative overflow-hidden bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -28,11 +28,11 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
             <Stethoscope className="w-3.5 h-3.5" />
             15+ Specialized Departments
           </span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-white font-heading mt-3">
-            Our <span className="text-gradient-emerald">Medical Departments</span>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 font-heading mt-3">
+            Medicine Department <span className="text-teal-600">Doctor Availability</span> & Schedule
           </h2>
-          <p className="text-slate-400 text-sm leading-relaxed">
-            15+ departments with modern diagnostics, advanced surgical suites, and expert specialists in Edappadi.
+          <p className="text-slate-600 text-sm leading-relaxed">
+            Advanced medical imaging, surgical care, and timely diagnoses from expert specialists under one roof in Edappadi.
           </p>
         </div>
 
