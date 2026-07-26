@@ -68,57 +68,71 @@ export default function Doctors({ onOpenBooking }) {
           })}
         </div>
 
-        {/* Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {filteredDoctors.map((doc) => (
-            <div key={doc.id} className="premium-card p-6 group flex flex-col">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 font-heading text-white"
-                  style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                  {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                </div>
-                <div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#059669' }}>{doc.role}</div>
-                  <h3 className="text-sm font-bold font-heading leading-snug" style={{ color: '#0f172a' }}>{doc.name}</h3>
-                </div>
-              </div>
-
-              <div className="space-y-2 flex-1 mb-5">
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="w-3.5 h-3.5 shrink-0" style={{ color: '#059669' }} />
-                  <span className="text-xs truncate" style={{ color: '#334155' }}>{doc.degrees}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Stethoscope className="w-3.5 h-3.5 shrink-0" style={{ color: '#0d9488' }} />
-                  <span className="text-xs truncate" style={{ color: '#475569' }}>{doc.specialty}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 shrink-0" style={{ color: '#94a3b8' }} />
-                  <span className="text-xs" style={{ color: '#64748b' }}>{doc.experience} exp.</span>
-                </div>
-              </div>
-
-              <div className="flex gap-2 pt-4" style={{ borderTop: '1px solid rgba(15,23,42,0.07)' }}>
-                <button onClick={() => setSelectedDoctorModal(doc)}
-                  className="flex-1 py-2 rounded-lg text-xs font-semibold transition-colors"
-                  style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.08)', color: '#475569' }}>
-                  Profile
-                </button>
-                <button onClick={() => onOpenBooking(doc.departmentId, doc.name)}
-                  className="flex-1 py-2 rounded-lg text-xs font-bold text-white flex items-center justify-center gap-1.5 transition-all hover:opacity-90"
-                  style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                  <Calendar className="w-3.5 h-3.5" /> Book
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {filteredDoctors.length === 0 && (
-          <div className="text-center py-16 text-sm" style={{ color: '#94a3b8' }}>
-            No doctors found matching "{searchQuery}".
+        {/* Scrollable Doctors Container Box */}
+        <div className="p-4 sm:p-6 rounded-2xl bg-white border border-slate-200/80 shadow-lg space-y-4">
+          
+          <div className="flex items-center justify-between px-2 text-xs text-slate-500 pb-2 border-b border-slate-100">
+            <span className="font-semibold text-emerald-700">
+              Showing {filteredDoctors.length} Specialist Consultants
+            </span>
+            <span className="text-[11px] text-slate-400 hidden sm:inline">
+              Scroll inside container to view all doctors
+            </span>
           </div>
-        )}
+
+          <div className="max-h-[580px] overflow-y-auto pr-2 space-y-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {filteredDoctors.map((doc) => (
+                <div key={doc.id} className="premium-card p-6 group flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 font-heading text-white"
+                      style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
+                      {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#059669' }}>{doc.role}</div>
+                      <h3 className="text-sm font-bold font-heading leading-snug" style={{ color: '#0f172a' }}>{doc.name}</h3>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 flex-1 mb-5">
+                    <div className="flex items-center gap-2">
+                      <GraduationCap className="w-3.5 h-3.5 shrink-0" style={{ color: '#059669' }} />
+                      <span className="text-xs truncate" style={{ color: '#334155' }}>{doc.degrees}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Stethoscope className="w-3.5 h-3.5 shrink-0" style={{ color: '#0d9488' }} />
+                      <span className="text-xs truncate" style={{ color: '#475569' }}>{doc.specialty}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-3.5 h-3.5 shrink-0" style={{ color: '#94a3b8' }} />
+                      <span className="text-xs" style={{ color: '#64748b' }}>{doc.experience} exp.</span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 pt-4" style={{ borderTop: '1px solid rgba(15,23,42,0.07)' }}>
+                    <button onClick={() => setSelectedDoctorModal(doc)}
+                      className="flex-1 py-2 rounded-lg text-xs font-semibold transition-colors"
+                      style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.08)', color: '#475569' }}>
+                      Profile
+                    </button>
+                    <button onClick={() => onOpenBooking(doc.departmentId, doc.name)}
+                      className="flex-1 py-2 rounded-lg text-xs font-bold text-white flex items-center justify-center gap-1.5 transition-all hover:opacity-90"
+                      style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
+                      <Calendar className="w-3.5 h-3.5" /> Book
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {filteredDoctors.length === 0 && (
+              <div className="text-center py-16 text-sm" style={{ color: '#94a3b8' }}>
+                No doctors found matching "{searchQuery}".
+              </div>
+            )}
+          </div>
+        </div>
 
         {/* Modal */}
         {selectedDoctorModal && (

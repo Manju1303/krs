@@ -13,16 +13,16 @@ export default function AboutUs() {
           {/* Left: Hospital Image */}
           <div className="lg:col-span-5 space-y-5">
             <div className="rounded-2xl overflow-hidden border p-2" style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
-              <div className="relative rounded-xl overflow-hidden" style={{ aspectRatio: '4/5', background: '#f8fafc' }}>
+              <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ aspectRatio: '16/10', background: '#0b1e36' }}>
                 <img src={aboutData.buildingImage} alt="KRS Multispeciality Hospital Building Edappadi"
-                  className="w-full h-full object-cover" />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.35) 0%, transparent 50%)' }} />
-                <div className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
+                  className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.45) 0%, transparent 60%)' }} />
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shadow-md"
                   style={{ background: '#d1fae5', border: '1px solid #a7f3d0', color: '#047857' }}>
                   <Award className="w-3.5 h-3.5" />
                   Est. 1996 · Edappadi, Tamil Nadu
                 </div>
-                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', border: '1px solid rgba(15,23,42,0.08)' }}>
+                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl shadow-md" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', border: '1px solid rgba(15,23,42,0.08)' }}>
                   <div className="text-xs font-bold" style={{ color: '#0f172a' }}>KRS Multispeciality Hospital</div>
                   <div className="flex items-center gap-1 mt-0.5 text-[10px]" style={{ color: '#059669' }}>
                     <MapPin className="w-3 h-3 shrink-0" />
