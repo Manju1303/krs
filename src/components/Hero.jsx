@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, ShieldAlert, Award, Stethoscope, ArrowRight, HeartPulse, CheckCircle2, Clock, Users, Building2, MapPin, FlaskConical, Camera } from 'lucide-react';
+import { Calendar, ShieldAlert, Award, Stethoscope, ArrowRight, HeartPulse, CheckCircle2, Clock, Users, Building2, MapPin, FlaskConical, Camera, Phone } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
 export default function Hero({ onOpenBooking, onOpenPackages }) {
