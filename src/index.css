@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Custom Design System & CSS Utilities */
 :root {
   --font-heading: 'Outfit', sans-serif;
