@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Calendar, ShieldAlert, Award, Clock, FlaskConical, Phone, Building2, ChevronLeft, ChevronRight, MapPin, HeartPulse, CheckCircle2 } from 'lucide-react';
+import { Calendar, ShieldAlert, Award, FlaskConical, Phone, Building2, ChevronLeft, ChevronRight, HeartPulse, CheckCircle2 } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
 const getImg = (path) => {
@@ -226,27 +226,7 @@ export default function Hero({ onOpenBooking }) {
               </a>
             </div>
 
-            {/* Contact Strip */}
-            <div
-              className="flex flex-wrap gap-5 text-xs text-white/55 pt-2 animate-fade-in-up border-t"
-              style={{
-                borderColor: 'rgba(255,255,255,0.08)',
-                animationDelay: '0.5s',
-              }}
-            >
-              <div className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-emerald-500" />
-                <span>Emergency: <strong className="text-white/80">24/7 Open</strong></span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <FlaskConical className="w-3.5 h-3.5 text-teal-500" />
-                <span>Lab: <strong className="text-white/80">{hospitalInfo.labPhone}</strong></span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-emerald-500" />
-                <span>Salem Main Road, Edappadi</span>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
