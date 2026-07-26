@@ -6,6 +6,8 @@ export default function Navbar({ onOpenBooking }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const logoUrl = `${import.meta.env.BASE_URL || '/'}logo.jpeg`.replace(/\/+/g, '/');
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
@@ -79,7 +81,7 @@ export default function Navbar({ onOpenBooking }) {
           <a href="#" className="flex items-center space-x-3 group">
             <div className="relative shrink-0 w-12 h-12">
               <img 
-                src="/logo.jpeg" 
+                src={logoUrl} 
                 alt="KRS Hospital Logo" 
                 className="w-12 h-12 max-w-[48px] max-h-[48px] rounded-xl object-contain bg-white p-1 shadow-lg ring-2 ring-emerald-500/40 group-hover:scale-105 transition-transform shrink-0" 
               />

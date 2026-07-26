@@ -2,6 +2,12 @@ import React from 'react';
 import { Phone, Mail, MapPin, Clock, ShieldAlert, Award, Calendar, Heart, Facebook, FlaskConical } from 'lucide-react';
 import { hospitalInfo, departments } from '../data/hospitalData';
 
+const getImg = (path) => {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return baseUrl.endsWith('/') ? `${baseUrl}${cleanPath}` : `${baseUrl}/${cleanPath}`;
+};
+
 export default function Footer({ onOpenBooking }) {
   return (
     <footer id="contact" className="bg-slate-950 border-t border-teal-500/20 pt-16 pb-12 text-slate-300">
@@ -48,7 +54,7 @@ export default function Footer({ onOpenBooking }) {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <img 
-                src="/logo.jpeg" 
+                src={getImg('logo.jpeg')} 
                 alt="KRS Hospital Logo" 
                 className="w-10 h-10 rounded-lg object-contain bg-white p-1 ring-2 ring-emerald-500/40" 
               />

@@ -96,6 +96,29 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@keyframes kenBurnsPan {
+  0% {
+    transform: scale(1.05) translateX(0%);
+  }
+  50% {
+    transform: scale(1.1) translateX(-1.5%);
+  }
+  100% {
+    transform: scale(1.05) translateX(0%);
+  }
+}
+
+@keyframes bgSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 0.35;
+    transform: scale(1.05);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -106,6 +129,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-float {
   animation: floatAnim 4s infinite ease-in-out;
+}
+
+.animate-ken-burns {
+  animation: kenBurnsPan 9s infinite ease-in-out;
+}
+
+.animate-bg-slide-in {
+  animation: bgSlideIn 1s ease-out forwards;
 }
 
 /* Glassmorphism Classes */

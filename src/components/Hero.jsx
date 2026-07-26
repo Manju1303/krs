@@ -1,38 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, ShieldAlert, Award, Stethoscope, ArrowRight, HeartPulse, CheckCircle2, Clock, Users, Building2, MapPin, FlaskConical, Camera, Phone } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
 export default function Hero({ onOpenBooking, onOpenPackages }) {
-  const [heroImageIndex, setHeroImageIndex] = useState(0);
+  const getImg = (path) => {
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    return baseUrl.endsWith('/') ? `${baseUrl}${cleanPath}` : `${baseUrl}/${cleanPath}`;
+  };
 
-  const heroPhotos = [
+  const bgSlideshow = [
     {
-      url: "/images/building.jpeg",
+      url: getImg("images/building.jpeg"),
       title: "KRS Main Hospital Building",
       tag: "Edappadi Main Campus",
       desc: "Multi-storey modern hospital located on Salem Main Road, Edappadi."
     },
     {
-      url: "/images/ot_main.jpeg",
+      url: getImg("images/ot_main.jpeg"),
       title: "Modular Operation Theatre",
       tag: "Advanced Surgery Suite",
       desc: "Sterile laminar airflow OT with precision surgical lights and anesthesia console."
     },
     {
-      url: "/images/icu_beds.jpeg",
+      url: getImg("images/icu_beds.jpeg"),
       title: "Intensive Care Unit (ICU)",
       tag: "24/7 Critical Care",
       desc: "Multi-bed ICU equipped with multi-para cardiac monitors & central oxygen."
+    },
+    {
+      url: getImg("images/reception_lounge.jpeg"),
+      title: "Patient Waiting Lounge",
+      tag: "Patient Comfort",
+      desc: "Spacious, air-conditioned waiting lounge for family comfort."
+    },
+    {
+      url: getImg("images/pharmacy.jpeg"),
+      title: "24/7 Hospital Pharmacy",
+      tag: "Round-the-Clock",
+      desc: "Fully stocked pharmacy with genuine medicines & surgical supplies."
     }
   ];
 
-  const currentPhoto = heroPhotos[heroImageIndex];
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  // Auto-scroll background slider every 4.5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % bgSlideshow.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [bgSlideshow.length]);
+
+  const currentPhoto = bgSlideshow[currentSlideIndex];
 
   return (
-    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-gradient-hero flex items-center">
-      {/* Glow Orbs */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-emerald-600/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
-      <div className="absolute bottom-10 right-10 w-[30rem] h-[30rem] bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-slate-950 flex items-center">
+      
+      {/* Dynamic Animated Background Image Slideshow with Overlay */}
+      <div className="absolute inset-0 z-0">
+        {bgSlideshow.map((slide, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              currentSlideIndex === idx ? 'opacity-35' : 'opacity-0'
+            }`}
+          >
+            <img
+              src={slide.url}
+              alt={slide.title}
+              className={`w-full h-full object-cover ${currentSlideIndex === idx ? 'animate-ken-burns' : ''}`}
+            />
+          </div>
+        ))}
+
+        {/* Sleek Dark Gradient Overlay for Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
+      </div>
+
+      {/* Background Glow Orbs */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
+      <div className="absolute bottom-10 right-10 w-[30rem] h-[30rem] bg-teal-500/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -41,7 +90,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
           <div className="lg:col-span-7 space-y-6">
             
             {/* Top Pill Badge */}
-            <div className="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-300 shadow-inner">
+            <div className="inline-flex items-center space-x-2 bg-emerald-950/90 border border-emerald-500/40 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-300 shadow-inner backdrop-blur-md">
               <Award className="w-4 h-4 text-emerald-400" />
               <span>Serving Edappadi Since 1996 • 28+ Years of Medical Trust</span>
             </div>
@@ -53,7 +102,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
             </h1>
 
             {/* Description */}
-            <p className="text-slate-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
+            <p className="text-slate-200 text-base sm:text-lg max-w-2xl font-normal leading-relaxed drop-shadow">
               Founded by <strong className="text-emerald-300 font-semibold">Dr. K. Ravisuthan</strong>, KRS Multispeciality Hospital & Trauma Care Centre brings 15+ specialized medical departments, modern operation theatres, 24/7 ICUs, and expert physicians together under one roof in Edappadi.
             </p>
 
@@ -61,7 +110,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
               <button
                 onClick={() => onOpenBooking()}
-                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-emerald-500/30 hover:border-emerald-400 transition-all text-left group shadow-lg"
+                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-emerald-500/40 hover:border-emerald-400 transition-all text-left group shadow-lg backdrop-blur-md"
               >
                 <Stethoscope className="w-5 h-5 text-emerald-400 mb-1.5 group-hover:scale-110 transition-transform" />
                 <div className="text-xs font-bold text-white">Book Doctor</div>
@@ -70,7 +119,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
 
               <a
                 href={`tel:${hospitalInfo.hospitalMobile}`}
-                className="p-3.5 rounded-2xl bg-rose-950/80 hover:bg-rose-900/90 border border-rose-500/40 transition-all text-left group shadow-lg"
+                className="p-3.5 rounded-2xl bg-rose-950/90 hover:bg-rose-900/90 border border-rose-500/50 transition-all text-left group shadow-lg backdrop-blur-md"
               >
                 <ShieldAlert className="w-5 h-5 text-rose-400 mb-1.5 animate-pulse group-hover:scale-110 transition-transform" />
                 <div className="text-xs font-bold text-rose-200">24/7 Emergency</div>
@@ -79,7 +128,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
 
               <a
                 href="#packages"
-                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-teal-500/30 hover:border-teal-400 transition-all text-left group shadow-lg"
+                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-teal-500/40 hover:border-teal-400 transition-all text-left group shadow-lg backdrop-blur-md"
               >
                 <FlaskConical className="w-5 h-5 text-teal-400 mb-1.5 group-hover:scale-110 transition-transform" />
                 <div className="text-xs font-bold text-white">Health Checkups</div>
@@ -88,7 +137,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
 
               <a
                 href="#gallery"
-                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 transition-all text-left group shadow-lg"
+                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 transition-all text-left group shadow-lg backdrop-blur-md"
               >
                 <Camera className="w-5 h-5 text-emerald-400 mb-1.5 group-hover:scale-110 transition-transform" />
                 <div className="text-xs font-bold text-white">Campus Photos</div>
@@ -100,7 +149,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => onOpenBooking()}
-                className="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-extrabold text-sm px-6 py-4 rounded-xl shadow-xl shadow-emerald-950/60 flex items-center space-x-3 transition-all hover:scale-105"
+                className="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-extrabold text-sm px-6 py-4 rounded-xl shadow-2xl shadow-emerald-950/80 flex items-center space-x-3 transition-all hover:scale-105"
               >
                 <Calendar className="w-5 h-5" />
                 <span>Book Instant Consultation</span>
@@ -109,7 +158,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
 
               <a
                 href={`tel:${hospitalInfo.emergencyPhone}`}
-                className="bg-slate-900/90 hover:bg-slate-800 text-slate-200 font-bold text-sm px-6 py-4 rounded-xl border border-slate-700 flex items-center space-x-3 transition-all hover:scale-105"
+                className="bg-slate-900/90 hover:bg-slate-800 text-slate-200 font-bold text-sm px-6 py-4 rounded-xl border border-slate-700 flex items-center space-x-3 transition-all hover:scale-105 backdrop-blur-md"
               >
                 <Phone className="w-4 h-4 text-emerald-400" />
                 <span>Landline: {hospitalInfo.landlinePhone}</span>
@@ -117,7 +166,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
             </div>
 
             {/* Quick Contact Bar */}
-            <div className="pt-4 flex items-center space-x-6 text-xs text-slate-400 border-t border-slate-800">
+            <div className="pt-4 flex items-center space-x-6 text-xs text-slate-300 border-t border-slate-800">
               <div className="flex items-center space-x-2">
                 <Clock className="w-4 h-4 text-teal-400" />
                 <span>Emergency: <strong>24 Hours Open</strong></span>
@@ -129,13 +178,13 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
             </div>
           </div>
 
-          {/* Right Column: Dynamic Real Hospital Photo Showcase */}
+          {/* Right Column: Dynamic Interactive Real Hospital Showcase */}
           <div className="lg:col-span-5 relative">
             
             {/* Main Visual Card with Real Hospital Photos */}
-            <div className="glass-card rounded-3xl overflow-hidden border border-emerald-500/30 shadow-2xl space-y-4 relative z-10 p-2">
+            <div className="glass-card rounded-3xl overflow-hidden border border-emerald-500/40 shadow-2xl space-y-4 relative z-10 p-2">
               
-              {/* Featured Campus Image Display */}
+              {/* Featured Campus Image Display with Slideshow Indicator */}
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-950 group">
                 <img 
                   src={currentPhoto.url} 
@@ -145,7 +194,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-90" />
                 
                 {/* Photo Badge */}
-                <div className="absolute top-3 left-3 bg-emerald-950/90 text-emerald-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-emerald-500/30 flex items-center space-x-1">
+                <div className="absolute top-3 left-3 bg-emerald-950/90 text-emerald-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-emerald-500/40 flex items-center space-x-1">
                   <MapPin className="w-3 h-3 text-emerald-400" />
                   <span>{currentPhoto.tag}</span>
                 </div>
@@ -157,15 +206,15 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
                 </div>
               </div>
 
-              {/* Photo Selector Switcher */}
+              {/* Photo Selector Switcher & Slide Dots */}
               <div className="px-3 pb-2 flex items-center justify-between gap-2">
                 <div className="flex items-center space-x-2">
-                  {heroPhotos.map((photo, idx) => (
+                  {bgSlideshow.map((photo, idx) => (
                     <button
                       key={idx}
-                      onClick={() => setHeroImageIndex(idx)}
+                      onClick={() => setCurrentSlideIndex(idx)}
                       className={`h-2.5 rounded-full transition-all ${
-                        heroImageIndex === idx ? 'w-8 bg-emerald-400' : 'w-2.5 bg-slate-700 hover:bg-slate-500'
+                        currentSlideIndex === idx ? 'w-8 bg-emerald-400' : 'w-2.5 bg-slate-700 hover:bg-slate-500'
                       }`}
                       title={photo.title}
                     />
@@ -175,7 +224,7 @@ export default function Hero({ onOpenBooking, onOpenPackages }) {
                   href="#gallery"
                   className="text-[11px] text-emerald-400 font-bold hover:underline flex items-center space-x-1"
                 >
-                  <span>View Campus Photos</span>
+                  <span>View All 11 Campus Photos</span>
                   <ArrowRight className="w-3 h-3" />
                 </a>
               </div>
