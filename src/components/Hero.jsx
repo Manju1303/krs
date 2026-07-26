@@ -49,7 +49,7 @@ export default function Hero({ onOpenBooking }) {
   return (
     <section id="home" className="relative pt-28 md:pt-36 pb-16 overflow-hidden" style={{ minHeight: '100dvh' }}>
 
-      {/* ── Background Image Slideshow (Cycles in the entire blue/slate backdrop space) ── */}
+      {/* ── Background Image Slideshow (Clear & Vivid with logo-aligned subtle overlay) ── */}
       <div className="absolute inset-0 z-0">
         {backgroundSlides.map((slide, idx) => (
           <div
@@ -66,37 +66,37 @@ export default function Hero({ onOpenBooking }) {
           </div>
         ))}
 
-        {/* Premium layered gradient overlay for high contrast & text readability */}
+        {/* Lightweight logo-emerald gradient overlay so background slideshow images are vibrant and clearly visible */}
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: 'linear-gradient(105deg, rgba(15,32,54,0.94) 0%, rgba(15,32,54,0.85) 50%, rgba(15,32,54,0.45) 100%)',
+          background: 'linear-gradient(105deg, rgba(4, 24, 30, 0.72) 0%, rgba(4, 24, 30, 0.48) 55%, rgba(4, 24, 30, 0.20) 100%)',
         }} />
-        <div className="absolute inset-0 pointer-events-none bg-grid-pattern opacity-15" />
+        <div className="absolute inset-0 pointer-events-none bg-grid-pattern opacity-10" />
       </div>
 
       {/* ── Main Hero Content Container ── */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[540px]">
 
-          {/* ── Left Column: Headline & Messaging (With size & typography tailored to the theme) ── */}
+          {/* ── Left Column: Headline & Messaging ── */}
           <div className="lg:col-span-7 space-y-6 text-white animate-fade-in-up">
 
             {/* Patients Trust Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[11px] font-bold text-teal-300">
-              <span className="flex h-2 w-2 rounded-full bg-teal-400 animate-ping" />
-              <UserCheck className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-950/60 border border-emerald-400/30 backdrop-blur-md text-[11px] font-bold text-emerald-300">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+              <UserCheck className="w-3.5 h-3.5 text-emerald-300" />
               <span>Over 50,000+ Satisfied Patients Treated</span>
             </div>
 
             {/* Giant Title & Section Text */}
             <div className="space-y-3">
-              <span className="text-teal-400 text-xs sm:text-sm font-extrabold tracking-widest uppercase font-heading block">
+              <span className="text-emerald-400 text-xs sm:text-sm font-extrabold tracking-widest uppercase font-heading block">
                 KRS Multispeciality Hospital
               </span>
               <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-black tracking-tight leading-[1.05] font-heading text-white">
                 MEDICAL
               </h1>
-              <p className="text-slate-300 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
-                Founded by <strong className="text-teal-300 font-semibold">Dr. K. Ravisuthan</strong> in 1996. 
+              <p className="text-slate-100 text-sm sm:text-base max-w-xl font-normal leading-relaxed drop-shadow-sm">
+                Founded by <strong className="text-emerald-300 font-semibold">Dr. K. Ravisuthan</strong> in 1996. 
                 Together, advancing healthcare through compassion, innovation, and patient-centered excellence in Edappadi.
               </p>
             </div>
@@ -126,42 +126,32 @@ export default function Hero({ onOpenBooking }) {
 
             {/* Video Preview Thumbnail */}
             <div className="pt-2 hidden sm:block">
-              <div className="inline-flex items-center gap-4 p-2.5 pr-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl max-w-md">
+              <div className="inline-flex items-center gap-4 p-2.5 pr-6 rounded-2xl bg-emerald-950/60 backdrop-blur-xl border border-emerald-400/25 shadow-2xl max-w-md">
                 <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 group cursor-pointer" onClick={onOpenBooking}>
                   <img src={getImg('images/medical_tech_lab.png')} alt="KRS Hospital Virtual Tour" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
-                    <div className="w-7 h-7 rounded-full bg-teal-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <div className="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                       <Play className="w-3.5 h-3.5 fill-white ml-0.5" />
                     </div>
                   </div>
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-white leading-tight">State-of-the-Art Diagnostic Care</h4>
-                  <p className="text-[11px] text-slate-300 mt-1 leading-snug">Comprehensive 15+ specialties & sterile surgical suites</p>
+                  <p className="text-[11px] text-emerald-200 mt-1 leading-snug">Comprehensive 15+ specialties & sterile surgical suites</p>
                 </div>
               </div>
             </div>
 
           </div>
 
-          {/* ── Right Column: Doctor Hero Portrait (Static card matching Heltro Template) ── */}
+          {/* ── Right Column: Doctor Hero Portrait ── */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
 
             {/* Backdrop glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-teal-400/15 rounded-full blur-3xl pointer-events-none" />
-
-            {/* Floating Top Statement Card */}
-            <div className="absolute -top-4 right-0 z-20 hidden md:block max-w-xs p-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl text-white">
-              <p className="text-xs font-medium leading-relaxed text-slate-200">
-                "We are committed to delivering advanced medical care that places your health, comfort, and wellbeing at the heart of everything we do."
-              </p>
-              <div className="mt-2 text-[10px] text-teal-300 font-bold uppercase tracking-wider">
-                — KRS Medical Team
-              </div>
-            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none" />
 
             {/* Doctor Card Wrapper */}
-            <div className="relative z-10 w-full max-w-sm rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-950/20 backdrop-blur-md">
+            <div className="relative z-10 w-full max-w-sm rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-slate-950/30 backdrop-blur-md">
               <img
                 src={getImg('images/hero_doctor_portrait.png')}
                 alt="KRS Medical Professional"
@@ -169,8 +159,8 @@ export default function Hero({ onOpenBooking }) {
               />
 
               {/* Floating Experience Badge (Oversized 28+ Stat) */}
-              <div className="absolute bottom-4 left-4 z-20 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-xl border border-white/10 shadow-2xl flex items-center gap-4 text-white">
-                <div className="text-4xl font-extrabold font-heading text-teal-400 leading-none">
+              <div className="absolute bottom-4 left-4 z-20 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-xl border border-emerald-400/20 shadow-2xl flex items-center gap-4 text-white">
+                <div className="text-4xl font-extrabold font-heading text-emerald-400 leading-none">
                   28+
                 </div>
                 <div className="text-xs font-semibold leading-tight text-slate-200">
@@ -187,46 +177,46 @@ export default function Hero({ onOpenBooking }) {
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
           {/* Card 1: Opening Hours */}
-          <div className="p-5 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 text-white hover:bg-white/10 transition-all">
+          <div className="p-5 rounded-2xl bg-slate-950/50 backdrop-blur-xl border border-emerald-400/20 text-white hover:bg-slate-900/60 transition-all">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2.5 rounded-xl bg-teal-500/20 text-teal-300">
+              <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400">
                 <Clock className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-sm font-heading">Opening Hours</h3>
+              <h3 className="font-bold text-sm font-heading text-emerald-300">Opening Hours</h3>
             </div>
             <p className="text-xs text-slate-200 font-medium">24/7 ICU & Emergency Open</p>
-            <p className="text-[11px] text-slate-400 mt-1">OPD: Mon – Sat (9:00 AM – 9:00 PM)</p>
+            <p className="text-[11px] text-slate-300 mt-1">OPD: Mon – Sat (9:00 AM – 9:00 PM)</p>
           </div>
 
           {/* Card 2: Doctors' Timetable */}
-          <div className="p-5 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 text-white hover:bg-white/10 transition-all">
+          <div className="p-5 rounded-2xl bg-slate-950/50 backdrop-blur-xl border border-emerald-400/20 text-white hover:bg-slate-900/60 transition-all">
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2.5 rounded-xl bg-teal-500/20 text-teal-300">
+              <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400">
                 <Stethoscope className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-sm font-heading">Doctors' Timetable</h3>
+              <h3 className="font-bold text-sm font-heading text-emerald-300">Doctors' Timetable</h3>
             </div>
             <p className="text-xs text-slate-200 font-medium">15+ Specialist Surgeons</p>
-            <p className="text-[11px] text-slate-400 mt-1">Available for OPD & Emergency</p>
+            <p className="text-[11px] text-slate-300 mt-1">Available for OPD & Emergency</p>
           </div>
 
           {/* Card 3: Quick Booking */}
-          <div className="p-5 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 text-white hover:bg-white/10 transition-all cursor-pointer group" onClick={onOpenBooking}>
+          <div className="p-5 rounded-2xl bg-slate-950/50 backdrop-blur-xl border border-emerald-400/20 text-white hover:bg-slate-900/60 transition-all cursor-pointer group" onClick={onOpenBooking}>
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-300">
+                <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400">
                   <Calendar className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-sm font-heading">Appointments</h3>
+                <h3 className="font-bold text-sm font-heading text-emerald-300">Appointments</h3>
               </div>
-              <ChevronRight className="w-4 h-4 text-teal-300 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
             </div>
             <p className="text-xs text-slate-200 font-medium">Book Online Instantly</p>
-            <p className="text-[11px] text-slate-400 mt-1">Zero wait time consultation</p>
+            <p className="text-[11px] text-slate-300 mt-1">Zero wait time consultation</p>
           </div>
 
           {/* Card 4: Emergency Cases */}
-          <a href={`tel:${hospitalInfo.hospitalMobile}`} className="p-5 rounded-2xl bg-rose-600/90 backdrop-blur-xl border border-rose-400/20 text-white hover:bg-rose-600 transition-all block">
+          <a href={`tel:${hospitalInfo.hospitalMobile}`} className="p-5 rounded-2xl bg-rose-600/90 backdrop-blur-xl border border-rose-400/30 text-white hover:bg-rose-600 transition-all block">
             <div className="flex items-center gap-3 mb-2">
               <div className="p-2.5 rounded-xl bg-white/20 text-white">
                 <ShieldAlert className="w-5 h-5" />

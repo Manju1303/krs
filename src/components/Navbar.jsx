@@ -31,7 +31,7 @@ export default function Navbar({ onOpenBooking }) {
 
       {/* ── Top Info Bar ── */}
       <div className="hidden md:flex items-center justify-between px-6 lg:px-12 text-xs py-2"
-        style={{ background: '#0b1e36', borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+        style={{ background: '#047857', borderBottom: '1px solid rgba(255,255,255,0.15)' }}>
         <div className="flex items-center gap-5 text-slate-200">
           <div className="flex items-center gap-1.5">
             <ShieldAlert className="w-3.5 h-3.5 text-rose-400 animate-pulse" />
