@@ -1,5 +1,5 @@
-import React from 'react';
-import { Calendar, ShieldAlert, Award, Phone, Play, Clock, UserCheck, Stethoscope, ChevronRight, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar, ShieldAlert, Phone, Play, Clock, UserCheck, Stethoscope, ChevronRight } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
 const getImg = (path) => {
@@ -9,8 +9,47 @@ const getImg = (path) => {
 };
 
 export default function Hero({ onOpenBooking }) {
-  const doctorImg = getImg('images/hero_doctor_portrait.png');
-  const labThumbImg = getImg('images/medical_tech_lab.png');
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroSlides = [
+    {
+      url: getImg('images/hero_doctor_portrait.png'),
+      caption: 'KRS Specialist Doctors',
+      sub: 'Dedicated surgeons & medical consultants'
+    },
+    {
+      url: getImg('images/ot_main.jpeg'),
+      caption: 'Advanced Modular Operation Theatre',
+      sub: 'Sterile surgical suites with laminar airflow'
+    },
+    {
+      url: getImg('images/icu_beds.jpeg'),
+      caption: '24/7 Intensive Care Unit (ICU)',
+      sub: 'Multi-para patient monitoring & oxygen support'
+    },
+    {
+      url: getImg('images/reception_lounge.jpeg'),
+      caption: 'Patient Comfort Lounge',
+      sub: 'Spacious, air-conditioned family waiting lounge'
+    },
+    {
+      url: getImg('images/pharmacy.jpeg'),
+      caption: '24/7 In-House Pharmacy',
+      sub: 'Genuine medicines & medical supplies'
+    },
+    {
+      url: getImg('images/emergency_ramp.jpeg'),
+      caption: '24/7 Emergency & Trauma Bay',
+      sub: 'Direct ambulance & immediate triage access'
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
 
   return (
     <section id="home" className="relative pt-28 md:pt-36 pb-16 overflow-hidden" style={{ background: 'linear-gradient(135deg, #4A6D8C 0%, #395670 60%, #2A435A 100%)' }}>
@@ -69,11 +108,11 @@ export default function Hero({ onOpenBooking }) {
               </a>
             </div>
 
-            {/* Video Preview Thumbnail (Matching Heltro Reference Template) */}
+            {/* Video Preview Thumbnail */}
             <div className="pt-4 hidden sm:block">
               <div className="inline-flex items-center gap-4 p-2.5 pr-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl max-w-md">
                 <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 group cursor-pointer" onClick={onOpenBooking}>
-                  <img src={labThumbImg} alt="KRS Hospital Virtual Tour" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                  <img src={getImg('images/medical_tech_lab.png')} alt="KRS Hospital Virtual Tour" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
                     <div className="w-7 h-7 rounded-full bg-teal-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                       <Play className="w-3.5 h-3.5 fill-white ml-0.5" />
@@ -89,29 +128,43 @@ export default function Hero({ onOpenBooking }) {
 
           </div>
 
-          {/* ── Right Column: Doctor Hero Portrait & Floating Stats ── */}
+          {/* ── Right Column: Interactive Image Slideshow ── */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
 
             {/* Backdrop glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-teal-400/20 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Floating Top Statement Card (Matching Heltro Template) */}
+            {/* Floating Top Statement Card */}
             <div className="absolute -top-4 right-0 z-20 hidden md:block max-w-xs p-4 rounded-2xl bg-white/15 backdrop-blur-xl border border-white/25 shadow-2xl text-white">
               <p className="text-xs font-medium leading-relaxed text-slate-100">
-                "We are committed to delivering advanced medical care that places your health, comfort, and long-term wellbeing at the heart of everything we do."
+                "We are committed to delivering advanced medical care that places your health, comfort, and wellbeing at the heart of everything we do."
               </p>
               <div className="mt-2 text-[10px] text-teal-300 font-bold uppercase tracking-wider">
                 — KRS Medical Team
               </div>
             </div>
 
-            {/* Doctor Image */}
-            <div className="relative z-10 w-full max-w-md rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl bg-slate-800/30 backdrop-blur-sm">
-              <img
-                src={doctorImg}
-                alt="KRS Medical Professional"
-                className="w-full h-auto object-cover transform hover:scale-102 transition-transform duration-500"
-              />
+            {/* Slideshow Card Container */}
+            <div className="relative z-10 w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl bg-slate-800/30 backdrop-blur-sm">
+              {heroSlides.map((slide, idx) => (
+                <div
+                  key={idx}
+                  className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                  style={{ opacity: idx === currentSlide ? 1 : 0 }}
+                >
+                  <img
+                    src={slide.url}
+                    alt={slide.caption}
+                    className="w-full h-full object-cover select-none"
+                    draggable={false}
+                  />
+                  {/* Glass caption panel */}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-transparent p-6 pt-16 text-white">
+                    <h4 className="text-sm font-bold font-heading">{slide.caption}</h4>
+                    <p className="text-[11px] text-slate-300 mt-1">{slide.sub}</p>
+                  </div>
+                </div>
+              ))}
 
               {/* Floating Experience Badge (Oversized 28+ Stat) */}
               <div className="absolute bottom-4 left-4 z-20 p-4 rounded-2xl bg-slate-900/85 backdrop-blur-xl border border-white/20 shadow-2xl flex items-center gap-4 text-white">
@@ -122,13 +175,27 @@ export default function Hero({ onOpenBooking }) {
                   Years of Medical<br />Excellence in Salem
                 </div>
               </div>
+
+              {/* Slide Indicators */}
+              <div className="absolute top-4 left-4 z-20 flex gap-1.5">
+                {heroSlides.map((_, idx) => (
+                  <div
+                    key={idx}
+                    className="h-1.5 rounded-full transition-all duration-300"
+                    style={{
+                      width: idx === currentSlide ? '20px' : '6px',
+                      background: idx === currentSlide ? '#2dd4bf' : 'rgba(255,255,255,0.4)',
+                    }}
+                  />
+                ))}
+              </div>
             </div>
 
           </div>
 
         </div>
 
-        {/* ── 4-Column Quick Info Strip (Inspired by Reference 2) ── */}
+        {/* ── 4-Column Quick Info Strip ── */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
           {/* Card 1: Opening Hours */}
