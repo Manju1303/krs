@@ -48,6 +48,110 @@ export const aboutData = {
   ]
 };
 
+export const healthPackages = [
+  {
+    id: "pkg-master",
+    name: "Master Executive Health Checkup",
+    category: "Full Body Wellness",
+    popular: true,
+    price: "₹2,499",
+    originalPrice: "₹4,500",
+    discount: "45% OFF",
+    icon: "Activity",
+    desc: "Comprehensive 45+ parameter health screening designed for complete organ function assessment and early disease prevention.",
+    inclusions: [
+      "Complete Blood Count (CBC & ESR)",
+      "Fasting Blood Sugar & HbA1c",
+      "Lipid Profile (Cholesterol, HDL, LDL, Triglycerides)",
+      "Kidney Function Test (Urea, Creatinine, Uric Acid)",
+      "Liver Function Test (SGOT, SGPT, Bilirubin)",
+      "Thyroid Profile (TSH)",
+      "12-Lead Digital ECG",
+      "Urine Routine & Microscopic",
+      "General Physician Consultation"
+    ]
+  },
+  {
+    id: "pkg-diabetic",
+    name: "Comprehensive Diabetic & Vascular Care",
+    category: "Diabetology Special",
+    popular: true,
+    price: "₹1,899",
+    originalPrice: "₹3,200",
+    discount: "40% OFF",
+    icon: "HeartPulse",
+    desc: "Specialized package tailored for diabetic patients to evaluate sugar control, nerve health, and target organ complications.",
+    inclusions: [
+      "Fasting & Post-Prandial Blood Glucose",
+      "HbA1c Glycated Hemoglobin Test",
+      "Serum Creatinine & Microalbuminuria",
+      "Lipid Profile & Liver Enzymes",
+      "Diabetic Foot Neuropathy Screening",
+      "Diabetic Eye & Retina Screening Guidance",
+      "Chief Diabetologist Consultation (Dr. K. Ravisuthan)"
+    ]
+  },
+  {
+    id: "pkg-women",
+    name: "Women's Wellness & Hormonal Package",
+    category: "Women's Health",
+    popular: false,
+    price: "₹2,199",
+    originalPrice: "₹3,800",
+    discount: "42% OFF",
+    icon: "Sparkles",
+    desc: "Holistic screening for women covering hormonal balance, bone density, thyroid, blood count, and gynecologic wellness.",
+    inclusions: [
+      "Complete Hemogram & Anemia Screening",
+      "Thyroid Profile (T3, T4, TSH)",
+      "Calcium & Vitamin D3 Evaluation",
+      "Fasting Blood Sugar & Urine Analysis",
+      "Pap Smear Screening & Pelvic Evaluation",
+      "Breast Wellness Check",
+      "Consultant Gynecologist Consultation (Dr. Srija)"
+    ]
+  },
+  {
+    id: "pkg-senior",
+    name: "Senior Citizen Total Care Package",
+    category: "Elderly Care",
+    popular: true,
+    price: "₹2,999",
+    originalPrice: "₹5,500",
+    discount: "45% OFF",
+    icon: "HeartHandshake",
+    desc: "Tailored health assessment for adults aged 50+ to monitor joint health, cardiac function, prostate/gynecologic wellness, and vital organs.",
+    inclusions: [
+      "Full Body Biochemistry (Liver, Kidney, Lipid)",
+      "HbA1c & Fasting Glucose",
+      "Digital Chest X-Ray & 12-Lead ECG",
+      "Serum Electrolytes & Uric Acid",
+      "Bone Health (Calcium, Vitamin D)",
+      "Prostate (PSA for Men) / Pap Smear (for Women)",
+      "Senior Physician & Joint Specialist Consultation"
+    ]
+  },
+  {
+    id: "pkg-cardiac",
+    name: "Cardiac & Hypertension Risk Check",
+    category: "Heart & Vascular",
+    popular: false,
+    price: "₹1,999",
+    originalPrice: "₹3,500",
+    discount: "43% OFF",
+    icon: "ShieldAlert",
+    desc: "Focused cardiovascular checkup to detect early signs of hypertension, heart strain, high cholesterol, and arterial risk.",
+    inclusions: [
+      "12-Lead Digital ECG",
+      "Complete Lipid Profile (HDL, LDL, VLDL, Triglycerides)",
+      "High-Sensitivity CRP & Homocysteine",
+      "Serum Electrolytes & Renal Panel",
+      "Blood Pressure Monitoring & Risk Scoring",
+      "Senior Physician & Cardiologist Consultation"
+    ]
+  }
+];
+
 export const departments = [
   {
     id: "gen-med",

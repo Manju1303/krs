@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Clock, MapPin, Calendar, ShieldAlert, Menu, X, ChevronRight, Facebook, Mail, FlaskConical } from 'lucide-react';
+import { Phone, Clock, MapPin, Calendar, ShieldAlert, Menu, X, ChevronRight, Facebook, Mail, FlaskConical, PackageCheck } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
 export default function Navbar({ onOpenBooking }) {
@@ -99,10 +99,14 @@ export default function Navbar({ onOpenBooking }) {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-200">
+          <nav className="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-200">
             <a href="#about" className="hover:text-emerald-400 transition-colors py-1">About Us</a>
             <a href="#departments" className="hover:text-emerald-400 transition-colors py-1">Specialties</a>
             <a href="#doctors" className="hover:text-emerald-400 transition-colors py-1">Specialists</a>
+            <a href="#packages" className="hover:text-emerald-400 transition-colors py-1 flex items-center space-x-1 text-emerald-400 font-semibold">
+              <PackageCheck className="w-3.5 h-3.5" />
+              <span>Health Packages</span>
+            </a>
             <a href="#facilities" className="hover:text-emerald-400 transition-colors py-1">Facilities</a>
             <a href="#gallery" className="hover:text-emerald-400 transition-colors py-1">Campus Photos</a>
             <a href="#why-us" className="hover:text-emerald-400 transition-colors py-1">Why KRS</a>
@@ -167,6 +171,14 @@ export default function Navbar({ onOpenBooking }) {
               <ChevronRight className="w-4 h-4 text-emerald-400" />
             </a>
             <a 
+              href="#packages" 
+              onClick={() => setMobileMenuOpen(false)} 
+              className="py-2 border-b border-slate-800 flex justify-between items-center text-emerald-400 font-bold"
+            >
+              <span>Preventive Health Packages</span>
+              <ChevronRight className="w-4 h-4 text-emerald-400" />
+            </a>
+            <a 
               href="#facilities" 
               onClick={() => setMobileMenuOpen(false)} 
               className="py-2 border-b border-slate-800 flex justify-between items-center"
@@ -177,7 +189,7 @@ export default function Navbar({ onOpenBooking }) {
             <a 
               href="#gallery" 
               onClick={() => setMobileMenuOpen(false)} 
-              className="py-2 border-b border-slate-800 flex justify-between items-center text-emerald-400 font-bold"
+              className="py-2 border-b border-slate-800 flex justify-between items-center"
             >
               <span>Campus Photos & Tour</span>
               <ChevronRight className="w-4 h-4 text-emerald-400" />
@@ -210,14 +222,6 @@ export default function Navbar({ onOpenBooking }) {
             >
               <Phone className="w-4 h-4" />
               <span>Call Hospital: {hospitalInfo.hospitalMobile}</span>
-            </a>
-            
-            <a
-              href={`tel:${hospitalInfo.labPhone}`}
-              className="w-full py-2.5 bg-emerald-950 text-emerald-300 font-semibold rounded-xl border border-emerald-500/30 text-center flex items-center justify-center space-x-2 text-xs"
-            >
-              <FlaskConical className="w-4 h-4 text-emerald-400" />
-              <span>24/7 Lab Helpline: {hospitalInfo.labPhone}</span>
             </a>
           </div>
         </div>

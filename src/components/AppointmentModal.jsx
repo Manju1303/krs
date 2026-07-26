@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { X, Calendar as CalendarIcon, Clock, User, Phone, CheckCircle2, Stethoscope, ChevronRight, AlertCircle, ArrowLeft } from 'lucide-react';
-import { departments, doctors, hospitalInfo } from '../data/hospitalData';
+import { X, Calendar as CalendarIcon, Clock, User, Phone, CheckCircle2, Stethoscope, ChevronRight, AlertCircle, ArrowLeft, PackageCheck } from 'lucide-react';
+import { departments, doctors, healthPackages, hospitalInfo } from '../data/hospitalData';
 
-export default function AppointmentModal({ isOpen, onClose, initialDeptId, initialDoctorName }) {
+export default function AppointmentModal({ isOpen, onClose, initialDeptId, initialDoctorName, initialPackageName }) {
   const [step, setStep] = useState(1);
+  const [bookingType, setBookingType] = useState(initialPackageName ? 'package' : 'doctor'); // 'doctor' or 'package'
+  
   const [selectedDept, setSelectedDept] = useState(departments[0].id);
   const [selectedDoctor, setSelectedDoctor] = useState('');
+  const [selectedPackage, setSelectedPackage] = useState(healthPackages[0].name);
+
   const [appointmentDate, setAppointmentDate] = useState('');
   const [appointmentTime, setAppointmentTime] = useState('10:00 AM');
   
@@ -17,23 +21,28 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
   const [bookingRef, setBookingRef] = useState('');
 
   useEffect(() => {
-    if (typeof initialDeptId === 'string' && initialDeptId) {
-      setSelectedDept(initialDeptId);
+    if (typeof initialPackageName === 'string' && initialPackageName) {
+      setBookingType('package');
+      setSelectedPackage(initialPackageName);
     } else {
-      setSelectedDept(departments[0].id);
-    }
+      if (typeof initialDeptId === 'string' && initialDeptId) {
+        setSelectedDept(initialDeptId);
+      } else {
+        setSelectedDept(departments[0].id);
+      }
 
-    if (typeof initialDoctorName === 'string' && initialDoctorName) {
-      setSelectedDoctor(initialDoctorName);
-    } else {
-      setSelectedDoctor('');
+      if (typeof initialDoctorName === 'string' && initialDoctorName) {
+        setSelectedDoctor(initialDoctorName);
+      } else {
+        setSelectedDoctor('');
+      }
     }
     
     // Set default tomorrow date
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     setAppointmentDate(tomorrow.toISOString().split('T')[0]);
-  }, [initialDeptId, initialDoctorName, isOpen]);
+  }, [initialDeptId, initialDoctorName, initialPackageName, isOpen]);
 
   if (!isOpen) return null;
 
@@ -78,7 +87,7 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
               <CalendarIcon className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-extrabold text-white font-heading">Book Appointment</h3>
+              <h3 className="text-lg font-extrabold text-white font-heading">Book Appointment / Health Check</h3>
               <p className="text-xs text-emerald-400 font-medium">KRS Multispeciality Hospital • Edappadi</p>
             </div>
           </div>
@@ -96,7 +105,7 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
           <div className="flex items-center justify-between text-xs font-semibold text-slate-400 px-2">
             <div className={`flex items-center space-x-1.5 ${step >= 1 ? 'text-emerald-400 font-bold' : ''}`}>
               <span className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-500/40 flex items-center justify-center text-[10px]">1</span>
-              <span>Doctor</span>
+              <span>Selection</span>
             </div>
             <div className="w-8 h-0.5 bg-slate-800" />
             <div className={`flex items-center space-x-1.5 ${step >= 2 ? 'text-emerald-400 font-bold' : ''}`}>
@@ -111,38 +120,85 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
           </div>
         )}
 
-        {/* STEP 1: Select Department & Doctor */}
+        {/* STEP 1: Select Type & Details */}
         {step === 1 && (
-          <div className="space-y-4 animate-fade-in">
-            <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">Select Medical Department *</label>
-              <select
-                value={selectedDept}
-                onChange={(e) => {
-                  setSelectedDept(e.target.value);
-                  setSelectedDoctor('');
-                }}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-xs text-white focus:outline-none focus:border-emerald-500"
+          <div className="space-y-5 animate-fade-in">
+            
+            {/* Booking Type Toggle */}
+            <div className="flex rounded-2xl bg-slate-950 p-1.5 border border-slate-800">
+              <button
+                type="button"
+                onClick={() => setBookingType('doctor')}
+                className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
+                  bookingType === 'doctor' 
+                    ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow' 
+                    : 'text-slate-400 hover:text-white'
+                }`}
               >
-                {departments.map(d => (
-                  <option key={d.id} value={d.id}>{d.name}</option>
-                ))}
-              </select>
+                <Stethoscope className="w-4 h-4" />
+                <span>Specialist Consultation</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setBookingType('package')}
+                className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
+                  bookingType === 'package' 
+                    ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow' 
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <PackageCheck className="w-4 h-4" />
+                <span>Health Checkup Package</span>
+              </button>
             </div>
 
-            <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">Select Specialist Doctor (Optional)</label>
-              <select
-                value={selectedDoctor}
-                onChange={(e) => setSelectedDoctor(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-xs text-white focus:outline-none focus:border-emerald-500"
-              >
-                <option value="">Any Available Specialist Doctor in Department</option>
-                {currentDeptDoctors.map(doc => (
-                  <option key={doc.id} value={doc.name}>{doc.name} ({doc.degrees})</option>
-                ))}
-              </select>
-            </div>
+            {bookingType === 'doctor' ? (
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1.5">Select Medical Department *</label>
+                  <select
+                    value={selectedDept}
+                    onChange={(e) => {
+                      setSelectedDept(e.target.value);
+                      setSelectedDoctor('');
+                    }}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  >
+                    {departments.map(d => (
+                      <option key={d.id} value={d.id}>{d.name}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1.5">Select Specialist Doctor (Optional)</label>
+                  <select
+                    value={selectedDoctor}
+                    onChange={(e) => setSelectedDoctor(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  >
+                    <option value="">Any Available Specialist Doctor in Department</option>
+                    {currentDeptDoctors.map(doc => (
+                      <option key={doc.id} value={doc.name}>{doc.name} ({doc.degrees})</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1.5">Select Health Checkup Package *</label>
+                <select
+                  value={selectedPackage}
+                  onChange={(e) => setSelectedPackage(e.target.value)}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-xs text-white focus:outline-none focus:border-emerald-500"
+                >
+                  {healthPackages.map(pkg => (
+                    <option key={pkg.id} value={pkg.name}>{pkg.name} — {pkg.price} ({pkg.discount})</option>
+                  ))}
+                </select>
+              </div>
+            )}
 
             <div className="pt-4 flex justify-end">
               <button
@@ -160,7 +216,7 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
         {step === 2 && (
           <div className="space-y-5 animate-fade-in">
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">Select Appointment Date *</label>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">Select Preferred Date *</label>
               <input
                 type="date"
                 value={appointmentDate}
@@ -304,23 +360,36 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
             </div>
 
             <div>
-              <h3 className="text-xl font-extrabold text-white font-heading">Appointment Request Received!</h3>
+              <h3 className="text-xl font-extrabold text-white font-heading">Booking Request Received!</h3>
               <p className="text-xs text-emerald-400 font-semibold mt-1">Ref ID: {bookingRef}</p>
               <p className="text-xs text-slate-400 mt-2 max-w-sm mx-auto">
-                Thank you, <strong className="text-white">{patientName}</strong>. Our hospital front-desk team at Edappadi will call your number <strong className="text-white">{patientPhone}</strong> shortly to confirm your slot.
+                Thank you, <strong className="text-white">{patientName}</strong>. Our hospital reception desk at Edappadi will call your number <strong className="text-white">{patientPhone}</strong> shortly to confirm your slot.
               </p>
             </div>
 
             {/* Summary Details Card */}
             <div className="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 text-left text-xs space-y-2">
               <div className="flex justify-between">
-                <span className="text-slate-400">Department:</span>
-                <span className="font-bold text-white">{activeDeptObj.name}</span>
+                <span className="text-slate-400">Booking Type:</span>
+                <span className="font-bold text-emerald-400">{bookingType === 'package' ? 'Preventive Health Package' : 'Doctor Consultation'}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400">Doctor:</span>
-                <span className="font-bold text-emerald-400">{selectedDoctor || "Duty Specialist Physician"}</span>
-              </div>
+              {bookingType === 'doctor' ? (
+                <>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Department:</span>
+                    <span className="font-bold text-white">{activeDeptObj.name}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Doctor:</span>
+                    <span className="font-bold text-emerald-400">{selectedDoctor || "Duty Specialist Physician"}</span>
+                  </div>
+                </>
+              ) : (
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Selected Package:</span>
+                  <span className="font-bold text-white">{selectedPackage}</span>
+                </div>
+              )}
               <div className="flex justify-between">
                 <span className="text-slate-400">Date & Slot:</span>
                 <span className="font-bold text-white">{appointmentDate} at {appointmentTime}</span>
@@ -333,12 +402,12 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a
-                href={`https://wa.me/919443255555?text=Hello%20KRS%20Hospital,%20I%20have%20booked%20an%20appointment%20Ref:%20${bookingRef}%20for%20${patientName}%20on%20${appointmentDate}%20at%20${appointmentTime}`}
+                href={`https://wa.me/916380898608?text=Hello%20KRS%20Hospital,%20I%20have%20booked%20an%20appointment%20Ref:%20${bookingRef}%20for%20${patientName}%20on%20${appointmentDate}%20at%20${appointmentTime}`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition-colors flex items-center justify-center space-x-2"
               >
-                <span>Send WhatsApp Reminder</span>
+                <span>Send WhatsApp Confirmation</span>
               </a>
 
               <button

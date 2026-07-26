@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Stats from './components/Stats';
 import Departments from './components/Departments';
 import Doctors from './components/Doctors';
+import HealthPackages from './components/HealthPackages';
 import Facilities from './components/Facilities';
 import Gallery from './components/Gallery';
 import AboutUs from './components/AboutUs';
@@ -16,13 +17,16 @@ export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [bookingDeptId, setBookingDeptId] = useState('');
   const [bookingDoctorName, setBookingDoctorName] = useState('');
+  const [bookingPackageName, setBookingPackageName] = useState('');
 
-  const handleOpenBooking = (deptId = '', docName = '') => {
+  const handleOpenBooking = (deptId = '', docName = '', pkgName = '') => {
     const safeDeptId = typeof deptId === 'string' ? deptId : '';
     const safeDocName = typeof docName === 'string' ? docName : '';
+    const safePkgName = typeof pkgName === 'string' ? pkgName : '';
 
     setBookingDeptId(safeDeptId);
     setBookingDoctorName(safeDocName);
+    setBookingPackageName(safePkgName);
     setBookingModalOpen(true);
   };
 
@@ -34,7 +38,7 @@ export default function App() {
       />
 
       <main className="flex-grow">
-        {/* Hero Section */}
+        {/* Hero Section with Kauvery-style Quick Actions */}
         <Hero 
           onOpenBooking={() => handleOpenBooking()} 
         />
@@ -48,6 +52,11 @@ export default function App() {
         {/* Medical Departments & Specialties Explorer */}
         <Departments 
           onOpenBooking={(deptId) => handleOpenBooking(deptId)} 
+        />
+
+        {/* Kauvery-Style Preventive Health Checkup Packages */}
+        <HealthPackages 
+          onBookPackage={(pkgName) => handleOpenBooking('', '', pkgName)}
         />
 
         {/* Specialist Doctors Showcase & Bio Modal */}
@@ -77,12 +86,13 @@ export default function App() {
         onOpenBooking={() => handleOpenBooking()} 
       />
 
-      {/* Multi-step Appointment Booking Engine Modal */}
+      {/* Multi-step Appointment & Package Booking Engine Modal */}
       <AppointmentModal 
         isOpen={bookingModalOpen} 
         onClose={() => setBookingModalOpen(false)} 
         initialDeptId={bookingDeptId} 
         initialDoctorName={bookingDoctorName} 
+        initialPackageName={bookingPackageName}
       />
     </div>
   );

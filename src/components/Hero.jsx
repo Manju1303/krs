@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Calendar, ShieldAlert, Award, Stethoscope, ArrowRight, HeartPulse, CheckCircle2, Clock, Users, Building2, MapPin, Eye } from 'lucide-react';
-import { hospitalInfo, aboutData } from '../data/hospitalData';
+import { Calendar, ShieldAlert, Award, Stethoscope, ArrowRight, HeartPulse, CheckCircle2, Clock, Users, Building2, MapPin, FlaskConical, Camera } from 'lucide-react';
+import { hospitalInfo } from '../data/hospitalData';
 
-export default function Hero({ onOpenBooking }) {
+export default function Hero({ onOpenBooking, onOpenPackages }) {
   const [heroImageIndex, setHeroImageIndex] = useState(0);
 
   const heroPhotos = [
@@ -48,7 +48,7 @@ export default function Hero({ onOpenBooking }) {
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight font-heading">
-              Comprehensive Care. <br />
+              Kauvery-Standard Care. <br />
               <span className="text-gradient-emerald">Trusted Healing</span> for Every Family.
             </h1>
 
@@ -57,30 +57,49 @@ export default function Hero({ onOpenBooking }) {
               Founded by <strong className="text-emerald-300 font-semibold">Dr. K. Ravisuthan</strong>, KRS Multispeciality Hospital & Trauma Care Centre brings 15+ specialized medical departments, modern operation theatres, 24/7 ICUs, and expert physicians together under one roof in Edappadi.
             </p>
 
-            {/* Feature Checkmarks */}
-            <div className="grid sm:grid-cols-2 gap-3 pt-2 text-sm text-slate-200">
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>24/7 Emergency & Trauma Unit</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>15+ Specialized Medical Departments</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Modern Operating Theatres & ICUs</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Affordable & Ethical Healthcare</span>
-              </div>
+            {/* Kauvery-Style 4 Quick Action Cards Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <button
+                onClick={() => onOpenBooking()}
+                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-emerald-500/30 hover:border-emerald-400 transition-all text-left group shadow-lg"
+              >
+                <Stethoscope className="w-5 h-5 text-emerald-400 mb-1.5 group-hover:scale-110 transition-transform" />
+                <div className="text-xs font-bold text-white">Book Doctor</div>
+                <div className="text-[10px] text-slate-400">19+ Specialists</div>
+              </button>
+
+              <a
+                href={`tel:${hospitalInfo.hospitalMobile}`}
+                className="p-3.5 rounded-2xl bg-rose-950/80 hover:bg-rose-900/90 border border-rose-500/40 transition-all text-left group shadow-lg"
+              >
+                <ShieldAlert className="w-5 h-5 text-rose-400 mb-1.5 animate-pulse group-hover:scale-110 transition-transform" />
+                <div className="text-xs font-bold text-rose-200">24/7 Emergency</div>
+                <div className="text-[10px] text-rose-300">{hospitalInfo.hospitalMobile}</div>
+              </a>
+
+              <a
+                href="#packages"
+                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-teal-500/30 hover:border-teal-400 transition-all text-left group shadow-lg"
+              >
+                <FlaskConical className="w-5 h-5 text-teal-400 mb-1.5 group-hover:scale-110 transition-transform" />
+                <div className="text-xs font-bold text-white">Health Checkups</div>
+                <div className="text-[10px] text-teal-300">Preventive Care</div>
+              </a>
+
+              <a
+                href="#gallery"
+                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 transition-all text-left group shadow-lg"
+              >
+                <Camera className="w-5 h-5 text-emerald-400 mb-1.5 group-hover:scale-110 transition-transform" />
+                <div className="text-xs font-bold text-white">Campus Photos</div>
+                <div className="text-[10px] text-slate-400">Virtual Tour</div>
+              </a>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="pt-4 flex flex-wrap items-center gap-4">
+            {/* Primary Action CTA Buttons */}
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
-                onClick={onOpenBooking}
+                onClick={() => onOpenBooking()}
                 className="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-extrabold text-sm px-6 py-4 rounded-xl shadow-xl shadow-emerald-950/60 flex items-center space-x-3 transition-all hover:scale-105"
               >
                 <Calendar className="w-5 h-5" />
@@ -90,10 +109,10 @@ export default function Hero({ onOpenBooking }) {
 
               <a
                 href={`tel:${hospitalInfo.emergencyPhone}`}
-                className="bg-rose-950/80 hover:bg-rose-900/90 text-rose-300 font-bold text-sm px-6 py-4 rounded-xl border border-rose-500/40 flex items-center space-x-3 transition-all hover:scale-105"
+                className="bg-slate-900/90 hover:bg-slate-800 text-slate-200 font-bold text-sm px-6 py-4 rounded-xl border border-slate-700 flex items-center space-x-3 transition-all hover:scale-105"
               >
-                <ShieldAlert className="w-5 h-5 text-rose-400 animate-pulse" />
-                <span>24/7 Trauma Helpline</span>
+                <Phone className="w-4 h-4 text-emerald-400" />
+                <span>Landline: {hospitalInfo.landlinePhone}</span>
               </a>
             </div>
 
@@ -104,8 +123,8 @@ export default function Hero({ onOpenBooking }) {
                 <span>Emergency: <strong>24 Hours Open</strong></span>
               </div>
               <div className="flex items-center space-x-2">
-                <Stethoscope className="w-4 h-4 text-emerald-400" />
-                <span>OPD Consultations: <strong>Daily 9:00 AM - 9:00 PM</strong></span>
+                <FlaskConical className="w-4 h-4 text-emerald-400" />
+                <span>24/7 Lab Helpline: <strong>{hospitalInfo.labPhone}</strong></span>
               </div>
             </div>
           </div>
@@ -156,7 +175,7 @@ export default function Hero({ onOpenBooking }) {
                   href="#gallery"
                   className="text-[11px] text-emerald-400 font-bold hover:underline flex items-center space-x-1"
                 >
-                  <span>View All 11 Campus Photos</span>
+                  <span>View Campus Photos</span>
                   <ArrowRight className="w-3 h-3" />
                 </a>
               </div>
