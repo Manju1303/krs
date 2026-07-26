@@ -5,6 +5,7 @@ import Stats from './components/Stats';
 import Departments from './components/Departments';
 import Doctors from './components/Doctors';
 import Facilities from './components/Facilities';
+import Gallery from './components/Gallery';
 import AboutUs from './components/AboutUs';
 import WhyChooseUs from './components/WhyChooseUs';
 import AppointmentModal from './components/AppointmentModal';
@@ -17,7 +18,6 @@ export default function App() {
   const [bookingDoctorName, setBookingDoctorName] = useState('');
 
   const handleOpenBooking = (deptId = '', docName = '') => {
-    // Sanitize parameters to avoid React event objects
     const safeDeptId = typeof deptId === 'string' ? deptId : '';
     const safeDocName = typeof docName === 'string' ? docName : '';
 
@@ -57,6 +57,9 @@ export default function App() {
 
         {/* Hospital Facilities & Diagnostic Systems */}
         <Facilities />
+
+        {/* Real Campus Photos & Virtual Tour Gallery */}
+        <Gallery />
 
         {/* Why Choose KRS Hospital & Testimonials & FAQs */}
         <WhyChooseUs 

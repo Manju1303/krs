@@ -2,13 +2,13 @@ export const hospitalInfo = {
   name: "KRS Multispeciality Hospital & Trauma Care Centre",
   shortName: "KRS Hospital",
   location: "Edappadi, Salem District, Tamil Nadu",
+  address: "Salem Main Road, Vellandivalasu, Edappadi, Tamil Nadu 637105",
   founded: 1996,
   founder: "Dr. K. Ravisuthan",
   emergencyPhone: "+91 94432 55555",
   landlinePhone: "04283 234567",
   email: "care@krshospital.com",
   whatsapp: "+91 94432 55555",
-  address: "KRS Hospital Road, Edappadi, Salem, Tamil Nadu 637101",
   workingHours: "24 Hours / 7 Days Open (Emergency & Trauma Available 24/7)",
   tagline: "A Trusted Name, A Deserved Care",
   stats: [
@@ -21,6 +21,7 @@ export const hospitalInfo = {
 
 export const aboutData = {
   story: "KRS Multispeciality Hospital & Trauma Care Centre stands as a symbol of trust, excellence, and compassionate care in Edappadi. Founded in 1996 as KRS Clinic by Dr. K. Ravisuthan, it has today grown into one of Edappadi’s most trusted and advanced healthcare destinations. Built on a foundation of dedication and integrity, KRS has expanded from a small clinic to a multispeciality hub that brings expert doctors, modern technology, and comprehensive care together under one roof.",
+  buildingImage: "/images/building.jpeg",
   mission: [
     "Delivering comprehensive, evidence-based medical services",
     "Offering personalized attention with empathy, dignity, and respect",
@@ -50,6 +51,7 @@ export const departments = [
     name: "General Medicine",
     icon: "Stethoscope",
     desc: "Comprehensive outpatient consultation, acute emergency care, and chronic disease management.",
+    image: "/images/nursing_station.jpeg",
     services: [
       "Outpatient Consultation & Chronic Illness Treatment",
       "24/7 Emergency & Acute Medical Care (Fever, Chest Pain, Breathlessness)",
@@ -63,6 +65,7 @@ export const departments = [
     name: "Diabetology",
     icon: "Activity",
     desc: "Advanced screening, personalized insulin & oral therapies, and diabetic foot & complication care.",
+    image: "/images/nursing_station.jpeg",
     services: [
       "HbA1c & Fasting Sugar Screening for Type 1, Type 2 & Gestational Diabetes",
       "Personalized Oral & Insulin Regimen Planning",
@@ -76,6 +79,7 @@ export const departments = [
     name: "Orthopedics & Arthroscopy",
     icon: "Bone",
     desc: "Trauma care, joint replacements, arthroscopic keyhole surgeries, and complex fracture fixations.",
+    image: "/images/ot_main.jpeg",
     services: [
       "Trauma & Emergency Fracture Fixation (Plating & Nailing)",
       "Arthroscopic Knee & Shoulder Keyhole Surgery (Meniscus & Rotator Cuff Repair)",
@@ -89,6 +93,7 @@ export const departments = [
     name: "Neurology & Neurosurgery",
     icon: "Brain",
     desc: "Rapid stroke interventions, epilepsy management, headache clinics, and nerve-spine pain relief.",
+    image: "/images/ot_surgery.jpeg",
     services: [
       "Emergency Stroke Evaluation (CT/MRI & Thrombolysis)",
       "Epilepsy & Seizure Management with EEG Monitoring",
@@ -102,6 +107,7 @@ export const departments = [
     name: "Obstetrics & Gynaecology",
     icon: "HeartHandshake",
     desc: "Maternal-fetal monitoring, high-risk pregnancy care, painless birthing, and laparoscopic surgeries.",
+    image: "/images/ot_main.jpeg",
     services: [
       "Comprehensive Pregnancy Scans & Antenatal Care",
       "Normal Birthing & Emergency C-Section Facilities",
@@ -115,6 +121,7 @@ export const departments = [
     name: "Pulmonology & Respiratory",
     icon: "Wind",
     desc: "Asthma, COPD, pneumonia, post-TB lung recovery, and oxygen/ventilation therapies.",
+    image: "/images/icu_ventilator.jpeg",
     services: [
       "Pulmonary Function Testing (PFT) & Asthma Control",
       "Pneumonia & Severe Respiratory Infection ICU Management",
@@ -128,6 +135,7 @@ export const departments = [
     name: "Dermatology & Cosmetology",
     icon: "Sparkles",
     desc: "Clinical skin treatment, cosmetic rejuvenation, hair loss PRP, and dermatologic surgeries.",
+    image: "/images/nursing_station.jpeg",
     services: [
       "Medical Treatment for Acne, Eczema, Psoriasis & Vitiligo",
       "Cosmetic Chemical Peels, Laser Therapy & Anti-Aging",
@@ -141,6 +149,7 @@ export const departments = [
     name: "General & Laparoscopic Surgery",
     icon: "Scissors",
     desc: "Minimally invasive keyhole surgeries for hernia, appendix, gallbladder, thyroid, and breast lump care.",
+    image: "/images/ot_main.jpeg",
     services: [
       "Laparoscopic Hernia, Appendectomy & Gallbladder Surgery",
       "Precision Endocrine & Thyroid Gland Resection",
@@ -154,6 +163,7 @@ export const departments = [
     name: "Urology & Andrology",
     icon: "ShieldAlert",
     desc: "Laser stone removal (lithotripsy), prostate care, male fertility, and pediatric urology.",
+    image: "/images/ot_surgery.jpeg",
     services: [
       "Kidney Stone Lithotripsy & Ureteroscopy (URS/RIRC)",
       "Prostate Enlargement (BPH) & Bladder Care",
@@ -167,6 +177,7 @@ export const departments = [
     name: "Surgical Oncology",
     icon: "Crosshair",
     desc: "Precision cancer diagnosis, minimally invasive tumor resection, and multidisciplinary oncology care.",
+    image: "/images/ot_surgery.jpeg",
     services: [
       "Advanced Staging & Tumor Biopsy Diagnostics",
       "Robotic & Laparoscopic Tumor Resection",
@@ -180,6 +191,7 @@ export const departments = [
     name: "Pediatrics & Neonatology",
     icon: "Baby",
     desc: "Newborn care, NICU facilities, pediatric growth tracking, vaccinations, and emergency critical care.",
+    image: "/images/icu_beds.jpeg",
     services: [
       "Newborn Screening & NICU Critical Care Support",
       "Childhood Vaccination & Immunization Schedules",
@@ -193,6 +205,7 @@ export const departments = [
     name: "Dental & Maxillofacial",
     icon: "Smile",
     desc: "Root canal therapy, crowns, gum care, wisdom tooth extractions, and facial trauma restoration.",
+    image: "/images/nursing_station.jpeg",
     services: [
       "Preventive Oral Cleaning, Scaling & Cavity Protection",
       "Restorative Tooth-Colored Fillings, Crowns & Inlays",
@@ -206,6 +219,7 @@ export const departments = [
     name: "Endocrinology",
     icon: "Scale",
     desc: "Hormonal evaluation for thyroid, pituitary, adrenal, metabolic syndrome, and osteoporosis.",
+    image: "/images/nursing_station.jpeg",
     services: [
       "Thyroid Disorder Hormone Testing & Management",
       "Complex Hormonal Imbalance Assessment",
@@ -219,6 +233,7 @@ export const departments = [
     name: "Gastroenterology",
     icon: "CircleDot",
     desc: "Endoscopy, liver disease management, ERCP gallstone care, and colonoscopy screenings.",
+    image: "/images/ot_main.jpeg",
     services: [
       "Upper GI Endoscopy for Acidity, Reflux & Ulcers",
       "Liver Disease Screening (Fatty Liver, Hepatitis, Cirrhosis)",
@@ -523,49 +538,108 @@ export const facilities = [
     title: "24/7 Emergency & Trauma Unit",
     desc: "Fully equipped rapid response trauma bay with on-duty emergency physicians, life support, and ambulance dispatch.",
     icon: "Ambulance",
-    badge: "24/7 Active"
+    badge: "24/7 Active",
+    image: "/images/emergency_ramp.jpeg"
   },
   {
     title: "Dedicated Intensive Care Units (ICU, NICU, HDU)",
     desc: "State-of-the-art multi-bed ICUs with continuous multi-para monitoring, ventilator support, and 24/7 critical care specialists.",
     icon: "HeartPulse",
-    badge: "Critical Care"
+    badge: "Critical Care",
+    image: "/images/icu_beds.jpeg"
   },
   {
-    title: "Advanced Diagnostic Centre",
-    desc: "24/7 in-house pathology lab, high-resolution Digital X-ray, Ultrasound, 12-lead ECG, CT/MRI diagnostic imaging.",
-    icon: "Activity",
-    badge: "High Precision"
-  },
-  {
-    title: "Modern Operation Theatres",
+    title: "Advanced Operation Theatres",
     desc: "Sterile laminar airflow surgical suites equipped for laparoscopic, arthroscopic, neuro, and orthopedic procedures.",
     icon: "Scissors",
-    badge: "Laminar Flow"
-  },
-  {
-    title: "Comfortable Inpatient Suites & Wards",
-    desc: "Private AC suites, semi-private rooms, and deluxe general wards designed for optimal healing, comfort, and safety.",
-    icon: "Bed",
-    badge: "Patient First"
+    badge: "Laminar Flow",
+    image: "/images/ot_main.jpeg"
   },
   {
     title: "24/7 Pharmacy & Medication Services",
     desc: "Comprehensive hospital pharmacy stocking genuine lifesaving drugs, surgical supplies, and patient prescription support.",
     icon: "Pill",
-    badge: "Always Open"
+    badge: "Always Open",
+    image: "/images/pharmacy.jpeg"
+  },
+  {
+    title: "Patient Lounge & Inpatient Suites",
+    desc: "Spacious reception lounge, private AC suites, semi-private rooms, and deluxe general wards for comfort and safety.",
+    icon: "Bed",
+    badge: "Patient First",
+    image: "/images/reception_lounge.jpeg"
+  },
+  {
+    title: "Nursing Station & Outpatient Counters",
+    desc: "Dedicated OPD counters and round-the-clock nursing care stations for quick registration and symptom evaluation.",
+    icon: "Activity",
+    badge: "High Precision",
+    image: "/images/nursing_station.jpeg"
   },
   {
     title: "Physiotherapy & Rehabilitation",
     desc: "Specialized rehab unit with post-surgery physical therapists for joint replacement, stroke, and sports recovery.",
     icon: "Dumbbell",
-    badge: "Recovery Hub"
+    badge: "Recovery Hub",
+    image: "/images/icu_ventilator.jpeg"
   },
   {
     title: "Digital Records & Smart Healthcare",
     desc: "Instant digital health record tracking, seamless discharge summaries, and fast billing transparency.",
     icon: "Cpu",
-    badge: "Smart Tech"
+    badge: "Smart Tech",
+    image: "/images/reception_desk.jpeg"
+  }
+];
+
+export const hospitalGallery = [
+  {
+    title: "KRS Main Hospital Building",
+    category: "Campus & Building",
+    image: "/images/building.jpeg",
+    desc: "Multi-storey modern hospital campus located on Salem Main Road, Edappadi."
+  },
+  {
+    title: "Modular Operation Theatre",
+    category: "Surgical Suite",
+    image: "/images/ot_main.jpeg",
+    desc: "High-tech modular OT equipped with advanced surgical lights and anesthesia workstations."
+  },
+  {
+    title: "Intensive Care Unit (ICU)",
+    category: "Critical Care",
+    image: "/images/icu_beds.jpeg",
+    desc: "Multi-bed ICU suite with continuous cardiac monitors and central oxygen pipelines."
+  },
+  {
+    title: "Advanced Ventilator Console",
+    category: "Critical Care",
+    image: "/images/icu_ventilator.jpeg",
+    desc: "Life support and mechanical ventilation equipment for emergency respiratory care."
+  },
+  {
+    title: "24/7 In-House Pharmacy",
+    category: "Pharmacy",
+    image: "/images/pharmacy.jpeg",
+    desc: "Fully stocked 24-hour hospital pharmacy providing genuine medicines & surgical supplies."
+  },
+  {
+    title: "Patient Lounge & Waiting Hall",
+    category: "Facilities",
+    image: "/images/reception_lounge.jpeg",
+    desc: "Comfortable marble-floored waiting lounge for patient families and visitors."
+  },
+  {
+    title: "Front Desk & Registration",
+    category: "Facilities",
+    image: "/images/reception_desk.jpeg",
+    desc: "Friendly reception desk for quick outpatient registration and hospital admissions."
+  },
+  {
+    title: "Emergency & Stretcher Ramp",
+    category: "Trauma Unit",
+    image: "/images/emergency_ramp.jpeg",
+    desc: "Direct stretcher and wheelchair entrance for 24/7 emergency casualty admissions."
   }
 ];
 

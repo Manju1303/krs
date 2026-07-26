@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, ShieldCheck, Heart, Target, Sparkles, CheckCircle2, User, BookOpen } from 'lucide-react';
+import { Award, ShieldCheck, Heart, Target, Sparkles, CheckCircle2, User, MapPin } from 'lucide-react';
 import { aboutData, hospitalInfo } from '../data/hospitalData';
 
 export default function AboutUs() {
@@ -10,37 +10,46 @@ export default function AboutUs() {
         {/* Top Story Block */}
         <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
           
-          {/* Left Column: Founder & History Box */}
-          <div className="lg:col-span-5 relative">
-            <div className="glass-card p-8 rounded-3xl border border-emerald-500/30 shadow-2xl space-y-6 relative z-10">
-              
-              {/* Badge */}
-              <div className="inline-flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold border border-emerald-500/30">
-                <Award className="w-4 h-4 text-emerald-400" />
-                <span>Established 1996 • Nearly 30 Years</span>
-              </div>
-
-              <h3 className="text-2xl font-extrabold text-white font-heading">
-                A Legacy of Trust in Edappadi
-              </h3>
-
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                {aboutData.story}
-              </p>
-
-              {/* Founder Spotlight Card */}
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950 to-slate-950 border border-emerald-500/30 flex items-center space-x-4">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-500 text-slate-950 flex items-center justify-center font-extrabold text-xl shadow-md shrink-0">
-                  <User className="w-7 h-7" />
+          {/* Left Column: Real Hospital Building & Founder Box */}
+          <div className="lg:col-span-5 relative space-y-6">
+            
+            {/* Real Hospital Exterior Card */}
+            <div className="glass-card rounded-3xl overflow-hidden border border-emerald-500/30 shadow-2xl p-2">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-950">
+                <img 
+                  src={aboutData.buildingImage} 
+                  alt="KRS Multispeciality Hospital Building Edappadi" 
+                  className="w-full h-full object-cover" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                
+                <div className="absolute top-3 left-3 bg-emerald-950/90 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30 flex items-center space-x-1">
+                  <Award className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Est. 1996 • Edappadi, Tamil Nadu</span>
                 </div>
-                <div>
-                  <h4 className="text-sm font-extrabold text-white">{hospitalInfo.founder}</h4>
-                  <p className="text-xs text-emerald-400 font-semibold">MBBS., MHSC (Diabetology)</p>
-                  <p className="text-[11px] text-slate-400">Founder & Managing Director</p>
+
+                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/80 backdrop-blur-md border border-slate-800 space-y-1">
+                  <div className="text-xs font-extrabold text-white">KRS Multispeciality Hospital</div>
+                  <p className="text-[10px] text-emerald-400 flex items-center space-x-1">
+                    <MapPin className="w-3 h-3 shrink-0" />
+                    <span>Salem Main Road, Vellandivalasu, Edappadi</span>
+                  </p>
                 </div>
               </div>
-
             </div>
+
+            {/* Founder Spotlight Card */}
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950 to-slate-950 border border-emerald-500/30 flex items-center space-x-4">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-500 text-slate-950 flex items-center justify-center font-extrabold text-xl shadow-md shrink-0">
+                <User className="w-7 h-7" />
+              </div>
+              <div>
+                <h4 className="text-sm font-extrabold text-white">{hospitalInfo.founder}</h4>
+                <p className="text-xs text-emerald-400 font-semibold">MBBS., MHSC (Diabetology)</p>
+                <p className="text-[11px] text-slate-400">Founder & Managing Director • Established 1996</p>
+              </div>
+            </div>
+
           </div>
 
           {/* Right Column: Vision & Mission Overview */}
@@ -51,8 +60,11 @@ export default function AboutUs() {
                 <span>Our Core Principles</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-heading">
-                Our <span className="text-gradient-emerald">Vision & Mission</span>
+                A Legacy of Trust in <span className="text-gradient-emerald">Edappadi</span>
               </h2>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                {aboutData.story}
+              </p>
               <p className="text-slate-300 text-sm leading-relaxed">
                 At KRS Multispeciality Hospital, our mission is rooted in a commitment to treat every patient with the same care, empathy, and sincerity we extend to our own family.
               </p>

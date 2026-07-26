@@ -1,8 +1,33 @@
-import React from 'react';
-import { Calendar, ShieldAlert, Award, Stethoscope, ArrowRight, HeartPulse, CheckCircle2, Clock, Users, Building2 } from 'lucide-react';
-import { hospitalInfo } from '../data/hospitalData';
+import React, { useState } from 'react';
+import { Calendar, ShieldAlert, Award, Stethoscope, ArrowRight, HeartPulse, CheckCircle2, Clock, Users, Building2, MapPin, Eye } from 'lucide-react';
+import { hospitalInfo, aboutData } from '../data/hospitalData';
 
 export default function Hero({ onOpenBooking }) {
+  const [heroImageIndex, setHeroImageIndex] = useState(0);
+
+  const heroPhotos = [
+    {
+      url: "/images/building.jpeg",
+      title: "KRS Main Hospital Building",
+      tag: "Edappadi Main Campus",
+      desc: "Multi-storey modern hospital located on Salem Main Road, Edappadi."
+    },
+    {
+      url: "/images/ot_main.jpeg",
+      title: "Modular Operation Theatre",
+      tag: "Advanced Surgery Suite",
+      desc: "Sterile laminar airflow OT with precision surgical lights and anesthesia console."
+    },
+    {
+      url: "/images/icu_beds.jpeg",
+      title: "Intensive Care Unit (ICU)",
+      tag: "24/7 Critical Care",
+      desc: "Multi-bed ICU equipped with multi-para cardiac monitors & central oxygen."
+    }
+  ];
+
+  const currentPhoto = heroPhotos[heroImageIndex];
+
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-gradient-hero flex items-center">
       {/* Glow Orbs */}
@@ -85,78 +110,72 @@ export default function Hero({ onOpenBooking }) {
             </div>
           </div>
 
-          {/* Right Column: Dynamic Visual & Quick Action Cards */}
+          {/* Right Column: Dynamic Real Hospital Photo Showcase */}
           <div className="lg:col-span-5 relative">
             
-            {/* Main Visual Glass Card */}
-            <div className="glass-card p-6 sm:p-8 rounded-3xl relative z-10 border-teal-500/30 shadow-2xl space-y-6">
+            {/* Main Visual Card with Real Hospital Photos */}
+            <div className="glass-card rounded-3xl overflow-hidden border border-emerald-500/30 shadow-2xl space-y-4 relative z-10 p-2">
               
-              {/* Doctor / Hospital Header Banner */}
-              <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-900/80 border border-emerald-400/40 flex items-center justify-center text-emerald-300">
-                    <HeartPulse className="w-6 h-6 animate-pulse" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-base">KRS Care Hub</h3>
-                    <p className="text-xs text-emerald-400 font-medium">Edappadi Central Campus</p>
-                  </div>
+              {/* Featured Campus Image Display */}
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-950 group">
+                <img 
+                  src={currentPhoto.url} 
+                  alt={currentPhoto.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-90" />
+                
+                {/* Photo Badge */}
+                <div className="absolute top-3 left-3 bg-emerald-950/90 text-emerald-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-emerald-500/30 flex items-center space-x-1">
+                  <MapPin className="w-3 h-3 text-emerald-400" />
+                  <span>{currentPhoto.tag}</span>
                 </div>
-                <span className="bg-emerald-500/20 text-emerald-300 text-xs px-2.5 py-1 rounded-full font-bold border border-emerald-500/30">
-                  Active 24/7
-                </span>
+
+                {/* Photo Caption inside image */}
+                <div className="absolute bottom-3 left-3 right-3 text-left space-y-0.5">
+                  <h3 className="text-sm font-extrabold text-white">{currentPhoto.title}</h3>
+                  <p className="text-[11px] text-slate-300 line-clamp-1">{currentPhoto.desc}</p>
+                </div>
               </div>
 
-              {/* Founder Highlight Box */}
-              <div className="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 flex items-center space-x-4">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center font-extrabold text-slate-950 text-xl shadow-md shrink-0">
+              {/* Photo Selector Switcher */}
+              <div className="px-3 pb-2 flex items-center justify-between gap-2">
+                <div className="flex items-center space-x-2">
+                  {heroPhotos.map((photo, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setHeroImageIndex(idx)}
+                      className={`h-2.5 rounded-full transition-all ${
+                        heroImageIndex === idx ? 'w-8 bg-emerald-400' : 'w-2.5 bg-slate-700 hover:bg-slate-500'
+                      }`}
+                      title={photo.title}
+                    />
+                  ))}
+                </div>
+                <a 
+                  href="#gallery"
+                  className="text-[11px] text-emerald-400 font-bold hover:underline flex items-center space-x-1"
+                >
+                  <span>View All 11 Campus Photos</span>
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+
+              {/* Doctor Founder Badge */}
+              <div className="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800 flex items-center space-x-3.5">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center font-extrabold text-slate-950 text-lg shadow shrink-0">
                   KR
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white">Dr. K. Ravisuthan</h4>
-                  <p className="text-xs text-slate-300 font-medium">MBBS., MHSC (Diabetology)</p>
-                  <p className="text-[11px] text-emerald-400 mt-0.5">Founder & Chief Physician • Est. 1996</p>
+                  <h4 className="text-xs font-bold text-white">Dr. K. Ravisuthan</h4>
+                  <p className="text-[11px] text-slate-300">MBBS., MHSC (Diabetology)</p>
+                  <p className="text-[10px] text-emerald-400 font-semibold">Founder & Chief Physician • Est. 1996</p>
                 </div>
-              </div>
-
-              {/* Quick Action Grid inside Hero */}
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <a 
-                  href="#departments" 
-                  className="p-3.5 rounded-xl bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800 hover:border-emerald-500/40 transition-all text-left group"
-                >
-                  <Building2 className="w-5 h-5 text-teal-400 mb-1 group-hover:scale-110 transition-transform" />
-                  <div className="text-xs font-bold text-white">15+ Departments</div>
-                  <div className="text-[10px] text-slate-400">View Specialties</div>
-                </a>
-
-                <a 
-                  href="#doctors" 
-                  className="p-3.5 rounded-xl bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800 hover:border-emerald-500/40 transition-all text-left group"
-                >
-                  <Users className="w-5 h-5 text-emerald-400 mb-1 group-hover:scale-110 transition-transform" />
-                  <div className="text-xs font-bold text-white">19+ Specialists</div>
-                  <div className="text-[10px] text-slate-400">Meet Our Doctors</div>
-                </a>
-              </div>
-
-              {/* Emergency Hotline Direct Trigger */}
-              <div className="bg-gradient-to-r from-rose-950/60 to-slate-900 p-4 rounded-2xl border border-rose-500/30 flex items-center justify-between">
-                <div>
-                  <div className="text-xs font-bold text-rose-300">Need Immediate Assistance?</div>
-                  <div className="text-xs text-slate-400">24/7 Emergency & Trauma Hotline</div>
-                </div>
-                <a
-                  href={`tel:${hospitalInfo.emergencyPhone}`}
-                  className="px-3.5 py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-xl shadow transition-colors shrink-0"
-                >
-                  Call Now
-                </a>
               </div>
 
             </div>
 
-            {/* Decorative Floating Stats Badge */}
+            {/* Decorative Floating Badge */}
             <div className="absolute -bottom-6 -left-6 bg-slate-900/90 border border-emerald-500/40 p-4 rounded-2xl shadow-2xl backdrop-blur-md hidden sm:flex items-center space-x-3 z-20">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-extrabold">
                 28+

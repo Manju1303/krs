@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Clock, MapPin, Calendar, ShieldAlert, Menu, X, ChevronRight, Stethoscope } from 'lucide-react';
+import { Phone, Clock, MapPin, Calendar, ShieldAlert, Menu, X, ChevronRight, Stethoscope, Camera } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
-export default function Navbar({ onOpenBooking, onSelectDepartment }) {
+export default function Navbar({ onOpenBooking }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -82,6 +82,10 @@ export default function Navbar({ onOpenBooking, onSelectDepartment }) {
             <a href="#departments" className="hover:text-emerald-400 transition-colors py-1">Specialties</a>
             <a href="#doctors" className="hover:text-emerald-400 transition-colors py-1">Specialists</a>
             <a href="#facilities" className="hover:text-emerald-400 transition-colors py-1">Facilities</a>
+            <a href="#gallery" className="hover:text-emerald-400 transition-colors py-1 flex items-center space-x-1 text-emerald-400">
+              <Camera className="w-3.5 h-3.5" />
+              <span>Campus Photos</span>
+            </a>
             <a href="#why-us" className="hover:text-emerald-400 transition-colors py-1">Why KRS</a>
             <a href="#contact" className="hover:text-emerald-400 transition-colors py-1">Contact</a>
           </nav>
@@ -149,6 +153,14 @@ export default function Navbar({ onOpenBooking, onSelectDepartment }) {
               className="py-2 border-b border-slate-800 flex justify-between items-center"
             >
               <span>Hospital Facilities</span>
+              <ChevronRight className="w-4 h-4 text-emerald-400" />
+            </a>
+            <a 
+              href="#gallery" 
+              onClick={() => setMobileMenuOpen(false)} 
+              className="py-2 border-b border-slate-800 flex justify-between items-center text-emerald-400 font-bold"
+            >
+              <span>Campus Photos & Tour</span>
               <ChevronRight className="w-4 h-4 text-emerald-400" />
             </a>
             <a 
