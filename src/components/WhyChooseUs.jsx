@@ -4,140 +4,201 @@ import {
 } from 'lucide-react';
 import { whyChooseUs, faqs } from '../data/hospitalData';
 
-const iconMap = {
-  Building2, Award, BadgePercent, Heart
-};
+const iconMap = { Building2, Award, BadgePercent, Heart };
+
+const gradients = [
+  'from-emerald-900/50 to-teal-900/30',
+  'from-teal-900/50 to-emerald-900/30',
+  'from-emerald-800/40 to-teal-800/30',
+  'from-teal-800/40 to-emerald-800/30',
+];
+
+const testimonials = [
+  {
+    name: 'S. Periyasamy',
+    role: 'Edappadi Resident',
+    rating: 5,
+    text: 'Dr. K. Ravisuthan and Dr. Sharji Imman treated my mother\'s fracture with extreme care. The emergency team responded immediately in the middle of the night. KRS is truly a blessing for Edappadi.',
+  },
+  {
+    name: 'K. Mohanraj',
+    role: 'Diabetes Patient',
+    rating: 5,
+    text: 'From routine diabetes checkups with Dr. Ravisuthan to orthopedic consultations, the hospital provides top-quality treatment at very affordable fees. Very clean rooms and polite nursing staff.',
+  },
+  {
+    name: 'M. Soundarya',
+    role: 'Maternity Patient',
+    rating: 5,
+    text: 'Dr. Srija gave us wonderful guidance throughout my pregnancy. The delivery was smooth and safe. Special thanks to the newborn pediatric team as well!',
+  },
+];
 
 export default function WhyChooseUs({ onOpenBooking }) {
   const [openFaq, setOpenFaq] = useState(null);
 
-  const testimonials = [
-    {
-      name: "S. Periyasamy",
-      role: "Edappadi Resident",
-      rating: 5,
-      text: "Dr. K. Ravisuthan and Dr. Sharji Imman treated my mother's fracture with extreme care. The emergency team responded immediately in the middle of the night. KRS is truly a blessing for Edappadi."
-    },
-    {
-      name: "K. Mohanraj",
-      role: "Patient",
-      rating: 5,
-      text: "From routine diabetes checkups with Dr. Ravisuthan to orthopedic consultations, the hospital provides top-quality treatment at very affordable fees. Very clean rooms and polite nursing staff."
-    },
-    {
-      name: "M. Soundarya",
-      role: "Maternity Patient",
-      rating: 5,
-      text: "Dr. Srija gave us wonderful guidance throughout my pregnancy. The delivery was smooth and safe. Special thanks to the newborn pediatric team as well!"
-    }
-  ];
-
   return (
-    <section id="why-us" className="py-24 relative bg-slate-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-300">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>The KRS Difference</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-heading">
+    <section id="why-us" className="py-28 relative overflow-hidden" style={{ background: '#060d18' }}>
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-40 pointer-events-none" />
+      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)' }} />
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(20,184,166,0.05) 0%, transparent 70%)' }} />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-24 relative z-10">
+
+        {/* ── Section Header ── */}
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <div className="section-divider" />
+          <span className="section-label-pill">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            The KRS Difference
+          </span>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-white font-heading mt-3">
             Why Choose <span className="text-gradient-emerald">KRS Hospital?</span>
           </h2>
-          <p className="text-slate-400 text-base">
-            At KRS Multi-Speciality Hospital, your health is supported by a strong network of 15+ medical departments, highly qualified specialists, and transparent ethical care.
+          <p className="text-slate-400 text-base leading-relaxed">
+            At KRS Multispeciality Hospital, your health is supported by 15+ medical departments, 
+            highly qualified specialists, and transparent ethical care since 1996.
           </p>
         </div>
 
-        {/* 4 Pillars Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* ── 4 Pillars ── */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {whyChooseUs.map((item, idx) => {
             const IconComponent = iconMap[item.icon] || Heart;
             return (
-              <div 
-                key={idx}
-                className="glass-card p-6 rounded-3xl border border-emerald-500/20 hover:border-emerald-400/50 transition-all space-y-4 group"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-900 to-teal-800 text-emerald-300 flex items-center justify-center font-bold shadow-lg group-hover:scale-110 transition-transform">
-                  <IconComponent className="w-7 h-7" />
+              <div key={idx} className="premium-card p-7 group cursor-default">
+                {/* Top gradient accent */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 rounded-t-[20px]"
+                  style={{ background: 'linear-gradient(90deg, transparent, rgba(52,211,153,0.4), transparent)', opacity: 0 }}
+                />
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-[-3deg]"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(16,185,129,0.18), rgba(20,184,166,0.10))',
+                    border: '1px solid rgba(52,211,153,0.20)',
+                  }}
+                >
+                  <IconComponent className="w-7 h-7 text-emerald-400" />
                 </div>
-
-                <h3 className="text-lg font-extrabold text-white font-heading group-hover:text-emerald-300 transition-colors">
+                <h3 className="text-base font-bold text-white font-heading mb-2.5 leading-snug group-hover:text-emerald-300 transition-colors">
                   {item.title}
                 </h3>
-
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {item.desc}
-                </p>
+                <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+                {/* Number badge */}
+                <div className="absolute top-5 right-5 text-4xl font-black text-emerald-500/5 font-heading select-none">
+                  0{idx + 1}
+                </div>
               </div>
             );
           })}
         </div>
 
-        {/* Patient Testimonials */}
-        <div className="space-y-8">
-          <div className="text-center space-y-2">
-            <h3 className="text-2xl font-extrabold text-white font-heading">What Our Patients Say</h3>
-            <p className="text-xs text-slate-400">Real feedback from families cared for at KRS Hospital Edappadi</p>
+        {/* ── Testimonials ── */}
+        <div className="space-y-10">
+          <div className="text-center">
+            <div className="section-divider" />
+            <h3 className="text-2xl font-extrabold text-white font-heading mt-4">
+              What Our Patients Say
+            </h3>
+            <p className="text-sm text-slate-500 mt-2">
+              Real experiences from families across Edappadi & Salem District
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             {testimonials.map((t, idx) => (
-              <div key={idx} className="glass-panel p-6 rounded-2xl border border-emerald-500/20 space-y-4 relative">
-                <Quote className="w-8 h-8 text-emerald-500/20 absolute top-4 right-4" />
-                <div className="flex text-amber-400 space-x-1">
+              <div
+                key={idx}
+                className="relative p-7 rounded-2xl overflow-hidden"
+                style={{
+                  background: 'linear-gradient(145deg, rgba(14,24,42,0.90), rgba(6,12,22,0.96))',
+                  border: '1px solid rgba(52,211,153,0.10)',
+                }}
+              >
+                {/* Quote decoration */}
+                <Quote className="absolute top-5 right-5 w-10 h-10 text-emerald-500/08" />
+
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
                   {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
                   ))}
                 </div>
-                <p className="text-xs text-slate-300 italic leading-relaxed">
+
+                <p className="text-sm text-slate-300 italic leading-relaxed mb-5">
                   "{t.text}"
                 </p>
-                <div className="pt-2 border-t border-slate-800 text-xs">
-                  <div className="font-bold text-white">{t.name}</div>
-                  <div className="text-slate-400 text-[11px]">{t.role}</div>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                  <div
+                    className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm font-heading flex-shrink-0"
+                    style={{ background: 'linear-gradient(135deg, #10b981, #14b8a6)', color: '#022c22' }}
+                  >
+                    {t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">{t.name}</div>
+                    <div className="text-xs text-slate-500">{t.role}</div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto space-y-6 pt-10 border-t border-slate-800">
-          <div className="text-center space-y-2">
-            <div className="inline-flex items-center space-x-1.5 text-xs text-emerald-400 font-bold">
-              <HelpCircle className="w-4 h-4" />
-              <span>Got Questions?</span>
-            </div>
-            <h3 className="text-2xl font-extrabold text-white font-heading">Frequently Asked Questions</h3>
+        {/* ── FAQ Accordion ── */}
+        <div className="max-w-3xl mx-auto space-y-4">
+          <div className="text-center mb-10">
+            <div className="section-divider" />
+            <h3 className="text-2xl font-extrabold text-white font-heading mt-4">
+              Frequently Asked Questions
+            </h3>
           </div>
 
-          <div className="space-y-3">
-            {faqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div 
-                  key={idx} 
-                  className="glass-card rounded-2xl border border-slate-800 overflow-hidden transition-all"
+          {faqs.map((faq, idx) => {
+            const isOpen = openFaq === idx;
+            return (
+              <div
+                key={idx}
+                className="overflow-hidden rounded-2xl transition-all duration-300"
+                style={{
+                  background: isOpen
+                    ? 'linear-gradient(145deg, rgba(16,185,129,0.06), rgba(14,24,42,0.96))'
+                    : 'linear-gradient(145deg, rgba(14,24,42,0.90), rgba(6,12,22,0.96))',
+                  border: `1px solid ${isOpen ? 'rgba(52,211,153,0.25)' : 'rgba(52,211,153,0.08)'}`,
+                }}
+              >
+                <button
+                  onClick={() => setOpenFaq(isOpen ? null : idx)}
+                  className="w-full px-6 py-4 flex items-center justify-between text-left group"
                 >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-4 text-left flex items-center justify-between text-sm font-bold text-white hover:text-emerald-300"
+                  <span className={`text-sm font-semibold transition-colors ${isOpen ? 'text-emerald-300' : 'text-white group-hover:text-emerald-300'}`}>
+                    {faq.question}
+                  </span>
+                  <div
+                    className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ml-4 transition-all"
+                    style={{
+                      background: isOpen ? 'rgba(16,185,129,0.20)' : 'rgba(255,255,255,0.05)',
+                      border: `1px solid ${isOpen ? 'rgba(52,211,153,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                    }}
                   >
-                    <span>{faq.question}</span>
-                    {isOpen ? <ChevronUp className="w-4 h-4 text-emerald-400 shrink-0" /> : <ChevronDown className="w-4 h-4 text-slate-500 shrink-0" />}
-                  </button>
-
-                  {isOpen && (
-                    <div className="px-4 pb-4 text-xs text-slate-300 leading-relaxed border-t border-slate-800/60 pt-3">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                    {isOpen
+                      ? <ChevronUp className="w-3.5 h-3.5 text-emerald-400" />
+                      : <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                    }
+                  </div>
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-emerald-500/10 pt-3 animate-fade-in">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
       </div>

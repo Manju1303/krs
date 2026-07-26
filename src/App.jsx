@@ -20,78 +20,52 @@ export default function App() {
   const [bookingPackageName, setBookingPackageName] = useState('');
 
   const handleOpenBooking = (deptId = '', docName = '', pkgName = '') => {
-    const safeDeptId = typeof deptId === 'string' ? deptId : '';
-    const safeDocName = typeof docName === 'string' ? docName : '';
-    const safePkgName = typeof pkgName === 'string' ? pkgName : '';
-
-    setBookingDeptId(safeDeptId);
-    setBookingDoctorName(safeDocName);
-    setBookingPackageName(safePkgName);
+    setBookingDeptId(typeof deptId === 'string' ? deptId : '');
+    setBookingDoctorName(typeof docName === 'string' ? docName : '');
+    setBookingPackageName(typeof pkgName === 'string' ? pkgName : '');
     setBookingModalOpen(true);
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
-      {/* Top Navbar */}
-      <Navbar 
-        onOpenBooking={() => handleOpenBooking()} 
-      />
+    <div
+      className="min-h-screen text-slate-100 flex flex-col font-sans"
+      style={{
+        background: '#04080f',
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        colorScheme: 'dark',
+      }}
+    >
+      {/* Fixed Navbar */}
+      <Navbar onOpenBooking={() => handleOpenBooking()} />
 
       <main className="flex-grow">
-        {/* Hero Section with Kauvery-style Quick Actions */}
-        <Hero 
-          onOpenBooking={() => handleOpenBooking()} 
-        />
+        {/* Hero — full screen, no top padding (navbar is fixed/overlaid) */}
+        <Hero onOpenBooking={() => handleOpenBooking()} />
 
-        {/* Key Statistics Counter Bar */}
+        {/* Floating Stats Bar */}
         <Stats />
 
-        {/* About KRS Hospital & Founder's Story */}
-        <AboutUs />
-
-        {/* Medical Departments & Specialties Explorer */}
-        <Departments 
-          onOpenBooking={(deptId) => handleOpenBooking(deptId)} 
-        />
-
-        {/* Kauvery-Style Preventive Health Checkup Packages */}
-        <HealthPackages 
-          onBookPackage={(pkgName) => handleOpenBooking('', '', pkgName)}
-        />
-
-        {/* Specialist Doctors Showcase & Bio Modal */}
-        <Doctors 
-          onOpenBooking={(deptId, docName) => handleOpenBooking(deptId, docName)} 
-        />
-
-        {/* Hospital Facilities & Diagnostic Systems */}
-        <Facilities />
-
-        {/* Real Campus Photos & Virtual Tour Gallery */}
-        <Gallery />
-
-        {/* Why Choose KRS Hospital & Testimonials & FAQs */}
-        <WhyChooseUs 
-          onOpenBooking={() => handleOpenBooking()} 
-        />
+        {/* Content sections */}
+        <div className="mt-24 space-y-0">
+          <AboutUs />
+          <Departments onOpenBooking={(deptId) => handleOpenBooking(deptId)} />
+          <HealthPackages onBookPackage={(pkgName) => handleOpenBooking('', '', pkgName)} />
+          <Doctors onOpenBooking={(deptId, docName) => handleOpenBooking(deptId, docName)} />
+          <Facilities />
+          <Gallery />
+          <WhyChooseUs onOpenBooking={() => handleOpenBooking()} />
+        </div>
       </main>
 
-      {/* Footer */}
-      <Footer 
-        onOpenBooking={() => handleOpenBooking()} 
-      />
+      <Footer onOpenBooking={() => handleOpenBooking()} />
 
-      {/* Floating 24/7 Emergency Assistance Widget */}
-      <EmergencyFloat 
-        onOpenBooking={() => handleOpenBooking()} 
-      />
+      <EmergencyFloat onOpenBooking={() => handleOpenBooking()} />
 
-      {/* Multi-step Appointment & Package Booking Engine Modal */}
-      <AppointmentModal 
-        isOpen={bookingModalOpen} 
-        onClose={() => setBookingModalOpen(false)} 
-        initialDeptId={bookingDeptId} 
-        initialDoctorName={bookingDoctorName} 
+      <AppointmentModal
+        isOpen={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+        initialDeptId={bookingDeptId}
+        initialDoctorName={bookingDoctorName}
         initialPackageName={bookingPackageName}
       />
     </div>

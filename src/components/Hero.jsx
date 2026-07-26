@@ -1,261 +1,253 @@
-import React, { useState, useEffect } from 'react';
-import { Calendar, ShieldAlert, Award, Stethoscope, ArrowRight, HeartPulse, CheckCircle2, Clock, Users, Building2, MapPin, FlaskConical, Camera, Phone } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Calendar, ShieldAlert, Award, Clock, FlaskConical, Phone, Building2, ChevronLeft, ChevronRight, MapPin, HeartPulse, CheckCircle2 } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
-export default function Hero({ onOpenBooking, onOpenPackages }) {
-  const getImg = (path) => {
-    const baseUrl = import.meta.env.BASE_URL || '/';
-    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    return baseUrl.endsWith('/') ? `${baseUrl}${cleanPath}` : `${baseUrl}/${cleanPath}`;
-  };
+const getImg = (path) => {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return baseUrl.endsWith('/') ? `${baseUrl}${cleanPath}` : `${baseUrl}/${cleanPath}`;
+};
 
-  const bgSlideshow = [
-    {
-      url: getImg("images/building.jpeg"),
-      title: "KRS Main Hospital Building",
-      tag: "Edappadi Main Campus",
-      desc: "Multi-storey modern hospital located on Salem Main Road, Edappadi."
-    },
-    {
-      url: getImg("images/ot_main.jpeg"),
-      title: "Modular Operation Theatre",
-      tag: "Advanced Surgery Suite",
-      desc: "Sterile laminar airflow OT with precision surgical lights and anesthesia console."
-    },
-    {
-      url: getImg("images/icu_beds.jpeg"),
-      title: "Intensive Care Unit (ICU)",
-      tag: "24/7 Critical Care",
-      desc: "Multi-bed ICU equipped with multi-para cardiac monitors & central oxygen."
-    },
-    {
-      url: getImg("images/reception_lounge.jpeg"),
-      title: "Patient Waiting Lounge",
-      tag: "Patient Comfort",
-      desc: "Spacious, air-conditioned waiting lounge for family comfort."
-    },
-    {
-      url: getImg("images/pharmacy.jpeg"),
-      title: "24/7 Hospital Pharmacy",
-      tag: "Round-the-Clock",
-      desc: "Fully stocked pharmacy with genuine medicines & surgical supplies."
-    }
-  ];
+const slides = [
+  {
+    url: getImg('images/building_clean.png'),
+    caption: 'KRS Multispeciality Hospital — Edappadi Main Campus',
+    sub: 'Salem Main Road, Vellandivalasu, Edappadi',
+    icon: Building2,
+  },
+  {
+    url: getImg('images/ot_main.jpeg'),
+    caption: 'Advanced Modular Operation Theatre',
+    sub: 'Sterile laminar airflow surgical suite',
+    icon: HeartPulse,
+  },
+  {
+    url: getImg('images/icu_beds.jpeg'),
+    caption: '24/7 Intensive Care Unit (ICU)',
+    sub: 'Multi-para monitors & central oxygen',
+    icon: HeartPulse,
+  },
+  {
+    url: getImg('images/reception_lounge.jpeg'),
+    caption: 'Patient Comfort Waiting Lounge',
+    sub: 'Spacious, air-conditioned family lounge',
+    icon: CheckCircle2,
+  },
+  {
+    url: getImg('images/pharmacy.jpeg'),
+    caption: '24/7 Hospital Pharmacy',
+    sub: 'Genuine medicines & surgical supplies',
+    icon: FlaskConical,
+  },
+  {
+    url: getImg('images/emergency_ramp.jpeg'),
+    caption: '24/7 Emergency & Trauma Bay',
+    sub: 'Direct ambulance & stretcher access',
+    icon: ShieldAlert,
+  },
+];
 
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+export default function Hero({ onOpenBooking }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Auto-scroll background slider every 4.5 seconds
+  const goTo = useCallback((idx) => {
+    setCurrentIndex((idx + slides.length) % slides.length);
+  }, []);
+
+  const next = useCallback(() => goTo(currentIndex + 1), [currentIndex, goTo]);
+  const prev = useCallback(() => goTo(currentIndex - 1), [currentIndex, goTo]);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % bgSlideshow.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [bgSlideshow.length]);
-
-  const currentPhoto = bgSlideshow[currentSlideIndex];
+    const timer = setInterval(next, 4800);
+    return () => clearInterval(timer);
+  }, [next]);
 
   return (
-    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-slate-950 flex items-center">
-      
-      {/* Dynamic Animated Background Image Slideshow with Overlay */}
+    <section
+      id="home"
+      className="relative w-full overflow-hidden"
+      style={{ height: '100dvh', minHeight: '620px' }}
+    >
+      {/* ── Full-Screen Background Slider ── */}
       <div className="absolute inset-0 z-0">
-        {bgSlideshow.map((slide, idx) => (
+        {slides.map((slide, idx) => (
           <div
             key={idx}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              currentSlideIndex === idx ? 'opacity-35' : 'opacity-0'
-            }`}
+            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+            style={{ opacity: idx === currentIndex ? 1 : 0 }}
           >
             <img
               src={slide.url}
-              alt={slide.title}
-              className={`w-full h-full object-cover ${currentSlideIndex === idx ? 'animate-ken-burns' : ''}`}
+              alt={slide.caption}
+              className={`w-full h-full object-cover select-none${idx === currentIndex ? ' animate-ken-burns' : ''}`}
+              loading={idx === 0 ? 'eager' : 'lazy'}
+              draggable={false}
             />
           </div>
         ))}
 
-        {/* Sleek Dark Gradient Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/80" />
+        {/* Premium layered gradient overlay */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'linear-gradient(105deg, rgba(2,10,20,0.92) 0%, rgba(2,10,20,0.72) 48%, rgba(2,10,20,0.28) 100%)',
+        }} />
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'linear-gradient(to top, rgba(4,8,15,0.80) 0%, transparent 38%)',
+        }} />
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'linear-gradient(to bottom, rgba(4,8,15,0.55) 0%, transparent 25%)',
+        }} />
+
+        {/* Subtle grid overlay */}
+        <div className="absolute inset-0 pointer-events-none bg-grid-pattern opacity-30" />
       </div>
 
-      {/* Background Glow Orbs */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
-      <div className="absolute bottom-10 right-10 w-[30rem] h-[30rem] bg-teal-500/15 rounded-full blur-3xl pointer-events-none" />
+      {/* ── Caption Badge (top-right) ── */}
+      <div className="absolute top-28 right-6 z-20 hidden lg:block">
+        <div
+          className="flex items-center gap-2.5 text-white/90 text-xs font-semibold px-4 py-2.5 rounded-full"
+          style={{
+            background: 'rgba(8,16,30,0.70)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+          }}
+        >
+          {React.createElement(slides[currentIndex].icon, {
+            className: 'w-3.5 h-3.5 text-emerald-400 shrink-0',
+          })}
+          <div>
+            <div className="leading-none">{slides[currentIndex].caption}</div>
+            <div className="text-[10px] text-white/50 mt-0.5 leading-none">{slides[currentIndex].sub}</div>
+          </div>
+        </div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Hero Content */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Top Pill Badge */}
-            <div className="inline-flex items-center space-x-2 bg-emerald-950/90 border border-emerald-500/40 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-300 shadow-inner backdrop-blur-md">
-              <Award className="w-4 h-4 text-emerald-400" />
-              <span>Serving Edappadi Since 1996 • 28+ Years of Medical Trust</span>
+      {/* ── Slide Progress Dots (bottom-right) ── */}
+      <div className="absolute bottom-8 right-6 z-20 flex items-center gap-2">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => goTo(idx)}
+            className="cursor-pointer transition-all duration-400 border-none outline-none"
+            style={{
+              width: idx === currentIndex ? '28px' : '7px',
+              height: '7px',
+              borderRadius: idx === currentIndex ? '4px' : '50%',
+              background: idx === currentIndex ? 'linear-gradient(90deg, #10b981, #2dd4bf)' : 'rgba(255,255,255,0.35)',
+              boxShadow: idx === currentIndex ? '0 0 12px rgba(16,185,129,0.5)' : 'none',
+            }}
+            aria-label={`Slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* ── Arrow Controls ── */}
+      <button
+        onClick={prev}
+        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full transition-all hover:scale-110"
+        style={{
+          background: 'rgba(8,16,30,0.60)',
+          border: '1px solid rgba(255,255,255,0.12)',
+          backdropFilter: 'blur(12px)',
+          color: '#fff',
+        }}
+        aria-label="Previous"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 rounded-full transition-all hover:scale-110"
+        style={{
+          background: 'rgba(8,16,30,0.60)',
+          border: '1px solid rgba(255,255,255,0.12)',
+          backdropFilter: 'blur(12px)',
+          color: '#fff',
+        }}
+        aria-label="Next"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+      {/* ── Hero Content ── */}
+      <div className="relative z-10 h-full flex items-center">
+        <div className="max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-12 pb-20">
+          <div className="max-w-2xl space-y-7">
+
+            {/* Badge */}
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <span className="section-label-pill">
+                <Award className="w-3.5 h-3.5" />
+                Trusted Multispeciality Hospital · Edappadi, Salem District
+              </span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight font-heading">
-              Kauvery-Standard Care. <br />
-              <span className="text-gradient-emerald">Trusted Healing</span> for Every Family.
-            </h1>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-white leading-[1.12] tracking-tight font-heading">
+                KRS Multispeciality<br />
+                <span className="text-gradient-emerald">
+                  Hospital & Trauma Care
+                </span>
+              </h1>
+            </div>
 
             {/* Description */}
-            <p className="text-slate-200 text-base sm:text-lg max-w-2xl font-normal leading-relaxed drop-shadow">
-              Founded by <strong className="text-emerald-300 font-semibold">Dr. K. Ravisuthan</strong>, KRS Multispeciality Hospital & Trauma Care Centre brings 15+ specialized medical departments, modern operation theatres, 24/7 ICUs, and expert physicians together under one roof in Edappadi.
-            </p>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+              <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl">
+                Founded by <strong className="text-emerald-300 font-semibold">Dr. K. Ravisuthan</strong> in 1996. 
+                Comprehensive 15+ specialty care, 24/7 ICU & Emergency, and expert surgeons — under one roof in Edappadi.
+              </p>
+            </div>
 
-            {/* Kauvery-Style 4 Quick Action Cards Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            {/* CTA Buttons */}
+            <div
+              className="flex flex-wrap gap-3 animate-fade-in-up"
+              style={{ animationDelay: '0.4s' }}
+            >
               <button
                 onClick={() => onOpenBooking()}
-                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-emerald-500/40 hover:border-emerald-400 transition-all text-left group shadow-lg backdrop-blur-md"
+                className="btn-premium"
               >
-                <Stethoscope className="w-5 h-5 text-emerald-400 mb-1.5 group-hover:scale-110 transition-transform" />
-                <div className="text-xs font-bold text-white">Book Doctor</div>
-                <div className="text-[10px] text-slate-400">19+ Specialists</div>
+                <Calendar className="w-4 h-4" />
+                Book Appointment
               </button>
-
               <a
                 href={`tel:${hospitalInfo.hospitalMobile}`}
-                className="p-3.5 rounded-2xl bg-rose-950/90 hover:bg-rose-900/90 border border-rose-500/50 transition-all text-left group shadow-lg backdrop-blur-md"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-sm text-white transition-all hover:scale-105"
+                style={{
+                  background: '#dc2626',
+                  boxShadow: '0 4px 20px rgba(220,38,38,0.35)',
+                  animation: 'pulseRed 2s infinite',
+                }}
               >
-                <ShieldAlert className="w-5 h-5 text-rose-400 mb-1.5 animate-pulse group-hover:scale-110 transition-transform" />
-                <div className="text-xs font-bold text-rose-200">24/7 Emergency</div>
-                <div className="text-[10px] text-rose-300">{hospitalInfo.hospitalMobile}</div>
-              </a>
-
-              <a
-                href="#packages"
-                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-teal-500/40 hover:border-teal-400 transition-all text-left group shadow-lg backdrop-blur-md"
-              >
-                <FlaskConical className="w-5 h-5 text-teal-400 mb-1.5 group-hover:scale-110 transition-transform" />
-                <div className="text-xs font-bold text-white">Health Checkups</div>
-                <div className="text-[10px] text-teal-300">Preventive Care</div>
-              </a>
-
-              <a
-                href="#gallery"
-                className="p-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 transition-all text-left group shadow-lg backdrop-blur-md"
-              >
-                <Camera className="w-5 h-5 text-emerald-400 mb-1.5 group-hover:scale-110 transition-transform" />
-                <div className="text-xs font-bold text-white">Campus Photos</div>
-                <div className="text-[10px] text-slate-400">Virtual Tour</div>
+                <Phone className="w-4 h-4" />
+                Emergency: {hospitalInfo.hospitalMobile}
               </a>
             </div>
 
-            {/* Primary Action CTA Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <button
-                onClick={() => onOpenBooking()}
-                className="bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-extrabold text-sm px-6 py-4 rounded-xl shadow-2xl shadow-emerald-950/80 flex items-center space-x-3 transition-all hover:scale-105"
-              >
-                <Calendar className="w-5 h-5" />
-                <span>Book Instant Consultation</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <a
-                href={`tel:${hospitalInfo.emergencyPhone}`}
-                className="bg-slate-900/90 hover:bg-slate-800 text-slate-200 font-bold text-sm px-6 py-4 rounded-xl border border-slate-700 flex items-center space-x-3 transition-all hover:scale-105 backdrop-blur-md"
-              >
-                <Phone className="w-4 h-4 text-emerald-400" />
-                <span>Landline: {hospitalInfo.landlinePhone}</span>
-              </a>
-            </div>
-
-            {/* Quick Contact Bar */}
-            <div className="pt-4 flex items-center space-x-6 text-xs text-slate-300 border-t border-slate-800">
-              <div className="flex items-center space-x-2">
-                <Clock className="w-4 h-4 text-teal-400" />
-                <span>Emergency: <strong>24 Hours Open</strong></span>
+            {/* Contact Strip */}
+            <div
+              className="flex flex-wrap gap-5 text-xs text-white/55 pt-2 animate-fade-in-up border-t"
+              style={{
+                borderColor: 'rgba(255,255,255,0.08)',
+                animationDelay: '0.5s',
+              }}
+            >
+              <div className="flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-emerald-500" />
+                <span>Emergency: <strong className="text-white/80">24/7 Open</strong></span>
               </div>
-              <div className="flex items-center space-x-2">
-                <FlaskConical className="w-4 h-4 text-emerald-400" />
-                <span>24/7 Lab Helpline: <strong>{hospitalInfo.labPhone}</strong></span>
+              <div className="flex items-center gap-1.5">
+                <FlaskConical className="w-3.5 h-3.5 text-teal-500" />
+                <span>Lab: <strong className="text-white/80">{hospitalInfo.labPhone}</strong></span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-emerald-500" />
+                <span>Salem Main Road, Edappadi</span>
               </div>
             </div>
           </div>
-
-          {/* Right Column: Dynamic Interactive Real Hospital Showcase */}
-          <div className="lg:col-span-5 relative">
-            
-            {/* Main Visual Card with Real Hospital Photos */}
-            <div className="glass-card rounded-3xl overflow-hidden border border-emerald-500/40 shadow-2xl space-y-4 relative z-10 p-2">
-              
-              {/* Featured Campus Image Display with Slideshow Indicator */}
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-950 group">
-                <img 
-                  src={currentPhoto.url} 
-                  alt={currentPhoto.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-90" />
-                
-                {/* Photo Badge */}
-                <div className="absolute top-3 left-3 bg-emerald-950/90 text-emerald-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-emerald-500/40 flex items-center space-x-1">
-                  <MapPin className="w-3 h-3 text-emerald-400" />
-                  <span>{currentPhoto.tag}</span>
-                </div>
-
-                {/* Photo Caption inside image */}
-                <div className="absolute bottom-3 left-3 right-3 text-left space-y-0.5">
-                  <h3 className="text-sm font-extrabold text-white">{currentPhoto.title}</h3>
-                  <p className="text-[11px] text-slate-300 line-clamp-1">{currentPhoto.desc}</p>
-                </div>
-              </div>
-
-              {/* Photo Selector Switcher & Slide Dots */}
-              <div className="px-3 pb-2 flex items-center justify-between gap-2">
-                <div className="flex items-center space-x-2">
-                  {bgSlideshow.map((photo, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentSlideIndex(idx)}
-                      className={`h-2.5 rounded-full transition-all ${
-                        currentSlideIndex === idx ? 'w-8 bg-emerald-400' : 'w-2.5 bg-slate-700 hover:bg-slate-500'
-                      }`}
-                      title={photo.title}
-                    />
-                  ))}
-                </div>
-                <a 
-                  href="#gallery"
-                  className="text-[11px] text-emerald-400 font-bold hover:underline flex items-center space-x-1"
-                >
-                  <span>View All 11 Campus Photos</span>
-                  <ArrowRight className="w-3 h-3" />
-                </a>
-              </div>
-
-              {/* Doctor Founder Badge */}
-              <div className="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800 flex items-center space-x-3.5">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center font-extrabold text-slate-950 text-lg shadow shrink-0">
-                  KR
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white">Dr. K. Ravisuthan</h4>
-                  <p className="text-[11px] text-slate-300">MBBS., MHSC (Diabetology)</p>
-                  <p className="text-[10px] text-emerald-400 font-semibold">Founder & Chief Physician • Est. 1996</p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Decorative Floating Badge */}
-            <div className="absolute -bottom-6 -left-6 bg-slate-900/90 border border-emerald-500/40 p-4 rounded-2xl shadow-2xl backdrop-blur-md hidden sm:flex items-center space-x-3 z-20">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-extrabold">
-                28+
-              </div>
-              <div className="text-xs">
-                <div className="font-extrabold text-white">Years of Clinical Excellence</div>
-                <div className="text-slate-400">Serving Edappadi Community</div>
-              </div>
-            </div>
-
-          </div>
-
         </div>
       </div>
     </section>
