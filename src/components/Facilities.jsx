@@ -1,74 +1,61 @@
 import React from 'react';
-import { 
-  Building2, Ambulance, HeartPulse, Activity, Scissors, Bed, Pill, Dumbbell, Cpu, CheckCircle2 
-} from 'lucide-react';
+import { Building2, Ambulance, HeartPulse, Activity, Scissors, Bed, Pill, Dumbbell, Cpu, CheckCircle2 } from 'lucide-react';
 import { facilities } from '../data/hospitalData';
 
-const iconMap = {
-  Ambulance, HeartPulse, Activity, Scissors, Bed, Pill, Dumbbell, Cpu
-};
+const iconMap = { Ambulance, HeartPulse, Activity, Scissors, Bed, Pill, Dumbbell, Cpu };
 
 export default function Facilities() {
   return (
-    <section id="facilities" className="py-24 relative bg-slate-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-300">
-            <Building2 className="w-4 h-4 text-emerald-400" />
-            <span>Infrastructure & Diagnostics</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-heading">
-            State-of-the-Art <span className="text-gradient-emerald">Hospital Facilities</span>
+    <section id="facilities" className="py-24 relative overflow-hidden" style={{ background: '#f8fafc' }}>
+      <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+          <div className="section-divider" />
+          <span className="section-label-pill">
+            <Building2 className="w-3.5 h-3.5" />
+            Infrastructure &amp; Diagnostics
+          </span>
+          <h2 className="text-4xl sm:text-5xl font-extrabold font-heading mt-3" style={{ color: '#0f172a' }}>
+            State-of-the-Art <span className="text-gradient-emerald">Facilities</span>
           </h2>
-          <p className="text-slate-400 text-base">
-            Equipped with modern diagnostic imaging, laminar airflow operation suites, 24/7 emergency trauma bays, and digital healthcare records in Edappadi.
+          <p className="text-sm leading-relaxed" style={{ color: '#64748b' }}>
+            Modern diagnostic imaging, laminar airflow OTs, 24/7 emergency trauma bays, and digital records — Edappadi.
           </p>
         </div>
 
-        {/* Facilities Grid with Real Photos */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Facilities Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {facilities.map((fac, idx) => {
             const IconComponent = iconMap[fac.icon] || Activity;
             return (
-              <div
-                key={idx}
-                className="glass-card rounded-3xl overflow-hidden border border-emerald-500/20 hover:border-emerald-400/50 transition-all space-y-4 flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Facility Real Photo */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
-                    <img 
-                      src={fac.image} 
-                      alt={fac.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
-                    
-                    <span className="absolute top-3 left-3 text-[10px] font-bold bg-emerald-950/90 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full">
-                      {fac.badge}
-                    </span>
-
-                    <div className="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center shadow-lg">
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                  </div>
-
-                  <div className="p-5 space-y-2">
-                    <h3 className="text-base font-extrabold text-white font-heading group-hover:text-emerald-300 transition-colors">
-                      {fac.title}
-                    </h3>
-
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      {fac.desc}
-                    </p>
+              <div key={idx} className="premium-card overflow-hidden flex flex-col group">
+                {/* Photo */}
+                <div className="relative overflow-hidden" style={{ aspectRatio: '16/10' }}>
+                  <img src={fac.image} alt={fac.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.30) 0%, transparent 60%)' }} />
+                  <span className="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full"
+                    style={{ background: '#d1fae5', border: '1px solid #a7f3d0', color: '#047857' }}>
+                    {fac.badge}
+                  </span>
+                  <div className="absolute bottom-3 left-3 w-9 h-9 rounded-xl flex items-center justify-center shadow-md"
+                    style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
+                    <IconComponent className="w-4 h-4 text-white" />
                   </div>
                 </div>
 
-                <div className="px-5 pb-5 pt-0 flex items-center space-x-1 text-[11px] text-emerald-400 font-semibold border-t border-slate-800/80 pt-3">
+                {/* Content */}
+                <div className="p-5 space-y-2 flex-1">
+                  <h3 className="text-base font-bold font-heading" style={{ color: '#0f172a' }}>{fac.title}</h3>
+                  <p className="text-xs leading-relaxed" style={{ color: '#64748b' }}>{fac.desc}</p>
+                </div>
+
+                <div className="px-5 pb-4 flex items-center gap-1.5 text-[11px] font-semibold"
+                  style={{ borderTop: '1px solid rgba(15,23,42,0.06)', paddingTop: '12px', color: '#059669' }}>
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Real Facility • Edappadi Campus</span>
+                  <span>Edappadi Campus</span>
                 </div>
               </div>
             );

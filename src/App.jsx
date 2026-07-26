@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Stats from './components/Stats';
 import Departments from './components/Departments';
 import Doctors from './components/Doctors';
-import HealthPackages from './components/HealthPackages';
 import Facilities from './components/Facilities';
 import Gallery from './components/Gallery';
 import AboutUs from './components/AboutUs';
@@ -27,29 +26,15 @@ export default function App() {
   };
 
   return (
-    <div
-      className="min-h-screen text-slate-100 flex flex-col font-sans"
-      style={{
-        background: '#04080f',
-        fontFamily: "'Plus Jakarta Sans', sans-serif",
-        colorScheme: 'dark',
-      }}
-    >
-      {/* Fixed Navbar */}
+    <div className="min-h-screen flex flex-col" style={{ background: '#f0f4f8', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
       <Navbar onOpenBooking={() => handleOpenBooking()} />
 
       <main className="flex-grow">
-        {/* Hero — full screen, no top padding (navbar is fixed/overlaid) */}
         <Hero onOpenBooking={() => handleOpenBooking()} />
-
-        {/* Floating Stats Bar */}
         <Stats />
-
-        {/* Content sections */}
-        <div className="mt-24 space-y-0">
+        <div className="mt-20">
           <AboutUs />
           <Departments onOpenBooking={(deptId) => handleOpenBooking(deptId)} />
-          <HealthPackages onBookPackage={(pkgName) => handleOpenBooking('', '', pkgName)} />
           <Doctors onOpenBooking={(deptId, docName) => handleOpenBooking(deptId, docName)} />
           <Facilities />
           <Gallery />
@@ -58,7 +43,6 @@ export default function App() {
       </main>
 
       <Footer onOpenBooking={() => handleOpenBooking()} />
-
       <EmergencyFloat onOpenBooking={() => handleOpenBooking()} />
 
       <AppointmentModal
