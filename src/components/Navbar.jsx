@@ -77,11 +77,11 @@ export default function Navbar({ onOpenBooking }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           {/* Logo & Brand Name */}
           <a href="#" className="flex items-center space-x-3 group">
-            <div className="relative">
+            <div className="relative shrink-0 w-12 h-12">
               <img 
                 src="/logo.jpeg" 
                 alt="KRS Hospital Logo" 
-                className="w-12 h-12 rounded-xl object-contain bg-white p-1 shadow-lg ring-2 ring-emerald-500/40 group-hover:scale-105 transition-transform" 
+                className="w-12 h-12 max-w-[48px] max-h-[48px] rounded-xl object-contain bg-white p-1 shadow-lg ring-2 ring-emerald-500/40 group-hover:scale-105 transition-transform shrink-0" 
               />
               <div className="absolute -bottom-1 -right-1 bg-emerald-500 text-slate-950 text-[10px] font-extrabold px-1 rounded shadow">
                 1996
