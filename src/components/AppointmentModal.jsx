@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { X, Calendar as CalendarIcon, Clock, User, Phone, CheckCircle2, Stethoscope, ChevronRight, AlertCircle, ArrowLeft, PackageCheck } from 'lucide-react';
-import { departments, doctors, healthPackages, hospitalInfo } from '../data/hospitalData';
+import { X, Calendar as CalendarIcon, Clock, User, Phone, CheckCircle2, Stethoscope, ChevronRight, AlertCircle, ArrowLeft } from 'lucide-react';
+import { departments, doctors, hospitalInfo } from '../data/hospitalData';
 
-export default function AppointmentModal({ isOpen, onClose, initialDeptId, initialDoctorName, initialPackageName }) {
+export default function AppointmentModal({ isOpen, onClose, initialDeptId, initialDoctorName }) {
   const [step, setStep] = useState(1);
-  const [bookingType, setBookingType] = useState(initialPackageName ? 'package' : 'doctor'); // 'doctor' or 'package'
   
   const [selectedDept, setSelectedDept] = useState(departments[0].id);
   const [selectedDoctor, setSelectedDoctor] = useState('');
-  const [selectedPackage, setSelectedPackage] = useState(healthPackages[0].name);
 
   const [appointmentDate, setAppointmentDate] = useState('');
   const [appointmentTime, setAppointmentTime] = useState('10:00 AM');
@@ -21,28 +19,23 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
   const [bookingRef, setBookingRef] = useState('');
 
   useEffect(() => {
-    if (typeof initialPackageName === 'string' && initialPackageName) {
-      setBookingType('package');
-      setSelectedPackage(initialPackageName);
+    if (typeof initialDeptId === 'string' && initialDeptId) {
+      setSelectedDept(initialDeptId);
     } else {
-      if (typeof initialDeptId === 'string' && initialDeptId) {
-        setSelectedDept(initialDeptId);
-      } else {
-        setSelectedDept(departments[0].id);
-      }
+      setSelectedDept(departments[0].id);
+    }
 
-      if (typeof initialDoctorName === 'string' && initialDoctorName) {
-        setSelectedDoctor(initialDoctorName);
-      } else {
-        setSelectedDoctor('');
-      }
+    if (typeof initialDoctorName === 'string' && initialDoctorName) {
+      setSelectedDoctor(initialDoctorName);
+    } else {
+      setSelectedDoctor('');
     }
     
     // Set default tomorrow date
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     setAppointmentDate(tomorrow.toISOString().split('T')[0]);
-  }, [initialDeptId, initialDoctorName, initialPackageName, isOpen]);
+  }, [initialDeptId, initialDoctorName, isOpen]);
 
   if (!isOpen) return null;
 
@@ -88,7 +81,7 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
               <CalendarIcon className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-extrabold text-slate-900 font-heading">Book Appointment / Health Check</h3>
+              <h3 className="text-lg font-extrabold text-slate-900 font-heading">Book Specialist Appointment</h3>
               <p className="text-xs text-emerald-600 font-medium">KRS Multispeciality Hospital • Edappadi</p>
             </div>
           </div>
@@ -121,85 +114,40 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
           </div>
         )}
 
-        {/* STEP 1: Select Type & Details */}
+        {/* STEP 1: Department & Specialist Selection */}
         {step === 1 && (
           <div className="space-y-5 animate-fade-in">
-            
-            {/* Booking Type Toggle */}
-            <div className="flex rounded-2xl bg-slate-100 p-1.5 border border-slate-200/60">
-              <button
-                type="button"
-                onClick={() => setBookingType('doctor')}
-                className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
-                  bookingType === 'doctor' 
-                    ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow' 
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <Stethoscope className="w-4 h-4" />
-                <span>Specialist Consultation</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setBookingType('package')}
-                className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 ${
-                  bookingType === 'package' 
-                    ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-white shadow' 
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <PackageCheck className="w-4 h-4" />
-                <span>Health Checkup Package</span>
-              </button>
-            </div>
-
-            {bookingType === 'doctor' ? (
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Select Medical Department *</label>
-                  <select
-                    value={selectedDept}
-                    onChange={(e) => {
-                      setSelectedDept(e.target.value);
-                      setSelectedDoctor('');
-                    }}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
-                  >
-                    {departments.map(d => (
-                      <option key={d.id} value={d.id}>{d.name}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Select Specialist Doctor (Optional)</label>
-                  <select
-                    value={selectedDoctor}
-                    onChange={(e) => setSelectedDoctor(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
-                  >
-                    <option value="">Any Available Specialist Doctor in Department</option>
-                    {currentDeptDoctors.map(doc => (
-                      <option key={doc.id} value={doc.name}>{doc.name} ({doc.degrees})</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            ) : (
+            <div className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5">Select Health Checkup Package *</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Select Medical Department *</label>
                 <select
-                  value={selectedPackage}
-                  onChange={(e) => setSelectedPackage(e.target.value)}
+                  value={selectedDept}
+                  onChange={(e) => {
+                    setSelectedDept(e.target.value);
+                    setSelectedDoctor('');
+                  }}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
                 >
-                  {healthPackages.map(pkg => (
-                    <option key={pkg.id} value={pkg.name}>{pkg.name} — {pkg.price} ({pkg.discount})</option>
+                  {departments.map(d => (
+                    <option key={d.id} value={d.id}>{d.name}</option>
                   ))}
                 </select>
               </div>
-            )}
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Select Specialist Doctor (Optional)</label>
+                <select
+                  value={selectedDoctor}
+                  onChange={(e) => setSelectedDoctor(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
+                >
+                  <option value="">Any Available Specialist Doctor in Department</option>
+                  {currentDeptDoctors.map(doc => (
+                    <option key={doc.id} value={doc.name}>{doc.name} ({doc.degrees})</option>
+                  ))}
+                </select>
+              </div>
+            </div>
 
             <div className="pt-4 flex justify-end">
               <button
@@ -361,7 +309,7 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
             </div>
 
             <div>
-              <h3 className="text-xl font-extrabold text-slate-900 font-heading">Booking Request Received!</h3>
+              <h3 className="text-xl font-extrabold text-slate-900 font-heading">Appointment Request Received!</h3>
               <p className="text-xs text-emerald-600 font-semibold mt-1">Ref ID: {bookingRef}</p>
               <p className="text-xs text-slate-500 mt-2 max-w-sm mx-auto leading-relaxed">
                 Thank you, <strong className="text-slate-800">{patientName}</strong>. Our hospital reception desk at Edappadi will call your number <strong className="text-slate-800">{patientPhone}</strong> shortly to confirm your slot.
@@ -372,25 +320,16 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
             <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-left text-xs space-y-2">
               <div className="flex justify-between">
                 <span className="text-slate-500">Booking Type:</span>
-                <span className="font-bold text-emerald-700">{bookingType === 'package' ? 'Preventive Health Package' : 'Doctor Consultation'}</span>
+                <span className="font-bold text-emerald-700">Specialist Doctor Consultation</span>
               </div>
-              {bookingType === 'doctor' ? (
-                <>
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Department:</span>
-                    <span className="font-bold text-slate-800">{activeDeptObj.name}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Doctor:</span>
-                    <span className="font-bold text-emerald-700">{selectedDoctor || "Duty Specialist Physician"}</span>
-                  </div>
-                </>
-              ) : (
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Selected Package:</span>
-                  <span className="font-bold text-slate-800">{selectedPackage}</span>
-                </div>
-              )}
+              <div className="flex justify-between">
+                <span className="text-slate-500">Department:</span>
+                <span className="font-bold text-slate-800">{activeDeptObj.name}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Doctor:</span>
+                <span className="font-bold text-emerald-700">{selectedDoctor || "Duty Specialist Physician"}</span>
+              </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Date & Slot:</span>
                 <span className="font-bold text-slate-800">{appointmentDate} at {appointmentTime}</span>

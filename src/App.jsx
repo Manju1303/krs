@@ -16,16 +16,14 @@ export default function App() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [bookingDeptId, setBookingDeptId] = useState('');
   const [bookingDoctorName, setBookingDoctorName] = useState('');
-  const [bookingPackageName, setBookingPackageName] = useState('');
 
   // Lifted state for cross-component interactions
   const [selectedDeptFilter, setSelectedDeptFilter] = useState('All');
   const [selectedDoctorModal, setSelectedDoctorModal] = useState(null);
 
-  const handleOpenBooking = (deptId = '', docName = '', pkgName = '') => {
+  const handleOpenBooking = (deptId = '', docName = '') => {
     setBookingDeptId(typeof deptId === 'string' ? deptId : '');
     setBookingDoctorName(typeof docName === 'string' ? docName : '');
-    setBookingPackageName(typeof pkgName === 'string' ? pkgName : '');
     setBookingModalOpen(true);
   };
 
