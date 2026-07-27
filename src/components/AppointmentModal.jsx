@@ -13,6 +13,10 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
   
   const [patientName, setPatientName] = useState('');
   const [patientPhone, setPatientPhone] = useState('');
+  const [patientEmail, setPatientEmail] = useState('');
+  const [patientCity, setPatientCity] = useState('');
+  const [contactPref, setContactPref] = useState('Phone Call');
+  const [visitType, setVisitType] = useState('First Visit');
   const [patientAge, setPatientAge] = useState('');
   const [patientGender, setPatientGender] = useState('Male');
   const [symptoms, setSymptoms] = useState('');
@@ -215,7 +219,7 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
           </div>
         )}
 
-        {/* STEP 3: Patient Details */}
+        {/* STEP 3: Comprehensive Patient Details */}
         {step === 3 && (
           <form onSubmit={handleNextStep} className="space-y-4 animate-fade-in">
             <div className="grid sm:grid-cols-2 gap-4">
@@ -224,7 +228,7 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
                 <input
                   type="text"
                   required
-                  placeholder="Enter full name"
+                  placeholder="e.g. S. Periyasamy"
                   value={patientName}
                   onChange={(e) => setPatientName(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
@@ -246,13 +250,37 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Email Address (Optional)</label>
+                <input
+                  type="email"
+                  placeholder="patient@example.com"
+                  value={patientEmail}
+                  onChange={(e) => setPatientEmail(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">City / Town / Native Area</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Edappadi, Salem, Sankari"
+                  value={patientCity}
+                  onChange={(e) => setPatientCity(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
+                />
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Age</label>
                 <input
                   type="number"
-                  placeholder="e.g. 35"
+                  placeholder="e.g. 42"
                   value={patientAge}
                   onChange={(e) => setPatientAge(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
                 />
               </div>
 
@@ -261,20 +289,61 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
                 <select
                   value={patientGender}
                   onChange={(e) => setPatientGender(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
                 >
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Patient Visit Type</label>
+                <select
+                  value={visitType}
+                  onChange={(e) => setVisitType(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
+                >
+                  <option value="First Visit">First Time Visit</option>
+                  <option value="Follow-up">Follow-up Visit</option>
+                  <option value="Second Opinion">Second Opinion</option>
+                </select>
+              </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Brief Symptoms / Medical Reason</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Preferred Confirmation Mode</label>
+              <div className="flex gap-3">
+                <label className={`flex-1 p-2.5 rounded-xl border text-xs font-bold cursor-pointer transition-all flex items-center justify-center gap-2 ${contactPref === 'Phone Call' ? 'bg-emerald-50 border-emerald-400 text-emerald-800' : 'bg-slate-50 border-slate-200 text-slate-600'}`}>
+                  <input
+                    type="radio"
+                    name="contactPref"
+                    value="Phone Call"
+                    checked={contactPref === 'Phone Call'}
+                    onChange={() => setContactPref('Phone Call')}
+                    className="hidden"
+                  />
+                  <span>📞 Phone Call</span>
+                </label>
+                <label className={`flex-1 p-2.5 rounded-xl border text-xs font-bold cursor-pointer transition-all flex items-center justify-center gap-2 ${contactPref === 'WhatsApp Message' ? 'bg-emerald-50 border-emerald-400 text-emerald-800' : 'bg-slate-50 border-slate-200 text-slate-600'}`}>
+                  <input
+                    type="radio"
+                    name="contactPref"
+                    value="WhatsApp Message"
+                    checked={contactPref === 'WhatsApp Message'}
+                    onChange={() => setContactPref('WhatsApp Message')}
+                    className="hidden"
+                  />
+                  <span>💬 WhatsApp Message</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Brief Symptoms / Health Concern / Notes</label>
               <textarea
                 rows="2"
-                placeholder="Describe your health concern..."
+                placeholder="Describe your symptoms or reason for doctor consultation..."
                 value={symptoms}
                 onChange={(e) => setSymptoms(e.target.value)}
                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
@@ -312,16 +381,12 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
               <h3 className="text-xl font-extrabold text-slate-900 font-heading">Appointment Request Received!</h3>
               <p className="text-xs text-emerald-600 font-semibold mt-1">Ref ID: {bookingRef}</p>
               <p className="text-xs text-slate-500 mt-2 max-w-sm mx-auto leading-relaxed">
-                Thank you, <strong className="text-slate-800">{patientName}</strong>. Our hospital reception desk at Edappadi will call your number <strong className="text-slate-800">{patientPhone}</strong> shortly to confirm your slot.
+                Thank you, <strong className="text-slate-800">{patientName}</strong>. Our hospital reception desk at Edappadi will reach out via <strong className="text-slate-800">{contactPref}</strong> ({patientPhone}) shortly to confirm your slot.
               </p>
             </div>
 
             {/* Summary Details Card */}
             <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-left text-xs space-y-2">
-              <div className="flex justify-between">
-                <span className="text-slate-500">Booking Type:</span>
-                <span className="font-bold text-emerald-700">Specialist Doctor Consultation</span>
-              </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Department:</span>
                 <span className="font-bold text-slate-800">{activeDeptObj.name}</span>
@@ -335,14 +400,24 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
                 <span className="font-bold text-slate-800">{appointmentDate} at {appointmentTime}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Location:</span>
-                <span className="font-bold text-slate-800">Edappadi Main Campus</span>
+                <span className="text-slate-500">Patient Type:</span>
+                <span className="font-bold text-slate-800">{visitType} ({patientGender}, {patientAge || 'N/A'} yrs)</span>
+              </div>
+              {patientCity && (
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Location Area:</span>
+                  <span className="font-bold text-slate-800">{patientCity}</span>
+                </div>
+              )}
+              <div className="flex justify-between">
+                <span className="text-slate-500">Confirmation via:</span>
+                <span className="font-bold text-emerald-700">{contactPref}</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a
-                href={`https://wa.me/916380898608?text=Hello%20KRS%20Hospital,%20I%20have%20booked%20an%20appointment%20Ref:%20${bookingRef}%20for%20${patientName}%20on%20${appointmentDate}%20at%20${appointmentTime}`}
+                href={`https://wa.me/916380898608?text=Hello%20KRS%20Hospital,%20I%20have%20booked%20an%20appointment%20Ref:%20${bookingRef}%20for%20${patientName}%20(${visitType})%20on%20${appointmentDate}%20at%20${appointmentTime}%20Dept:%20${activeDeptObj.name}`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition-colors flex items-center justify-center space-x-2"

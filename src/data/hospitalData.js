@@ -697,7 +697,7 @@ export const facilities = [
     desc: "In-house diagnostic laboratory operating round the clock for blood work, hormone panels, and emergency testing.",
     icon: "FlaskConical",
     badge: "Lab Helpline: 99444 49559",
-    image: getImg("images/nursing_station.jpeg")
+    image: getImg("images/pathology_lab.png")
   },
   {
     title: "24/7 Pharmacy & Medication Services",
@@ -769,6 +769,12 @@ export const hospitalGallery = [
     category: "Diagnostics & Scans",
     image: getImg("images/ct_scan.png"),
     desc: "State-of-the-art 128-slice CT scanner for rapid 24/7 emergency & diagnostic imaging."
+  },
+  {
+    title: "24/7 Diagnostic Pathology Laboratory",
+    category: "Diagnostics & Scans",
+    image: getImg("images/pathology_lab.png"),
+    desc: "Automated blood chemistry analyzers, clinical biochemistry, and 24/7 emergency lab diagnostics."
   },
 
   {

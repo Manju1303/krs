@@ -13,11 +13,6 @@ export default function Hero({ onOpenBooking }) {
 
   const backgroundSlides = [
     {
-      url: getImg('images/building.jpeg'),
-      caption: 'KRS Multispeciality Hospital Building',
-      sub: 'Salem Main Road, Edappadi, Tamil Nadu'
-    },
-    {
       url: getImg('images/ct_scan.png'),
       caption: '24/7 128-Slice CT Scan & Diagnostic Imaging',
       sub: 'High-speed precision CT brain, chest & trauma scanning'
