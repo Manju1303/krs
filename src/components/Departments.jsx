@@ -21,6 +21,19 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
     }
   }, [selectedDeptFilter]);
 
+  const handleTabClick = (deptId) => {
+    setActiveTab(deptId);
+    if (onSelectDepartment) onSelectDepartment(deptId);
+    setTimeout(() => {
+      const el = document.getElementById('active-dept-detail');
+      if (el) {
+        const yOffset = -90;
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 30);
+  };
+
   const activeDept = departments.find(d => d.id === activeTab) || departments[0];
   const deptDoctors = doctors.filter(doc => doc.departmentId === activeDept.id);
 
@@ -54,13 +67,8 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
               return (
                 <button
                   key={dept.id}
-                  onClick={() => {
-                    setActiveTab(dept.id);
-                    if (onSelectDepartment) onSelectDepartment(dept.id);
-                    // Smoothly scroll the details view into view on mobile
-                    document.getElementById('active-dept-detail')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                  }}
-                  className="flex-shrink-0 flex items-center gap-2.5 p-3 rounded-xl transition-all border text-left"
+                  onClick={() => handleTabClick(dept.id)}
+                  className="flex-shrink-0 flex items-center gap-2.5 p-3 rounded-xl transition-all border text-left cursor-pointer"
                   style={{
                     background: isActive ? 'linear-gradient(135deg, #f0fdf4, #dcfce7)' : '#ffffff',
                     borderColor: isActive ? '#a7f3d0' : 'rgba(15,23,42,0.07)',
@@ -88,11 +96,7 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
               return (
                 <button
                   key={dept.id}
-                  onClick={() => { 
-                    setActiveTab(dept.id); 
-                    if (onSelectDepartment) onSelectDepartment(dept.id); 
-                    document.getElementById('active-dept-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
+                  onClick={() => handleTabClick(dept.id)}
                   className="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between group cursor-pointer"
                   style={{
                     background: isActive ? 'linear-gradient(135deg, #f0fdf4, #dcfce7)' : '#ffffff',
@@ -110,15 +114,16 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                       <p className="text-[11px] line-clamp-1" style={{ color: '#94a3b8' }}>{dept.desc}</p>
                     </div>
                   </div>
-                  <ChevronRight className="w-4 h-4 transition-transform flex-shrink-0" style={{ color: isActive ? '#059669' : '#cbd5e1', transform: isActive ? 'translateX(3px)' : 'none' }} />
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                    style={{ color: isActive ? '#059669' : '#cbd5e1' }} />
                 </button>
               );
             })}
           </div>
 
           {/* Right: Active Department Detail */}
-          <div id="active-dept-detail" className="lg:col-span-8 w-full">
-            <div className="p-6 sm:p-8 rounded-2xl space-y-6" style={{ background: '#ffffff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}>
+          <div id="active-dept-detail" className="lg:col-span-8 w-full scroll-mt-24">
+            <div key={activeDept.id} className="p-6 sm:p-8 rounded-2xl space-y-6 animate-fade-in" style={{ background: '#ffffff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}>
               
               <div className="flex flex-wrap items-center justify-between gap-4 pb-6" style={{ borderBottom: '1px solid rgba(15,23,42,0.07)' }}>
                 <div className="flex items-center gap-4">
