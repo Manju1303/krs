@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, MapPin, Calendar, ShieldAlert, Menu, X, ChevronRight, Facebook, Mail, FlaskConical } from 'lucide-react';
+import { Phone, MapPin, Calendar, ShieldAlert, Menu, X, ChevronRight, Facebook, Instagram, Mail, FlaskConical } from 'lucide-react';
 import { hospitalInfo } from '../data/hospitalData';
 
 export default function Navbar({ onOpenBooking }) {
@@ -46,17 +46,25 @@ export default function Navbar({ onOpenBooking }) {
             <span>Lab: <strong className="text-white">{hospitalInfo.labPhone}</strong></span>
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <a href={hospitalInfo.facebook} target="_blank" rel="noreferrer"
-            className="flex items-center gap-1.5 text-slate-200 hover:text-white px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] transition-colors">
-            <Facebook className="w-3 h-3" /> Facebook
+        <div className="flex items-center gap-2">
+          <a href={hospitalInfo.facebook} target="_blank" rel="noreferrer" title="Facebook"
+            className="w-7 h-7 rounded-full bg-white/10 border border-white/15 text-slate-200 hover:text-white flex items-center justify-center transition-colors">
+            <Facebook className="w-3.5 h-3.5 text-blue-300" />
+          </a>
+          <a href={hospitalInfo.instagram} target="_blank" rel="noreferrer" title="Instagram"
+            className="w-7 h-7 rounded-full bg-white/10 border border-white/15 text-slate-200 hover:text-white flex items-center justify-center transition-colors">
+            <Instagram className="w-3.5 h-3.5 text-pink-300" />
+          </a>
+          <a href={hospitalInfo.googleMaps} target="_blank" rel="noreferrer" title="Google Maps"
+            className="w-7 h-7 rounded-full bg-white/10 border border-white/15 text-slate-200 hover:text-white flex items-center justify-center transition-colors">
+            <MapPin className="w-3.5 h-3.5 text-emerald-300" />
           </a>
           <a href={`mailto:${hospitalInfo.email}`}
-            className="hidden lg:flex items-center gap-1.5 text-slate-200 hover:text-white px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] transition-colors">
+            className="hidden lg:flex items-center gap-1.5 text-slate-200 hover:text-white px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] transition-colors ml-1">
             <Mail className="w-3 h-3" /> {hospitalInfo.email}
           </a>
           <a href={`tel:${hospitalInfo.hospitalMobile}`}
-            className="flex items-center gap-1.5 font-bold px-3 py-1 rounded-full text-[11px] transition-all"
+            className="flex items-center gap-1.5 font-bold px-3 py-1 rounded-full text-[11px] transition-all ml-1"
             style={{ background: '#dc2626', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
             <Phone className="w-3 h-3" /> {hospitalInfo.hospitalMobile}
           </a>

@@ -92,36 +92,36 @@ export default function Footer({ onOpenBooking }) {
               Founded in 1996 by <strong className="text-slate-300">Dr. K. Ravisuthan</strong> in Edappadi. 
               Committed to high-quality, technology-driven, affordable healthcare for every family.
             </p>
-            <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex items-center gap-3 pt-1">
               <a
                 href={hospitalInfo.facebook}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-300 hover:text-white transition-all"
-                style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)' }}
+                title="Facebook"
+                className="w-9 h-9 rounded-full flex items-center justify-center text-blue-400 hover:text-white transition-all hover:scale-110"
+                style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.30)' }}
               >
-                <Facebook className="w-3.5 h-3.5" />
-                Facebook
+                <Facebook className="w-4 h-4" />
               </a>
               <a
                 href={hospitalInfo.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-pink-300 hover:text-white transition-all"
-                style={{ background: 'rgba(236,72,153,0.12)', border: '1px solid rgba(236,72,153,0.25)' }}
+                title="Instagram"
+                className="w-9 h-9 rounded-full flex items-center justify-center text-pink-400 hover:text-white transition-all hover:scale-110"
+                style={{ background: 'rgba(236,72,153,0.15)', border: '1px solid rgba(236,72,153,0.30)' }}
               >
-                <Instagram className="w-3.5 h-3.5" />
-                Instagram
+                <Instagram className="w-4 h-4" />
               </a>
               <a
                 href={hospitalInfo.googleMaps}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-emerald-300 hover:text-white transition-all"
-                style={{ background: 'rgba(52,211,153,0.12)', border: '1px solid rgba(52,211,153,0.25)' }}
+                title="Google Maps Location"
+                className="w-9 h-9 rounded-full flex items-center justify-center text-emerald-400 hover:text-white transition-all hover:scale-110"
+                style={{ background: 'rgba(52,211,153,0.15)', border: '1px solid rgba(52,211,153,0.30)' }}
               >
-                <MapPin className="w-3.5 h-3.5" />
-                Google Maps
+                <MapPin className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -214,17 +214,15 @@ export default function Footer({ onOpenBooking }) {
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} KRS Multispeciality Hospital & Trauma Care Centre. All rights reserved.</p>
-          <div className="flex flex-wrap items-center gap-4">
-            <a href={hospitalInfo.facebook} target="_blank" rel="noreferrer" className="hover:text-blue-400 flex items-center gap-1 transition-colors">
-              <Facebook className="w-3.5 h-3.5" /> Facebook
+          <div className="flex items-center gap-2.5">
+            <a href={hospitalInfo.facebook} target="_blank" rel="noreferrer" title="Facebook" className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-blue-400 transition-colors">
+              <Facebook className="w-3.5 h-3.5" />
             </a>
-            <span className="text-slate-700">•</span>
-            <a href={hospitalInfo.instagram} target="_blank" rel="noreferrer" className="hover:text-pink-400 flex items-center gap-1 transition-colors">
-              <Instagram className="w-3.5 h-3.5" /> Instagram
+            <a href={hospitalInfo.instagram} target="_blank" rel="noreferrer" title="Instagram" className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-pink-400 transition-colors">
+              <Instagram className="w-3.5 h-3.5" />
             </a>
-            <span className="text-slate-700">•</span>
-            <a href={hospitalInfo.googleMaps} target="_blank" rel="noreferrer" className="hover:text-emerald-400 flex items-center gap-1 transition-colors">
-              <MapPin className="w-3.5 h-3.5" /> Google Maps
+            <a href={hospitalInfo.googleMaps} target="_blank" rel="noreferrer" title="Google Maps" className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 transition-colors">
+              <MapPin className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
