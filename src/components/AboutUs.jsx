@@ -24,14 +24,26 @@ export default function AboutUs() {
           <div className="lg:col-span-5 space-y-5">
             <div className="rounded-2xl overflow-hidden border p-2" style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
               <div className="relative rounded-xl overflow-hidden shadow-lg bg-slate-900 aspect-[4/3] group/carousel">
-                {/* Images */}
+                {/* Images with soft backdrop for 100% full view fit */}
                 {buildingImages.map((imgUrl, idx) => (
-                  <img
+                  <div
                     key={idx}
-                    src={imgUrl}
-                    alt={`KRS Multispeciality Hospital Building Edappadi - View ${idx + 1}`}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentIdx ? 'opacity-100' : 'opacity-0'}`}
-                  />
+                    className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out bg-slate-950 ${idx === currentIdx ? 'opacity-100' : 'opacity-0'}`}
+                  >
+                    {/* Blurred backdrop fill */}
+                    <img
+                      src={imgUrl}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-50 select-none pointer-events-none"
+                      aria-hidden="true"
+                    />
+                    {/* Crisp main image (100% zoomed out & complete building visible) */}
+                    <img
+                      src={imgUrl}
+                      alt={`KRS Multispeciality Hospital Building Edappadi - View ${idx + 1}`}
+                      className="relative z-10 w-full h-full object-contain drop-shadow-xl"
+                    />
+                  </div>
                 ))}
 
                 {/* Gradient Overlay */}
