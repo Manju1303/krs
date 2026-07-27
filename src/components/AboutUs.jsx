@@ -1,8 +1,18 @@
-import React from 'react';
-import { Award, ShieldCheck, Heart, Target, Sparkles, CheckCircle2, User, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Award, ShieldCheck, Heart, Target, Sparkles, CheckCircle2, User, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import { aboutData, hospitalInfo } from '../data/hospitalData';
 
 export default function AboutUs() {
+  const buildingImages = aboutData.buildingImages || [aboutData.buildingImage];
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIdx((prev) => (prev + 1) % buildingImages.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [buildingImages.length]);
+
   return (
     <section id="about" className="py-24 relative overflow-hidden" style={{ background: '#ffffff' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -13,16 +23,59 @@ export default function AboutUs() {
           {/* Left: Hospital Image */}
           <div className="lg:col-span-5 space-y-5">
             <div className="rounded-2xl overflow-hidden border p-2" style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
-              <div className="relative rounded-xl overflow-hidden shadow-lg bg-slate-900">
-                <img src={aboutData.buildingImage} alt="KRS Multispeciality Hospital Building Edappadi"
-                  className="w-full h-auto block transform hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.45) 0%, transparent 60%)' }} />
-                <div className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shadow-md"
+              <div className="relative rounded-xl overflow-hidden shadow-lg bg-slate-900 aspect-[4/3] group/carousel">
+                {/* Images */}
+                {buildingImages.map((imgUrl, idx) => (
+                  <img
+                    key={idx}
+                    src={imgUrl}
+                    alt={`KRS Multispeciality Hospital Building Edappadi - View ${idx + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentIdx ? 'opacity-100' : 'opacity-0'}`}
+                  />
+                ))}
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 pointer-events-none z-10" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.45) 0%, transparent 60%)' }} />
+
+                {/* Left Arrow */}
+                <button
+                  onClick={() => setCurrentIdx((prev) => (prev - 1 + buildingImages.length) % buildingImages.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center bg-white/80 hover:bg-white text-slate-800 shadow-md backdrop-blur-sm opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 z-20"
+                  aria-label="Previous Image"
+                >
+                  <ChevronLeft className="w-4 h-4 text-emerald-850" />
+                </button>
+
+                {/* Right Arrow */}
+                <button
+                  onClick={() => setCurrentIdx((prev) => (prev + 1) % buildingImages.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center bg-white/80 hover:bg-white text-slate-800 shadow-md backdrop-blur-sm opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 z-20"
+                  aria-label="Next Image"
+                >
+                  <ChevronRight className="w-4 h-4 text-emerald-850" />
+                </button>
+
+                {/* Dot Indicators */}
+                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                  {buildingImages.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentIdx(idx)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIdx ? 'bg-emerald-500 w-4' : 'bg-white/60 hover:bg-white'}`}
+                      aria-label={`Go to image ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Est. Badge */}
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-20"
                   style={{ background: '#d1fae5', border: '1px solid #a7f3d0', color: '#047857' }}>
                   <Award className="w-3.5 h-3.5" />
                   Est. 1996 · Edappadi, Tamil Nadu
                 </div>
-                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl shadow-md" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', border: '1px solid rgba(15,23,42,0.08)' }}>
+
+                {/* Hospital Tag Overlay */}
+                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl shadow-md z-20" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', border: '1px solid rgba(15,23,42,0.08)' }}>
                   <div className="text-xs font-bold" style={{ color: '#0f172a' }}>KRS Multispeciality Hospital</div>
                   <div className="flex items-center gap-1 mt-0.5 text-[10px]" style={{ color: '#059669' }}>
                     <MapPin className="w-3 h-3 shrink-0" />
@@ -56,38 +109,46 @@ export default function AboutUs() {
               <h2 className="text-4xl sm:text-5xl font-extrabold font-heading mt-3" style={{ color: '#0f172a' }}>
                 A Legacy of Trust in <span className="text-gradient-emerald">Edappadi</span>
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: '#475569' }}>
-                {aboutData.story}
-              </p>
-              <p className="text-sm leading-relaxed" style={{ color: '#475569' }}>
-                Our mission is rooted in treating every patient with the same care, empathy, and sincerity we extend to our own family.
-              </p>
+              <div className="space-y-3">
+                {aboutData.story.split('\n\n').map((paragraph, idx) => (
+                  <p key={idx} className="text-sm leading-relaxed text-slate-600">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
               {/* Mission */}
-              <div className="p-6 rounded-2xl space-y-3" style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.08)' }}>
-                <div className="flex items-center gap-2">
-                  <Heart className="w-5 h-5" style={{ color: '#dc2626' }} />
-                  <span className="font-bold font-heading text-sm" style={{ color: '#0f172a' }}>Our Mission</span>
+              <div className="p-6 rounded-2xl space-y-3 flex flex-col justify-between" style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.08)' }}>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-5 h-5" style={{ color: '#dc2626' }} />
+                    <span className="font-bold font-heading text-sm" style={{ color: '#0f172a' }}>Our Mission</span>
+                  </div>
+                  <div className="space-y-2">
+                    {aboutData.mission.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs" style={{ color: '#475569' }}>
+                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: '#059669' }} />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  {aboutData.mission.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs" style={{ color: '#475569' }}>
-                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: '#059669' }} />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
+                {aboutData.missionClosing && (
+                  <p className="text-[11px] italic font-medium text-emerald-800 pt-2 border-t border-slate-200">
+                    "{aboutData.missionClosing}"
+                  </p>
+                )}
               </div>
               {/* Quality */}
               <div className="p-6 rounded-2xl space-y-3" style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.08)' }}>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-5 h-5" style={{ color: '#0d9488' }} />
-                  <span className="font-bold font-heading text-sm" style={{ color: '#0f172a' }}>Quality Policy</span>
+                  <span className="font-bold font-heading text-sm" style={{ color: '#0f172a' }}>Our Quality Policy</span>
                 </div>
                 <div className="space-y-2">
-                  {aboutData.qualityPolicy.slice(0, 4).map((item, idx) => (
+                  {aboutData.qualityPolicy.map((item, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs" style={{ color: '#475569' }}>
                       <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: '#0d9488' }} />
                       <span>{item}</span>

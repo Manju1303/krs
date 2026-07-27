@@ -6,11 +6,16 @@ export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeLightboxImage, setActiveLightboxImage] = useState(null);
 
-  const categories = ['All', 'Campus & Building', 'Surgical Suite', 'Critical Care', 'Pharmacy', 'Facilities'];
+  const categories = ['All', 'Campus & Building', 'Diagnostics & Scans', 'Dental Care', 'Surgical Suite', 'Critical Care', 'Facilities'];
 
   const filteredItems = activeCategory === 'All'
     ? hospitalGallery
-    : hospitalGallery.filter(item => item.category === activeCategory || (activeCategory === 'Facilities' && (item.category === 'Facilities' || item.category === 'Trauma Unit')));
+    : hospitalGallery.filter(item => {
+        if (activeCategory === 'Facilities') {
+          return item.category === 'Facilities' || item.category === 'Trauma Unit' || item.category === 'Pharmacy';
+        }
+        return item.category === activeCategory;
+      });
 
   return (
     <section id="gallery" className="py-24 relative overflow-hidden" style={{ background: '#ffffff' }}>

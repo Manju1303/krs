@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { UserCheck, GraduationCap, Clock, Calendar, Search, Stethoscope, X } from 'lucide-react';
 import { doctors, departments } from '../data/hospitalData';
 
-export default function Doctors({ onOpenBooking }) {
+export default function Doctors({ 
+  onOpenBooking, 
+  selectedDeptFilter, 
+  setSelectedDeptFilter, 
+  selectedDoctorModal, 
+  setSelectedDoctorModal 
+}) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDeptFilter, setSelectedDeptFilter] = useState('All');
-  const [selectedDoctorModal, setSelectedDoctorModal] = useState(null);
 
   const filteredDoctors = doctors.filter((doc) => {
     const matchesSearch =
@@ -51,7 +55,7 @@ export default function Doctors({ onOpenBooking }) {
 
         {/* Dept Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {[{ id: 'All', name: `All (${doctors.length})` }, ...departments.slice(0, 7)].map((d) => {
+          {[{ id: 'All', name: `All (${doctors.length})` }, ...departments].map((d) => {
             const active = selectedDeptFilter === d.id;
             return (
               <button key={d.id} onClick={() => setSelectedDeptFilter(d.id)}
@@ -68,19 +72,16 @@ export default function Doctors({ onOpenBooking }) {
           })}
         </div>
 
-        {/* Scrollable Doctors Container Box */}
+        {/* Doctors Container Box */}
         <div className="p-4 sm:p-6 rounded-2xl bg-white border border-slate-200/80 shadow-lg space-y-4">
           
           <div className="flex items-center justify-between px-2 text-xs text-slate-500 pb-2 border-b border-slate-100">
             <span className="font-semibold text-emerald-700">
               Showing {filteredDoctors.length} Specialist Consultants
             </span>
-            <span className="text-[11px] text-slate-400 hidden sm:inline">
-              Scroll inside container to view all doctors
-            </span>
           </div>
 
-          <div className="max-h-[580px] overflow-y-auto pr-2 space-y-4">
+          <div className="space-y-4">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {filteredDoctors.map((doc) => (
                 <div key={doc.id} className="premium-card p-6 group flex flex-col">

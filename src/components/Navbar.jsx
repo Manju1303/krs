@@ -96,10 +96,7 @@ export default function Navbar({ onOpenBooking }) {
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map(link => (
               <a key={link.href} href={link.href}
-                className="text-sm font-medium px-3 py-2 rounded-lg transition-all"
-                style={{ color: '#334155' }}
-                onMouseEnter={e => { e.target.style.color = '#059669'; e.target.style.background = '#f0fdf4'; }}
-                onMouseLeave={e => { e.target.style.color = '#334155'; e.target.style.background = 'transparent'; }}>
+                className="text-sm font-medium px-3 py-2 rounded-lg transition-all text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 focus:text-emerald-600 focus:bg-emerald-50">
                 {link.label}
               </a>
             ))}

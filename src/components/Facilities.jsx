@@ -1,8 +1,8 @@
 import React from 'react';
-import { Building2, Ambulance, HeartPulse, Activity, Scissors, Bed, Pill, Dumbbell, Cpu, CheckCircle2 } from 'lucide-react';
+import { Building2, Ambulance, HeartPulse, Activity, Scissors, Bed, Pill, Dumbbell, Cpu, CheckCircle2, Scan, CircleDot, Smile, FlaskConical } from 'lucide-react';
 import { facilities } from '../data/hospitalData';
 
-const iconMap = { Ambulance, HeartPulse, Activity, Scissors, Bed, Pill, Dumbbell, Cpu };
+const iconMap = { Ambulance, HeartPulse, Activity, Scissors, Bed, Pill, Dumbbell, Cpu, Scan, CircleDot, Smile, FlaskConical };
 
 export default function Facilities() {
   return (

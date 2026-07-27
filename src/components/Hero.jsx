@@ -13,6 +13,16 @@ export default function Hero({ onOpenBooking }) {
 
   const backgroundSlides = [
     {
+      url: getImg('images/building.jpeg'),
+      caption: 'KRS Multispeciality Hospital Building',
+      sub: 'Salem Main Road, Edappadi, Tamil Nadu'
+    },
+    {
+      url: getImg('images/ct_scan.png'),
+      caption: '24/7 128-Slice CT Scan & Diagnostic Imaging',
+      sub: 'High-speed precision CT brain, chest & trauma scanning'
+    },
+    {
       url: getImg('images/ot_main.jpeg'),
       caption: 'Advanced Modular Operation Theatre',
       sub: 'Sterile surgical suites with laminar airflow'
@@ -23,14 +33,9 @@ export default function Hero({ onOpenBooking }) {
       sub: 'Multi-para patient monitoring & oxygen support'
     },
     {
-      url: getImg('images/reception_lounge.jpeg'),
-      caption: 'Patient Comfort Lounge',
-      sub: 'Spacious, air-conditioned family waiting lounge'
-    },
-    {
-      url: getImg('images/pharmacy.jpeg'),
-      caption: '24/7 In-House Pharmacy',
-      sub: 'Genuine medicines & medical supplies'
+      url: getImg('images/dental_care.png'),
+      caption: 'Modern Dental & Maxillofacial Suite',
+      sub: 'Painless root canals, crowns & oral surgeries'
     },
     {
       url: getImg('images/emergency_ramp.jpeg'),

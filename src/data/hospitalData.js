@@ -17,6 +17,8 @@ export const hospitalInfo = {
   labPhone: "+91 99444 49559",
   email: "krsmultispecialityh@gmail.com",
   facebook: "https://www.facebook.com/profile.php?id=61583509866582",
+  instagram: "https://www.instagram.com/krshospital?igsh=MXdxanowcDY1eXQzZA==",
+  googleMaps: "https://maps.google.com/?q=KRS+Hospital+Edappadi+Salem+Tamil+Nadu",
   whatsapp: "+91 63808 98608",
   workingHours: "24 Hours / 7 Days Open (Emergency, ICU & Lab Available 24/7)",
   tagline: "A Trusted Name, A Deserved Care",
@@ -29,14 +31,22 @@ export const hospitalInfo = {
 };
 
 export const aboutData = {
-  story: "KRS Multispeciality Hospital & Trauma Care Centre stands as a symbol of trust, excellence, and compassionate care in Edappadi. Founded in 1996 as KRS Clinic by Dr. K. Ravisuthan, it has today grown into one of Edappadi’s most trusted and advanced healthcare destinations. Built on a foundation of dedication and integrity, KRS has expanded from a small clinic to a multispeciality hub that brings expert doctors, modern technology, and comprehensive care together under one roof.",
+  story: "KRS Multispeciality Hospital & Trauma Care Centre stands as a symbol of trust, excellence, and compassionate care in Edappadi. Founded in 1996 as KRS Clinic by Dr. K. Ravisuthan, it has today grown into one of Edappadi’s most trusted and advanced healthcare destinations. Built on a foundation of dedication and integrity, KRS has expanded from a small clinic to a multispeciality hub that brings expert doctors, modern technology, and comprehensive care together under one roof. Our commitment has always been simple: quality healthcare that every family can rely on.\n\nFrom routine consultations to advanced treatments, from emergency trauma care to specialized medical services, we ensure every patient receives personalised attention supported by the latest innovations in healthcare. At KRS, we believe healing is not just a process, it’s a partnership. That’s why we continuously upgrade our facilities, invest in superior diagnostic systems, and focus on patient comfort and safety at every step.\n\nFor nearly three decades, KRS has been more than a hospital — it has been a symbol of trust, hope, and healing for the people of Edappadi.",
   buildingImage: getImg("images/building.jpeg"),
+  buildingImages: [
+    getImg("images/building.jpeg"),
+    getImg("images/building_front.jpeg"),
+    getImg("images/building_wide.jpeg"),
+    getImg("images/hospital_lobby.jpeg"),
+    getImg("images/reception_lounge.jpeg")
+  ],
   mission: [
     "Delivering comprehensive, evidence-based medical services",
     "Offering personalized attention with empathy, dignity, and respect",
     "Maintaining a safe, transparent, and friendly environment",
     "Ensuring affordable clinical excellence for all individuals"
   ],
+  missionClosing: "Our mission is rooted in a commitment to treat every patient with the same care and sincerity we extend to family.",
   vision: [
     "Delivering high-quality, technology-driven healthcare.",
     "Making world-class treatment accessible to every patient.",
@@ -318,13 +328,41 @@ export const departments = [
     name: "Dental & Maxillofacial",
     icon: "Smile",
     desc: "Root canal therapy, crowns, gum care, wisdom tooth extractions, and facial trauma restoration.",
-    image: getImg("images/nursing_station.jpeg"),
+    image: getImg("images/dental_care.png"),
     services: [
       "Preventive Oral Cleaning, Scaling & Cavity Protection",
       "Restorative Tooth-Colored Fillings, Crowns & Inlays",
       "Painless Endodontic Root Canal Therapy",
       "Periodontal Gum Disease Scaling & Root Planing",
       "Oral Maxillofacial Surgery & Wisdom Tooth Extraction"
+    ]
+  },
+  {
+    id: "ct-scan",
+    name: "CT Scan & Advanced Imaging",
+    icon: "Scan",
+    desc: "Round-the-clock 128-slice CT scan, multi-detector spiral angiography, brain, chest & emergency trauma cross-sectional imaging.",
+    image: getImg("images/ct_scan.png"),
+    services: [
+      "24/7 Emergency CT Brain & Head Injury Evaluation",
+      "High-Speed High-Resolution Whole Body & Abdominal CT",
+      "3D CT Angiography & Vascular Scan",
+      "Chest CT Scan for Lung Infection & Pulmonary Embolism",
+      "Spine & Musculoskeletal CT Scans with Instant Digital Reports"
+    ]
+  },
+  {
+    id: "scan-radiology",
+    name: "Ultrasound & Diagnostic Scan",
+    icon: "CircleDot",
+    desc: "4D obstetric pregnancy scanning, abdominal & pelvic Doppler scans, thyroid, musculoskeletal & soft tissue ultrasound diagnostics.",
+    image: getImg("images/ultrasound_scan.png"),
+    services: [
+      "4D Fetal Anomaly & Pregnancy Growth Monitoring Scans",
+      "Abdomen & Pelvis High-Resolution Ultrasound Diagnostics",
+      "Color Doppler Vascular Flow & Arterial/Venous Study",
+      "Thyroid, Neck, Breast & Soft Tissue Ultrasound",
+      "Fast Emergency Bedside Scan (FAST) for Trauma Patients"
     ]
   },
   {
@@ -702,15 +740,72 @@ export const facilities = [
     icon: "Cpu",
     badge: "Smart Tech",
     image: getImg("images/reception_desk.jpeg")
+  },
+  {
+    title: "24/7 High-Speed CT Scan Unit",
+    desc: "128-slice precision CT scanner operating round the clock for trauma, brain, chest, and emergency abdominal diagnosis.",
+    icon: "Scan",
+    badge: "24/7 Active",
+    image: getImg("images/ct_scan.png")
+  },
+  {
+    title: "4D Ultrasound & Color Doppler Scan",
+    desc: "Advanced diagnostic ultrasound for pregnancy fetal monitoring, abdominal evaluation, and vascular Doppler blood flow analysis.",
+    icon: "CircleDot",
+    badge: "HD Diagnostic",
+    image: getImg("images/ultrasound_scan.png")
+  },
+  {
+    title: "Modern Dental & Maxillofacial Suite",
+    desc: "Equipped with digital oral X-ray, painless root canal treatment technology, and cosmetic restoration facilities.",
+    icon: "Smile",
+    badge: "Specialized Suite",
+    image: getImg("images/dental_care.png")
   }
 ];
 
 export const hospitalGallery = [
   {
-    title: "KRS Main Hospital Building",
+    title: "KRS Main Hospital Building (Front Entrance)",
     category: "Campus & Building",
     image: getImg("images/building.jpeg"),
-    desc: "Multi-storey modern hospital campus located on Salem Main Road, Edappadi."
+    desc: "Multi-storey modern hospital building located on Salem Main Road, Edappadi."
+  },
+  {
+    title: "KRS Hospital Front Entrance",
+    category: "Campus & Building",
+    image: getImg("images/building_front.jpeg"),
+    desc: "Front entrance view of KRS Multispeciality Hospital and Trauma Care Centre."
+  },
+  {
+    title: "KRS Hospital Exterior Campus View",
+    category: "Campus & Building",
+    image: getImg("images/building_wide.jpeg"),
+    desc: "Wide exterior view of KRS Multispeciality Hospital building complex in Edappadi."
+  },
+  {
+    title: "KRS Hospital Lobby Reception Area",
+    category: "Campus & Building",
+    image: getImg("images/hospital_lobby.jpeg"),
+    desc: "Spacious lobby and reception area inside KRS Multispeciality Hospital."
+  },
+  {
+    title: "128-Slice CT Scan Suite",
+    category: "Diagnostics & Scans",
+    image: getImg("images/ct_scan.png"),
+    desc: "State-of-the-art 128-slice CT scanner for rapid 24/7 emergency & diagnostic imaging."
+  },
+  {
+    title: "4D Ultrasound & Diagnostic Scan Room",
+    category: "Diagnostics & Scans",
+    image: getImg("images/ultrasound_scan.png"),
+    desc: "High-precision 4D fetal ultrasound scan machine & color Doppler diagnostic suite."
+  },
+  {
+    title: "Modern Dental Care Operatory",
+    category: "Dental Care",
+    image: getImg("images/dental_care.png"),
+    desc: "Equipped dental suite for painless root canals, crowns, and oral maxillofacial surgeries."
   },
   {
     title: "Modular Operation Theatre",

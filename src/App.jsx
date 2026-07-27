@@ -18,11 +18,29 @@ export default function App() {
   const [bookingDoctorName, setBookingDoctorName] = useState('');
   const [bookingPackageName, setBookingPackageName] = useState('');
 
+  // Lifted state for cross-component interactions
+  const [selectedDeptFilter, setSelectedDeptFilter] = useState('All');
+  const [selectedDoctorModal, setSelectedDoctorModal] = useState(null);
+
   const handleOpenBooking = (deptId = '', docName = '', pkgName = '') => {
     setBookingDeptId(typeof deptId === 'string' ? deptId : '');
     setBookingDoctorName(typeof docName === 'string' ? docName : '');
     setBookingPackageName(typeof pkgName === 'string' ? pkgName : '');
     setBookingModalOpen(true);
+  };
+
+  const handleSelectDoctor = (doc) => {
+    setSelectedDeptFilter(doc.departmentId);
+    setSelectedDoctorModal(doc);
+    // Smoothly scroll to the doctors section
+    const doctorsSection = document.getElementById('doctors');
+    if (doctorsSection) {
+      doctorsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSelectDepartment = (deptId) => {
+    setSelectedDeptFilter(deptId);
   };
 
   return (
@@ -34,8 +52,19 @@ export default function App() {
         <Stats />
         <div className="mt-20">
           <AboutUs />
-          <Departments onOpenBooking={(deptId) => handleOpenBooking(deptId)} />
-          <Doctors onOpenBooking={(deptId, docName) => handleOpenBooking(deptId, docName)} />
+          <Departments 
+            onOpenBooking={(deptId) => handleOpenBooking(deptId)} 
+            onSelectDepartment={handleSelectDepartment}
+            onSelectDoctor={handleSelectDoctor}
+            selectedDeptFilter={selectedDeptFilter}
+          />
+          <Doctors 
+            onOpenBooking={(deptId, docName) => handleOpenBooking(deptId, docName)} 
+            selectedDeptFilter={selectedDeptFilter}
+            setSelectedDeptFilter={setSelectedDeptFilter}
+            selectedDoctorModal={selectedDoctorModal}
+            setSelectedDoctorModal={setSelectedDoctorModal}
+          />
           <Facilities />
           <Gallery />
           <WhyChooseUs onOpenBooking={() => handleOpenBooking()} />

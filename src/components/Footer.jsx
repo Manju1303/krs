@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, ShieldAlert, Award, Calendar, Facebook, FlaskConical, ChevronRight, Building2 } from 'lucide-react';
+import React from 'react';
+import { Phone, Mail, MapPin, Clock, ShieldAlert, Award, Calendar, Facebook, Instagram, FlaskConical, ChevronRight, Building2 } from 'lucide-react';
 import { hospitalInfo, departments } from '../data/hospitalData';
 
 const getImg = (path) => {
@@ -92,21 +92,37 @@ export default function Footer({ onOpenBooking }) {
               Founded in 1996 by <strong className="text-slate-300">Dr. K. Ravisuthan</strong> in Edappadi. 
               Committed to high-quality, technology-driven, affordable healthcare for every family.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5">
               <a
                 href={hospitalInfo.facebook}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-blue-300 hover:text-white transition-all"
-                style={{ background: 'rgba(59,130,246,0.10)', border: '1px solid rgba(59,130,246,0.20)' }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-300 hover:text-white transition-all"
+                style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)' }}
               >
                 <Facebook className="w-3.5 h-3.5" />
-                Follow Us
+                Facebook
               </a>
-              <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
-                <Award className="w-3.5 h-3.5" />
-                <span>28+ Years of Excellence</span>
-              </div>
+              <a
+                href={hospitalInfo.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-pink-300 hover:text-white transition-all"
+                style={{ background: 'rgba(236,72,153,0.12)', border: '1px solid rgba(236,72,153,0.25)' }}
+              >
+                <Instagram className="w-3.5 h-3.5" />
+                Instagram
+              </a>
+              <a
+                href={hospitalInfo.googleMaps}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-emerald-300 hover:text-white transition-all"
+                style={{ background: 'rgba(52,211,153,0.12)', border: '1px solid rgba(52,211,153,0.25)' }}
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                Google Maps
+              </a>
             </div>
           </div>
 
@@ -177,7 +193,7 @@ export default function Footer({ onOpenBooking }) {
                 Conveniently located on Salem Main Road, Vellandivalasu, Edappadi — with 24/7 ambulance access & parking.
               </p>
               <a
-                href="https://maps.google.com/?q=KRS+Hospital+Edappadi+Salem+Tamil+Nadu"
+                href={hospitalInfo.googleMaps}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors group"
@@ -198,10 +214,18 @@ export default function Footer({ onOpenBooking }) {
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} KRS Multispeciality Hospital & Trauma Care Centre. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a href={hospitalInfo.facebook} target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">Facebook</a>
+          <div className="flex flex-wrap items-center gap-4">
+            <a href={hospitalInfo.facebook} target="_blank" rel="noreferrer" className="hover:text-blue-400 flex items-center gap-1 transition-colors">
+              <Facebook className="w-3.5 h-3.5" /> Facebook
+            </a>
             <span className="text-slate-700">•</span>
-            <span>Serving Edappadi since 1996</span>
+            <a href={hospitalInfo.instagram} target="_blank" rel="noreferrer" className="hover:text-pink-400 flex items-center gap-1 transition-colors">
+              <Instagram className="w-3.5 h-3.5" /> Instagram
+            </a>
+            <span className="text-slate-700">•</span>
+            <a href={hospitalInfo.googleMaps} target="_blank" rel="noreferrer" className="hover:text-emerald-400 flex items-center gap-1 transition-colors">
+              <MapPin className="w-3.5 h-3.5" /> Google Maps
+            </a>
           </div>
         </div>
       </div>

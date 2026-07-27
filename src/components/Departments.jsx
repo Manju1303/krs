@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { 
   Stethoscope, Activity, Bone, Brain, HeartHandshake, Wind, Sparkles, 
-  Scissors, ShieldAlert, Crosshair, Baby, Smile, Scale, CircleDot, 
+  Scissors, ShieldAlert, Crosshair, Baby, Smile, Scale, CircleDot, Scan, Cpu,
   CheckCircle2, ChevronRight, Calendar, ArrowRight, User 
 } from 'lucide-react';
 import { departments, doctors } from '../data/hospitalData';
 
 const iconMap = {
   Stethoscope, Activity, Bone, Brain, HeartHandshake, Wind, Sparkles,
-  Scissors, ShieldAlert, Crosshair, Baby, Smile, Scale, CircleDot
+  Scissors, ShieldAlert, Crosshair, Baby, Smile, Scale, CircleDot, Scan, Cpu
 };
 
-export default function Departments({ onOpenBooking, selectedDeptId, onSelectDepartment }) {
-  const [activeTab, setActiveTab] = useState(selectedDeptId || departments[0].id);
+export default function Departments({ onOpenBooking, selectedDeptId, onSelectDepartment, onSelectDoctor, selectedDeptFilter }) {
+  const [activeTab, setActiveTab] = useState(selectedDeptId || (selectedDeptFilter !== 'All' ? selectedDeptFilter : departments[0].id));
+
+  // Sync activeTab with lifted state selectedDeptFilter
+  React.useEffect(() => {
+    if (selectedDeptFilter && selectedDeptFilter !== 'All' && selectedDeptFilter !== activeTab) {
+      setActiveTab(selectedDeptFilter);
+    }
+  }, [selectedDeptFilter]);
 
   const activeDept = departments.find(d => d.id === activeTab) || departments[0];
   const deptDoctors = doctors.filter(doc => doc.departmentId === activeDept.id);
@@ -39,15 +46,52 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
         {/* Department Explorer Grid / Tabs */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Department List */}
-          <div className="lg:col-span-4 space-y-1.5 max-h-[600px] overflow-y-auto pr-1">
+          {/* Mobile Department Horizontal Scroll */}
+          <div className="lg:hidden w-full flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-emerald-200 scrollbar-track-transparent">
             {departments.map((dept) => {
               const IconComponent = iconMap[dept.icon] || Stethoscope;
               const isActive = dept.id === activeTab;
               return (
                 <button
                   key={dept.id}
-                  onClick={() => { setActiveTab(dept.id); if (onSelectDepartment) onSelectDepartment(dept.id); }}
+                  onClick={() => {
+                    setActiveTab(dept.id);
+                    if (onSelectDepartment) onSelectDepartment(dept.id);
+                    // Smoothly scroll the details view into view on mobile
+                    document.getElementById('active-dept-detail')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                  }}
+                  className="flex-shrink-0 flex items-center gap-2.5 p-3 rounded-xl transition-all border text-left"
+                  style={{
+                    background: isActive ? 'linear-gradient(135deg, #f0fdf4, #dcfce7)' : '#ffffff',
+                    borderColor: isActive ? '#a7f3d0' : 'rgba(15,23,42,0.07)',
+                    boxShadow: isActive ? '0 2px 10px rgba(5,150,105,0.1)' : '0 1px 3px rgba(0,0,0,0.04)',
+                    minWidth: '180px'
+                  }}
+                >
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors flex-shrink-0"
+                    style={{ background: isActive ? '#059669' : '#f0fdf4' }}>
+                    <IconComponent className="w-4 h-4" style={{ color: isActive ? '#fff' : '#059669' }} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-xs font-bold truncate" style={{ color: isActive ? '#047857' : '#0f172a' }}>{dept.name}</h4>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Left Column: Desktop Department List */}
+          <div className="hidden lg:block lg:col-span-4 space-y-1.5 max-h-[600px] overflow-y-auto pr-1">
+            {departments.map((dept) => {
+              const IconComponent = iconMap[dept.icon] || Stethoscope;
+              const isActive = dept.id === activeTab;
+              return (
+                <button
+                  key={dept.id}
+                  onClick={() => { 
+                    setActiveTab(dept.id); 
+                    if (onSelectDepartment) onSelectDepartment(dept.id); 
+                  }}
                   className="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between group"
                   style={{
                     background: isActive ? 'linear-gradient(135deg, #f0fdf4, #dcfce7)' : '#ffffff',
@@ -72,7 +116,7 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
           </div>
 
           {/* Right: Active Department Detail */}
-          <div className="lg:col-span-8">
+          <div id="active-dept-detail" className="lg:col-span-8 w-full">
             <div className="p-6 sm:p-8 rounded-2xl space-y-6" style={{ background: '#ffffff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 4px 24px rgba(0,0,0,0.07)' }}>
               
               <div className="flex flex-wrap items-center justify-between gap-4 pb-6" style={{ borderBottom: '1px solid rgba(15,23,42,0.07)' }}>
@@ -112,18 +156,43 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                   <h4 className="text-[10px] uppercase tracking-wider font-bold mb-3" style={{ color: '#94a3b8' }}>Specialists in {activeDept.name}</h4>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {deptDoctors.map((doc) => (
-                      <div key={doc.id} className="p-4 rounded-xl flex items-center gap-3" style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.07)' }}>
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 text-white"
-                          style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                          {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      <div 
+                        key={doc.id}
+                        onClick={() => onSelectDoctor && onSelectDoctor(doc)}
+                        className="p-4 rounded-xl flex items-center justify-between gap-3 text-left transition-all border hover:border-emerald-300 hover:shadow-md cursor-pointer group"
+                        style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.07)' }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 text-white transition-transform group-hover:scale-105"
+                            style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
+                            {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                          </div>
+                          <div>
+                            <h5 className="text-sm font-bold transition-colors group-hover:text-emerald-700" style={{ color: '#0f172a' }}>{doc.name}</h5>
+                            <p className="text-xs font-medium" style={{ color: '#059669' }}>{doc.degrees}</p>
+                            <p className="text-[11px]" style={{ color: '#94a3b8' }}>{doc.specialty}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h5 className="text-sm font-bold" style={{ color: '#0f172a' }}>{doc.name}</h5>
-                          <p className="text-xs font-medium" style={{ color: '#059669' }}>{doc.degrees}</p>
-                          <p className="text-[11px]" style={{ color: '#94a3b8' }}>{doc.specialty}</p>
+                        <div className="flex flex-col items-end shrink-0">
+                          <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-150 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                            View Profile →
+                          </span>
                         </div>
                       </div>
                     ))}
+                  </div>
+
+                  <div className="mt-4 pt-4 flex flex-wrap items-center justify-between gap-3" style={{ borderTop: '1px solid rgba(15,23,42,0.07)' }}>
+                    <span className="text-[11px] text-slate-500 font-medium">Ready to see availability, schedule, or full credentials?</span>
+                    <button 
+                      onClick={() => {
+                        if (onSelectDepartment) onSelectDepartment(activeDept.id);
+                        document.getElementById('doctors')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1 transition-all"
+                    >
+                      View Schedule & Availability <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </div>
               )}
