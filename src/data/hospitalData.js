@@ -35,7 +35,6 @@ export const aboutData = {
   buildingImage: getImg("images/building.jpeg"),
   buildingImages: [
     getImg("images/building.jpeg"),
-    getImg("images/building_front.jpeg"),
     getImg("images/building_wide.jpeg"),
     getImg("images/hospital_lobby.jpeg"),
     getImg("images/reception_lounge.jpeg")
@@ -752,12 +751,7 @@ export const hospitalGallery = [
     image: getImg("images/building.jpeg"),
     desc: "Multi-storey modern hospital building located on Salem Main Road, Edappadi."
   },
-  {
-    title: "KRS Hospital Front Entrance",
-    category: "Campus & Building",
-    image: getImg("images/building_front.jpeg"),
-    desc: "Front entrance view of KRS Multispeciality Hospital and Trauma Care Centre."
-  },
+
   {
     title: "KRS Hospital Exterior Campus View",
     category: "Campus & Building",
