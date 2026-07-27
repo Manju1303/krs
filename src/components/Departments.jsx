@@ -91,8 +91,9 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                   onClick={() => { 
                     setActiveTab(dept.id); 
                     if (onSelectDepartment) onSelectDepartment(dept.id); 
+                    document.getElementById('active-dept-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between group"
+                  className="w-full text-left p-4 rounded-xl transition-all flex items-center justify-between group cursor-pointer"
                   style={{
                     background: isActive ? 'linear-gradient(135deg, #f0fdf4, #dcfce7)' : '#ffffff',
                     border: isActive ? '1px solid #a7f3d0' : '1px solid rgba(15,23,42,0.07)',
