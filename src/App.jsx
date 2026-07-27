@@ -77,7 +77,6 @@ export default function App() {
         onClose={() => setBookingModalOpen(false)}
         initialDeptId={bookingDeptId}
         initialDoctorName={bookingDoctorName}
-        initialPackageName={bookingPackageName}
       />
     </div>
   );
