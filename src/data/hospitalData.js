@@ -351,20 +351,7 @@ export const departments = [
       "Spine & Musculoskeletal CT Scans with Instant Digital Reports"
     ]
   },
-  {
-    id: "scan-radiology",
-    name: "Ultrasound & Diagnostic Scan",
-    icon: "CircleDot",
-    desc: "4D obstetric pregnancy scanning, abdominal & pelvic Doppler scans, thyroid, musculoskeletal & soft tissue ultrasound diagnostics.",
-    image: getImg("images/ultrasound_scan.png"),
-    services: [
-      "4D Fetal Anomaly & Pregnancy Growth Monitoring Scans",
-      "Abdomen & Pelvis High-Resolution Ultrasound Diagnostics",
-      "Color Doppler Vascular Flow & Arterial/Venous Study",
-      "Thyroid, Neck, Breast & Soft Tissue Ultrasound",
-      "Fast Emergency Bedside Scan (FAST) for Trauma Patients"
-    ]
-  },
+
   {
     id: "endocrinology",
     name: "Endocrinology",
@@ -748,13 +735,7 @@ export const facilities = [
     badge: "24/7 Active",
     image: getImg("images/ct_scan.png")
   },
-  {
-    title: "4D Ultrasound & Color Doppler Scan",
-    desc: "Advanced diagnostic ultrasound for pregnancy fetal monitoring, abdominal evaluation, and vascular Doppler blood flow analysis.",
-    icon: "CircleDot",
-    badge: "HD Diagnostic",
-    image: getImg("images/ultrasound_scan.png")
-  },
+
   {
     title: "Modern Dental & Maxillofacial Suite",
     desc: "Equipped with digital oral X-ray, painless root canal treatment technology, and cosmetic restoration facilities.",
@@ -795,12 +776,7 @@ export const hospitalGallery = [
     image: getImg("images/ct_scan.png"),
     desc: "State-of-the-art 128-slice CT scanner for rapid 24/7 emergency & diagnostic imaging."
   },
-  {
-    title: "4D Ultrasound & Diagnostic Scan Room",
-    category: "Diagnostics & Scans",
-    image: getImg("images/ultrasound_scan.png"),
-    desc: "High-precision 4D fetal ultrasound scan machine & color Doppler diagnostic suite."
-  },
+
   {
     title: "Modern Dental Care Operatory",
     category: "Dental Care",
