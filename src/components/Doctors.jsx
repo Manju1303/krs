@@ -28,7 +28,7 @@ export default function Doctors({
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
           <div className="section-divider" />
-          <span className="section-label-pill"><UserCheck className="w-3.5 h-3.5" />19+ Qualified Specialists</span>
+          <span className="section-label-pill"><UserCheck className="w-3.5 h-3.5" />20+ Qualified Specialists</span>
           <h2 className="text-4xl sm:text-5xl font-extrabold font-heading mt-3" style={{ color: '#0f172a' }}>
             Our <span className="text-gradient-emerald">Specialist Doctors</span>
           </h2>

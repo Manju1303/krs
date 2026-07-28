@@ -97,19 +97,43 @@ export default function AboutUs() {
               </div>
             </div>
 
-            {/* Founder Card */}
-            <div className="p-4 rounded-2xl flex items-center gap-4" style={{ background: '#f0fdf4', border: '1px solid #a7f3d0' }}>
-              <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-md" style={{ border: '2px solid #a7f3d0' }}>
-                <img
-                  src={`${import.meta.env.BASE_URL || '/'}images/doctors/ravisuthan.jpg`}
-                  alt={hospitalInfo.founder}
-                  className="w-full h-full object-cover"
-                />
+            {/* About Our Founder Section */}
+            <div className="p-6 rounded-3xl space-y-5" style={{ background: 'linear-gradient(135deg, #f0fdf4, #ecfdf5)', border: '1px solid #a7f3d0', boxShadow: '0 4px 20px rgba(5,150,105,0.08)' }}>
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                <div className="w-32 sm:w-36 h-40 sm:h-44 rounded-2xl overflow-hidden shrink-0 shadow-lg border-2 border-emerald-400 bg-white">
+                  <img
+                    src={`${import.meta.env.BASE_URL || '/'}images/doctors/ravisuthan.jpg`}
+                    alt={hospitalInfo.founder}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="space-y-2 text-center sm:text-left flex-1">
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md text-emerald-800 bg-emerald-100 border border-emerald-200">
+                    Founder & Managing Director
+                  </span>
+                  <h4 className="text-xl font-extrabold font-heading text-slate-900 leading-tight">
+                    {hospitalInfo.founder}
+                  </h4>
+                  <p className="text-xs font-bold text-emerald-700">
+                    MBBS., MHSC (Diabetology)
+                  </p>
+                  <p className="text-xs font-semibold text-slate-600">
+                    Primary Consultant Diabetologist
+                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed italic pt-1 border-t border-emerald-200/60">
+                    "Established KRS Hospital in 1996 with a vision to deliver transparent, ethical, and compassionate medical care to every family in Edappadi."
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 className="text-sm font-extrabold font-heading" style={{ color: '#0f172a' }}>{hospitalInfo.founder}</h4>
-                <p className="text-xs font-semibold" style={{ color: '#059669' }}>MBBS., MHSC (Diabetology)</p>
-                <p className="text-[11px]" style={{ color: '#64748b' }}>Founder & Managing Director · Est. 1996</p>
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-emerald-200/60 text-center">
+                <div className="p-2 rounded-xl bg-white/80 border border-emerald-200/50">
+                  <div className="text-xs font-extrabold text-emerald-700">28+ Years</div>
+                  <div className="text-[10px] text-slate-500 font-medium">Clinical Leadership</div>
+                </div>
+                <div className="p-2 rounded-xl bg-white/80 border border-emerald-200/50">
+                  <div className="text-xs font-extrabold text-emerald-700">Est. 1996</div>
+                  <div className="text-[10px] text-slate-500 font-medium">Serving Edappadi</div>
+                </div>
               </div>
             </div>
           </div>

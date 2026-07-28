@@ -46,7 +46,7 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
           <div className="section-divider" />
           <span className="section-label-pill">
             <Stethoscope className="w-3.5 h-3.5" />
-            15+ Specialized Departments
+            19+ Specialized Departments
           </span>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 font-heading mt-3">
             Medicine Department <span className="text-teal-600">Doctor Availability</span> & Schedule

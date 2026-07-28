@@ -350,31 +350,59 @@ export const departments = [
   },
 
   {
-    id: "endocrinology",
-    name: "Endocrinology",
-    icon: "Scale",
-    desc: "Hormonal evaluation for thyroid, pituitary, adrenal, metabolic syndrome, and osteoporosis.",
-    image: getImg("images/nursing_station.jpeg"),
+    id: "emergency-care",
+    name: "Emergency & Critical Care Medicine",
+    icon: "ShieldAlert",
+    desc: "24/7 rapid trauma response, emergency resuscitation, ICU triage, and critical patient stabilization.",
+    image: getImg("images/emergency_ward_new.jpg"),
     services: [
-      "Thyroid Disorder Hormone Testing & Management",
-      "Complex Hormonal Imbalance Assessment",
-      "Medical Weight Loss & Metabolic Syndrome Strategy",
-      "Bone Density (DEXA) Osteoporosis Prevention",
-      "Pituitary & Adrenal Gland Diagnostic Management"
+      "24/7 Emergency Casualty & Trauma Resuscitation",
+      "ICU Critical Care & Advanced Vital Monitoring",
+      "Cardiac, Stroke & Acute Poisoning Emergency Protocols",
+      "Continuous Oxygen & Mechanical Ventilation Support",
+      "Rapid Ambulance Dispatch & Triage Response"
     ]
   },
   {
-    id: "gastroenterology",
-    name: "Gastroenterology",
-    icon: "CircleDot",
-    desc: "Endoscopy, liver disease management, ERCP gallstone care, and colonoscopy screenings.",
+    id: "anesthesiology",
+    name: "Anesthesiology & Pain Management",
+    icon: "Activity",
+    desc: "Pre-operative anesthesia planning, perioperative monitoring, and acute & chronic pain management.",
     image: getImg("images/ot_main.jpeg"),
     services: [
-      "Upper GI Endoscopy for Acidity, Reflux & Ulcers",
-      "Liver Disease Screening (Fatty Liver, Hepatitis, Cirrhosis)",
-      "Gallstone & Pancreatitis Diagnostic ERCP",
-      "Colonoscopy Screening for IBS, Polyps & Colitis",
-      "Digestive Intolerance & Gut Health Counseling"
+      "General Anesthesia & Precision Intra-Operative Monitoring",
+      "Spinal, Epidural & Regional Nerve Block Anesthesia",
+      "Post-Operative Acute Pain Relief Management",
+      "Painless Labor Epidural Services",
+      "Chronic Musculoskeletal & Nerve Pain Interventions"
+    ]
+  },
+  {
+    id: "psychiatry",
+    name: "Psychiatry & Mental Health",
+    icon: "Brain",
+    desc: "Clinical psychiatric assessment, counseling, stress & anxiety therapies, and behavioral health.",
+    image: getImg("images/nursing_station.jpeg"),
+    services: [
+      "Clinical Psychiatric Evaluation & Consultation",
+      "Stress, Anxiety & Depression Counseling Therapies",
+      "Insomnia & Sleep Disorder Management",
+      "De-Addiction & Behavioral Therapy Programs",
+      "Psychosomatic Disorder Integrated Care"
+    ]
+  },
+  {
+    id: "radiology",
+    name: "Radiology & Diagnostic Imaging",
+    icon: "Scan",
+    desc: "128-slice CT scans, digital X-rays, ultrasound imaging, and diagnostic radiological reporting.",
+    image: getImg("images/ct_scan_simple.jpg"),
+    services: [
+      "24/7 Emergency CT Scan & Cross-Sectional Imaging",
+      "3D CT Angiography & Vascular Diagnostics",
+      "High-Resolution Abdominal & Thoracic Scans",
+      "Digital X-Ray & Ultrasound Imaging Reports",
+      "Musculoskeletal & Neuro-Radiology Reporting"
     ]
   }
 ];
@@ -384,50 +412,50 @@ export const doctors = [
     id: "dr-ravisuthan",
     name: "Dr. K. Ravisuthan",
     degrees: "MBBS., MHSC (Diabetology)",
-    specialty: "General Medicine | Diabetologist",
-    role: "Founder & Chief Physician",
-    departmentId: "gen-med",
+    specialty: "Primary Consultant Diabetologist",
+    role: "Founder & Primary Consultant Diabetologist",
+    departmentId: "diabetology",
     experience: "28+ Years",
-    bio: "Dr. Ravisuthan is the visionary Founder of KRS Hospital, widely respected for his unwavering commitment to ethical medical practice, clinical excellence, and patient-first care.",
+    bio: "Dr. Ravisuthan is the visionary Founder of KRS Hospital, widely respected for his 28+ years of dedicated service, ethical medical leadership, and pioneering diabetology care in Edappadi.",
     highlights: [
-      "Founder of KRS Hospital (Est. 1996)",
-      "Specialist in Diabetology & Chronic Diseases",
-      "Focus on Evidence-Based Medical Protocols",
-      "Renowned for Patient-Centered Empathy"
+      "Founder & Managing Director of KRS Hospital (Est. 1996)",
+      "Primary Consultant in Diabetology & Chronic Disease Care",
+      "Focus on Evidence-Based Medical Protocols & Prevention",
+      "Renowned for Compassionate Patient-Centered Care"
     ],
     photo: getImg("images/doctors/ravisuthan.jpg"),
     timing: "9:00 AM - 2:00 PM, 6:00 PM - 9:00 PM"
   },
   {
-    id: "dr-sharji-imman",
-    name: "Dr. S. Mohamed Sharji Imman",
-    degrees: "MBBS., MS (Ortho)",
-    specialty: "Orthopedic Surgeon",
-    role: "Consultant Orthopedist",
-    departmentId: "orthopedics",
+    id: "dr-premkumar",
+    name: "Dr. Premkumar",
+    degrees: "MBBS., DM (Endocrinologist)",
+    specialty: "Diabetology & Endocrinology Specialist",
+    role: "Consultant Diabetologist & Endocrinologist",
+    departmentId: "diabetology",
     experience: "12+ Years",
-    bio: "Highly competent Orthopedic Surgeon dedicated to providing comprehensive care for injuries and disorders of the bones, joints, and spine.",
+    bio: "Specialist in managing complex diabetes, hormonal imbalances, thyroid disorders, and metabolic conditions through personalized evidence-based therapies.",
     highlights: [
-      "Trauma & Complex Fracture Fixations",
-      "Arthritic Joint Management",
-      "Spine & Joint Rehabilitation Care"
+      "Comprehensive Diabetology & Insulin Management",
+      "Thyroid & Adrenal Gland Therapies",
+      "Metabolic Syndrome & Medical Obesity Care"
     ],
     photo: null,
-    timing: "2:00 PM - 9:00 PM"
+    timing: "Sunday (10:00 AM - 2:00 PM)"
   },
   {
     id: "dr-vivek",
     name: "Dr. Vivek Muthukrishnan",
     degrees: "MBBS., MEM",
-    specialty: "General Medicine | Emergency Physician",
-    role: "Senior Consultant",
-    departmentId: "gen-med",
+    specialty: "Emergency & Critical Care Specialist",
+    role: "Senior Emergency Physician",
+    departmentId: "emergency-care",
     experience: "10+ Years",
-    bio: "Emergency medicine and general clinical specialist known for sharp diagnostic judgement and calm presence in critical care moments.",
+    bio: "Emergency medicine and critical care specialist known for sharp diagnostic judgement and swift resuscitation in acute emergency moments.",
     highlights: [
-      "Emergency Medicine & Acute Trauma Care",
-      "24/7 Critical Patient Stabilization",
-      "Advanced Diagnostic & Lifestyle Guidance"
+      "24/7 Emergency & Critical Care Resuscitation",
+      "Acute Trauma & Cardiac Stabilization",
+      "ICU Triage & Emergency Medical Guidance"
     ],
     photo: null,
     timing: "4:00 PM - 10:00 PM"
@@ -504,83 +532,32 @@ export const doctors = [
     id: "dr-balasubramani",
     name: "Dr. Balasubramani",
     degrees: "MBBS., DA., MD",
-    specialty: "Psychiatrist",
+    specialty: "Psychiatrist & Mental Health Specialist",
     role: "Consultant Psychiatrist",
-    departmentId: "gen-med",
+    departmentId: "psychiatry",
     experience: "16+ Years",
-    bio: "Experienced psychiatrist specializing in clinical counseling, mental health assessment, and stress management therapies.",
+    bio: "Experienced psychiatrist specializing in clinical counseling, mental health assessment, anxiety, depression, and stress management therapies.",
     highlights: [
-      "Stress & Anxiety Management",
-      "Mental Health Consultation",
-      "Psychiatric Diagnosis & Treatment"
+      "Psychiatry & Mental Health Consultation",
+      "Stress, Anxiety & Depression Counseling",
+      "De-Addiction & Behavioral Therapies"
     ],
     photo: null,
     timing: "Sunday (10:00 AM - 2:00 PM)"
   },
   {
-    id: "dr-ramkumar",
-    name: "Dr. Ramkumar",
-    degrees: "MBBS., MS (General Surgery)",
-    specialty: "General & Laparoscopic Surgeon",
-    role: "Chief Laparoscopic Surgeon",
-    departmentId: "surgery",
-    experience: "14+ Years",
-    bio: "Highly experienced general and laparoscopic surgeon specializing in minimally invasive surgeries and emergency trauma care.",
-    highlights: [
-      "Laparoscopic Hernia & Appendix Removal",
-      "Thyroid & Endocrine Surgery",
-      "Breast Lump Excision & Reconstructive Care"
-    ],
-    photo: null,
-    timing: "On Call"
-  },
-  {
-    id: "dr-saravanakumar",
-    name: "Dr. Saravanakumar",
-    degrees: "MBBS., MS (OG)",
-    specialty: "Obstetrics Surgeon (OG)",
-    role: "Senior Obstetric Surgeon",
-    departmentId: "obgyn",
-    experience: "13+ Years",
-    bio: "Expert obstetric surgeon with extensive experience in managing complex, high-risk pregnancies and emergency cesarean deliveries.",
-    highlights: [
-      "High-Risk C-Section & Fetal Distress Response",
-      "Ectopic Pregnancy Laparoscopic Repair",
-      "Post-Partum Surgical Care & Cervical Support"
-    ],
-    photo: null,
-    timing: "On Call"
-  },
-  {
-    id: "dr-rathish-rajendran",
-    name: "Dr. Rathish Rajendran",
-    degrees: "MBBS., MS., MCH",
-    specialty: "Urology & Andrology",
-    role: "Consultant Urologist",
-    departmentId: "urology",
-    experience: "12+ Years",
-    bio: "Combines advanced urological expertise with a precision-focused approach to address urinary stones, prostate issues, and male reproductive health.",
-    highlights: [
-      "Laser Kidney Stone Lithotripsy",
-      "Prostate & Bladder Care",
-      "Male Fertility & Microsurgical Reconstructions"
-    ],
-    photo: null,
-    timing: "On Call"
-  },
-  {
     id: "dr-manivannan",
     name: "Dr. Manivannan",
     degrees: "MBBS., MD., DA",
-    specialty: "Anaesthesia",
+    specialty: "Anesthesiology & Pain Management",
     role: "Senior Anesthesiology Consultant",
-    departmentId: "gen-med",
+    departmentId: "anesthesiology",
     experience: "15+ Years",
-    bio: "Meticulous anesthesiologist delivering safe, seamless anesthesia support throughout pre-operative, intra-operative, and critical post-operative surgical phases.",
+    bio: "Meticulous anesthesiologist delivering safe, seamless anesthesia support throughout pre-operative, intra-operative, and acute pain management phases.",
     highlights: [
       "General Anesthesia & Vital Monitoring",
       "Epidural & Spinal Regional Nerve Blocks",
-      "ICU Critical Care Sedation Support"
+      "Acute & Chronic Pain Management Support"
     ],
     photo: null,
     timing: "On Call"
@@ -589,15 +566,15 @@ export const doctors = [
     id: "dr-muthumani",
     name: "Dr. Muthumani",
     degrees: "MBBS., DNB",
-    specialty: "Anaesthesia",
+    specialty: "Anesthesiology & Pain Management",
     role: "Consultant Anesthetist",
-    departmentId: "gen-med",
+    departmentId: "anesthesiology",
     experience: "12+ Years",
     bio: "Skilled anesthetist dedicated to patient safety and tailored anesthesia planning, delivering effective acute post-operative pain relief.",
     highlights: [
       "Post-Operative Acute Pain Relief",
       "Childbirth Epidural Pain Management",
-      "Conscious Sedation for Endoscopy"
+      "Conscious Sedation for Procedures"
     ],
     photo: null,
     timing: "On Call"
@@ -707,16 +684,16 @@ export const doctors = [
   {
     id: "dr-siddhesh",
     name: "Dr. Siddhesh",
-    degrees: "MBBS., RD",
-    specialty: "Radiologist",
+    degrees: "MBBS., MD (Radiology)",
+    specialty: "MD Radiologist | Radiology & Imaging",
     role: "Consultant Radiologist",
-    departmentId: "ct-scan",
+    departmentId: "radiology",
     experience: "11+ Years",
-    bio: "Radiology and diagnostics specialist, analyzing CT scans, X-rays, spiral angiographies, and ultrasound imaging for precise clinical diagnoses.",
+    bio: "Radiology and diagnostic imaging specialist, analyzing 128-slice CT scans, X-rays, 3D spiral angiographies, and ultrasound imaging for precise medical diagnoses.",
     highlights: [
-      "Advanced CT Scan Interpretations",
-      "Multi-Detector Spiral Angiography",
-      "Precision Diagnostic Ultrasound Reports"
+      "24/7 CT Scan & Emergency Cross-Sectional Diagnostics",
+      "Multi-Detector 3D Spiral Angiography",
+      "Precision Diagnostic Ultrasound & Radiological Reports"
     ],
     photo: null,
     timing: "On Call"

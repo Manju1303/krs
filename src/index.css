@@ -60,16 +60,36 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html { 
+  font-size: 16.5px;
+  scroll-behavior: smooth; 
+}
 
 body {
   font-family: var(--font-body);
   background-color: var(--bg-base);
   color: var(--text-primary);
   overflow-x: hidden;
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Typography Legibility Scale Boost */
+p, span, li, label, input, textarea, select {
+  letter-spacing: 0.01em;
+}
+
+@layer utilities {
+  .text-xs {
+    font-size: 0.8125rem !important; /* 13px baseline scale */
+    line-height: 1.5 !important;
+  }
+  .text-sm {
+    font-size: 0.9375rem !important; /* 15px baseline scale */
+    line-height: 1.6 !important;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
