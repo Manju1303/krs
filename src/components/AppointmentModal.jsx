@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Calendar as CalendarIcon, Clock, User, Phone, CheckCircle2, Stethoscope, ChevronRight, AlertCircle, ArrowLeft } from 'lucide-react';
+import { X, Calendar as CalendarIcon, Clock, User, Phone, CheckCircle2, Stethoscope, ChevronRight, AlertCircle, ArrowLeft, MessageSquare } from 'lucide-react';
 import { departments, doctors, hospitalInfo } from '../data/hospitalData';
 
 export default function AppointmentModal({ isOpen, onClose, initialDeptId, initialDoctorName }) {
@@ -323,7 +323,8 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
                     onChange={() => setContactPref('Phone Call')}
                     className="hidden"
                   />
-                  <span>📞 Phone Call</span>
+                  <Phone className="w-3.5 h-3.5 shrink-0" />
+                  <span>Phone Call</span>
                 </label>
                 <label className={`flex-1 p-2.5 rounded-xl border text-xs font-bold cursor-pointer transition-all flex items-center justify-center gap-2 ${contactPref === 'WhatsApp Message' ? 'bg-emerald-50 border-emerald-400 text-emerald-800' : 'bg-slate-50 border-slate-200 text-slate-600'}`}>
                   <input
@@ -334,7 +335,8 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
                     onChange={() => setContactPref('WhatsApp Message')}
                     className="hidden"
                   />
-                  <span>💬 WhatsApp Message</span>
+                  <MessageSquare className="w-3.5 h-3.5 shrink-0" />
+                  <span>WhatsApp Message</span>
                 </label>
               </div>
             </div>
