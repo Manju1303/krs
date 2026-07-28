@@ -37,54 +37,60 @@ export default function Doctors({
           </p>
         </div>
 
-        {/* Search */}
-        <div className="max-w-xl mx-auto mb-8">
-          <div className="relative">
-            <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#059669' }} />
-            <input type="text" placeholder="Search by name, specialty or qualification…"
-              value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-10 py-3 rounded-xl text-sm placeholder-slate-400 focus:outline-none"
-              style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.10)', color: '#0f172a', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }} />
-            {searchQuery && (
-              <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2" style={{ color: '#94a3b8' }}>
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Dept Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {[{ id: 'All', name: `All (${doctors.length})` }, ...departments].map((d) => {
-            const active = selectedDeptFilter === d.id;
-            return (
-              <button key={d.id} onClick={() => setSelectedDeptFilter(d.id)}
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold transition-all"
-                style={{
-                  background: active ? 'linear-gradient(135deg, #059669, #0d9488)' : '#ffffff',
-                  color: active ? '#fff' : '#475569',
-                  border: active ? '1px solid transparent' : '1px solid rgba(15,23,42,0.10)',
-                  boxShadow: active ? '0 2px 10px rgba(5,150,105,0.25)' : '0 1px 3px rgba(0,0,0,0.05)',
-                }}>
-                {d.name || d.id === 'All' ? d.name : d.name}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Doctors Container Box */}
-        <div className="p-4 sm:p-6 rounded-2xl bg-white border border-slate-200/80 shadow-lg space-y-4">
+        {/* Unified Search, Filter and Doctors List Container */}
+        <div className="bg-white rounded-3xl border border-slate-200/60 shadow-xl p-6 sm:p-8 lg:p-10 space-y-8">
           
-          <div className="flex items-center justify-between px-2 text-xs text-slate-500 pb-2 border-b border-slate-100">
-            <span className="font-semibold text-emerald-700">
-              Showing {filteredDoctors.length} Specialist Consultants
-            </span>
+          {/* Controls: Search and Filters */}
+          <div className="space-y-6 max-w-4xl mx-auto">
+            {/* Search */}
+            <div className="max-w-xl mx-auto">
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#059669' }} />
+                <input type="text" placeholder="Search by name, specialty or qualification…"
+                  value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-11 pr-10 py-3 rounded-xl text-sm placeholder-slate-400 focus:outline-none"
+                  style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.08)', color: '#0f172a' }} />
+                {searchQuery && (
+                  <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2" style={{ color: '#94a3b8' }}>
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Dept Filter */}
+            <div className="flex flex-wrap justify-center gap-2">
+              {[{ id: 'All', name: `All (${doctors.length})` }, ...departments].map((d) => {
+                const active = selectedDeptFilter === d.id;
+                return (
+                  <button key={d.id} onClick={() => setSelectedDeptFilter(d.id)}
+                    className="px-4 py-1.5 rounded-lg text-xs font-semibold transition-all"
+                    style={{
+                      background: active ? 'linear-gradient(135deg, #059669, #0d9488)' : '#f8fafc',
+                      color: active ? '#fff' : '#475569',
+                      border: active ? '1px solid transparent' : '1px solid rgba(15,23,42,0.06)',
+                      boxShadow: active ? '0 2px 10px rgba(5,150,105,0.25)' : 'none',
+                    }}>
+                    {d.name || d.id === 'All' ? d.name : d.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
+          <div style={{ height: '1px', background: 'rgba(15,23,42,0.06)' }} />
+
+          {/* Results Area */}
           <div className="space-y-4">
+            <div className="flex items-center justify-between px-2 text-xs text-slate-500 pb-2 border-b border-slate-100">
+              <span className="font-semibold text-emerald-700">
+                Showing {filteredDoctors.length} Specialist Consultants
+              </span>
+            </div>
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {filteredDoctors.map((doc) => (
-                <div key={doc.id} className="premium-card p-6 group flex flex-col">
+                <div key={doc.id} className="premium-card p-6 group flex flex-col" style={{ background: '#f8fafc' }}>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 font-heading text-white"
                       style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
@@ -114,7 +120,7 @@ export default function Doctors({
                   <div className="flex gap-2 pt-4" style={{ borderTop: '1px solid rgba(15,23,42,0.07)' }}>
                     <button onClick={() => setSelectedDoctorModal(doc)}
                       className="flex-1 py-2 rounded-lg text-xs font-semibold transition-colors"
-                      style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.08)', color: '#475569' }}>
+                      style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.08)', color: '#475569' }}>
                       Profile
                     </button>
                     <button onClick={() => onOpenBooking(doc.departmentId, doc.name)}

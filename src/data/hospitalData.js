@@ -693,11 +693,11 @@ export const facilities = [
     image: getImg("images/ot_main.jpeg")
   },
   {
-    title: "24/7 Diagnostic Pathology Lab",
+    title: "24/7 Modular Lab",
     desc: "In-house diagnostic laboratory operating round the clock for blood work, hormone panels, and emergency testing.",
     icon: "FlaskConical",
     badge: "Lab Helpline: 99444 49559",
-    image: getImg("images/pathology_lab.png")
+    image: getImg("images/modular_lab_simple.webp")
   },
   {
     title: "24/7 Pharmacy & Medication Services",
@@ -732,7 +732,7 @@ export const facilities = [
     desc: "128-slice precision CT scanner operating round the clock for trauma, brain, chest, and emergency abdominal diagnosis.",
     icon: "Scan",
     badge: "24/7 Active",
-    image: getImg("images/ct_scan.png")
+    image: getImg("images/ct_scan_simple.jpg")
   },
 
   {
@@ -767,13 +767,13 @@ export const hospitalGallery = [
   {
     title: "128-Slice CT Scan Suite",
     category: "Diagnostics & Scans",
-    image: getImg("images/ct_scan.png"),
+    image: getImg("images/ct_scan_simple.jpg"),
     desc: "State-of-the-art 128-slice CT scanner for rapid 24/7 emergency & diagnostic imaging."
   },
   {
-    title: "24/7 Diagnostic Pathology Laboratory",
+    title: "24/7 Modular Laboratory",
     category: "Diagnostics & Scans",
-    image: getImg("images/pathology_lab.png"),
+    image: getImg("images/modular_lab_simple.webp"),
     desc: "Automated blood chemistry analyzers, clinical biochemistry, and 24/7 emergency lab diagnostics."
   },
 
