@@ -35,9 +35,7 @@ export const aboutData = {
   buildingImage: getImg("images/building.jpeg"),
   buildingImages: [
     getImg("images/building.jpeg"),
-    getImg("images/building_wide.jpeg"),
-    getImg("images/hospital_lobby.jpeg"),
-    getImg("images/reception_lounge.jpeg")
+    getImg("images/building_wide.jpeg")
   ],
   mission: [
     "Delivering comprehensive, evidence-based medical services",
