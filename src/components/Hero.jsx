@@ -33,7 +33,7 @@ export default function Hero({ onOpenBooking }) {
       sub: 'Painless root canals, crowns & oral surgeries'
     },
     {
-      url: getImg('images/emergency_ramp.jpeg'),
+      url: getImg('images/emergency_ward_new.jpg'),
       caption: '24/7 Emergency & Trauma Bay',
       sub: 'Direct ambulance & immediate triage access'
     }

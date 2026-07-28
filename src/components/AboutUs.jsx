@@ -99,8 +99,12 @@ export default function AboutUs() {
 
             {/* Founder Card */}
             <div className="p-4 rounded-2xl flex items-center gap-4" style={{ background: '#f0fdf4', border: '1px solid #a7f3d0' }}>
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                <User className="w-7 h-7 text-white" />
+              <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-md" style={{ border: '2px solid #a7f3d0' }}>
+                <img
+                  src={`${import.meta.env.BASE_URL || '/'}images/doctors/ravisuthan.jpg`}
+                  alt={hospitalInfo.founder}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h4 className="text-sm font-extrabold font-heading" style={{ color: '#0f172a' }}>{hospitalInfo.founder}</h4>

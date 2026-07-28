@@ -169,10 +169,16 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                         style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.07)' }}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 text-white transition-transform group-hover:scale-105"
-                            style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                            {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                          </div>
+                          {doc.photo ? (
+                            <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-sm transition-transform group-hover:scale-105" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
+                              <img src={doc.photo} alt={doc.name} className="w-full h-full object-cover" />
+                            </div>
+                          ) : (
+                            <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 text-white transition-transform group-hover:scale-105"
+                              style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
+                              {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                            </div>
+                          )}
                           <div>
                             <h5 className="text-sm font-bold transition-colors group-hover:text-emerald-700" style={{ color: '#0f172a' }}>{doc.name}</h5>
                             <p className="text-xs font-medium" style={{ color: '#059669' }}>{doc.degrees}</p>

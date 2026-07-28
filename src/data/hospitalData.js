@@ -388,28 +388,15 @@ export const doctors = [
     role: "Founder & Chief Physician",
     departmentId: "gen-med",
     experience: "28+ Years",
-    bio: "Dr. Ravisuthan is the visionary Founder of KRS Hospital, widely respected for his unwavering commitment to ethical medical practice, clinical excellence, and patient-first care. With extensive years of hands-on clinical experience, he has treated thousands of patients across routine and complex medical conditions.",
+    bio: "Dr. Ravisuthan is the visionary Founder of KRS Hospital, widely respected for his unwavering commitment to ethical medical practice, clinical excellence, and patient-first care.",
     highlights: [
       "Founder of KRS Hospital (Est. 1996)",
       "Specialist in Diabetology & Chronic Diseases",
       "Focus on Evidence-Based Medical Protocols",
       "Renowned for Patient-Centered Empathy"
-    ]
-  },
-  {
-    id: "dr-vivek",
-    name: "Dr. Vivek Muthukrishnan",
-    degrees: "MBBS., MCH",
-    specialty: "General Medicine | Emergency Physician",
-    role: "Senior Consultant",
-    departmentId: "gen-med",
-    experience: "10+ Years",
-    bio: "Dr. Vivek Muthukrishnan is a new-age General Medicine and Emergency Physician known for his sharp clinical judgement and calm presence in critical moments. He blends medical science with swift, solution-focused emergency stabilization.",
-    highlights: [
-      "Emergency Medicine & Acute Trauma Care",
-      "24/7 Critical Patient Stabilization",
-      "Advanced Diagnostic & Lifestyle Guidance"
-    ]
+    ],
+    photo: getImg("images/doctors/ravisuthan.jpg"),
+    timing: "9:00 AM - 2:00 PM, 6:00 PM - 9:00 PM"
   },
   {
     id: "dr-sharji-imman",
@@ -419,27 +406,48 @@ export const doctors = [
     role: "Consultant Orthopedist",
     departmentId: "orthopedics",
     experience: "12+ Years",
-    bio: "Highly competent Orthopedic Surgeon dedicated to providing comprehensive care for injuries and disorders of the bones, joints, spine, and musculoskeletal system. Known for precision surgical fixation and long-term joint rehabilitation.",
+    bio: "Highly competent Orthopedic Surgeon dedicated to providing comprehensive care for injuries and disorders of the bones, joints, and spine.",
     highlights: [
       "Trauma & Complex Fracture Fixations",
       "Arthritic Joint Management",
-      "Spine & Neck Pain Stabilization"
-    ]
+      "Spine & Joint Rehabilitation Care"
+    ],
+    photo: getImg("images/doctors/sharji_immam.jpg"),
+    timing: "2:00 PM - 9:00 PM"
   },
   {
-    id: "dr-shreeram",
-    name: "Dr. Shreeram",
-    degrees: "MBBS., MS (Ortho)., DNO., MNAMS., RIAS",
-    specialty: "Arthroscopic & Orthopaedics Surgeon",
-    role: "Senior Arthroscopy Surgeon",
-    departmentId: "orthopedics",
-    experience: "14+ Years",
-    bio: "Renowned orthopedic and arthroscopic surgeon committed to helping patients reclaim their active lifestyles using minimally invasive keyhole procedures for knees, shoulders, hips, and joint replacements.",
+    id: "dr-vivek",
+    name: "Dr. Vivek Muthukrishnan",
+    degrees: "MBBS., MEM",
+    specialty: "General Medicine | Emergency Physician",
+    role: "Senior Consultant",
+    departmentId: "gen-med",
+    experience: "10+ Years",
+    bio: "Emergency medicine and general clinical specialist known for sharp diagnostic judgement and calm presence in critical care moments.",
     highlights: [
-      "Keyhole Arthroscopic Knee & Shoulder Repair",
-      "Total Knee & Hip Replacements",
-      "Sports Injury Management & Athlete Rehabilitation"
-    ]
+      "Emergency Medicine & Acute Trauma Care",
+      "24/7 Critical Patient Stabilization",
+      "Advanced Diagnostic & Lifestyle Guidance"
+    ],
+    photo: getImg("images/doctors/vivek.jpg"),
+    timing: "4:00 PM - 10:00 PM"
+  },
+  {
+    id: "dr-govindharaju",
+    name: "Dr. Govindhaju",
+    degrees: "MBBS., MD",
+    specialty: "General Medicine",
+    role: "Consultant Physician",
+    departmentId: "gen-med",
+    experience: "15+ Years",
+    bio: "Senior general physician with extensive clinical diagnostic experience in outpatient consultation and complex inpatient medical care.",
+    highlights: [
+      "General Consultation & Diagnosis",
+      "Inpatient Medical Management",
+      "Chronic Disease Control Protocols"
+    ],
+    photo: getImg("images/doctors/govindharaju.jpg"),
+    timing: "6:00 PM - 9:00 PM"
   },
   {
     id: "dr-balasubramaniyam",
@@ -449,12 +457,14 @@ export const doctors = [
     role: "Consultant Neurosurgeon",
     departmentId: "neurology",
     experience: "15+ Years",
-    bio: "Renowned neurology surgeon dedicated to providing expert surgical and non-surgical care for patients with brain, spine, and nervous system disorders using high-precision techniques.",
+    bio: "Renowned neurology surgeon dedicated to providing expert surgical and non-surgical care for patients with brain, spine, and nervous system disorders.",
     highlights: [
       "Stroke Evaluation & Thrombolysis",
       "Epilepsy & Seizure Protocols",
       "Spine & Sciatica Image-Guided Injections"
-    ]
+    ],
+    photo: getImg("images/doctors/balasubramaniyam.jpg"),
+    timing: "Saturday (10:00 AM - 2:00 PM)"
   },
   {
     id: "dr-srija",
@@ -464,27 +474,14 @@ export const doctors = [
     role: "Consultant Gynecologist",
     departmentId: "obgyn",
     experience: "11+ Years",
-    bio: "Compassionate obstetrician and gynecologist dedicated to women's health. She specializes in comprehensive care for pregnancy, childbirth, and minimally invasive gynaecologic laparoscopy.",
+    bio: "Compassionate obstetrician and gynecologist dedicated to women's health. She specializes in comprehensive care for pregnancy and childbirth.",
     highlights: [
       "High-Risk Pregnancy & Delivery",
       "Laparoscopic Cyst & Fibroid Surgeries",
       "Fertility Evaluation & PCOS Management"
-    ]
-  },
-  {
-    id: "dr-saravanakumar",
-    name: "Dr. Saravanakumar",
-    degrees: "MBBS., MS (OG)",
-    specialty: "Obstetrics Surgeon",
-    role: "Senior Obstetric Surgeon",
-    departmentId: "obgyn",
-    experience: "13+ Years",
-    bio: "Expert obstetric surgeon with extensive experience in managing complex, high-risk pregnancies, emergency cesarean deliveries, and operative post-partum interventions.",
-    highlights: [
-      "High-Risk C-Section & Fetal Distress Response",
-      "Ectopic Pregnancy Laparoscopic Repair",
-      "Post-Partum Surgical Care & Cervical Support"
-    ]
+    ],
+    photo: getImg("images/doctors/srija.jpg"),
+    timing: "4:00 PM - 9:00 PM"
   },
   {
     id: "dr-vinoth-kumar",
@@ -494,27 +491,31 @@ export const doctors = [
     role: "Consultant Pulmonologist",
     departmentId: "pulmonology",
     experience: "10+ Years",
-    bio: "Visionary pulmonologist dedicated to treating complex chest, asthma, COPD, and lung conditions using cutting-edge respiratory diagnostic tests and early intervention.",
+    bio: "Visionary pulmonologist dedicated to treating complex chest, asthma, COPD, and respiratory conditions.",
     highlights: [
       "Asthma & COPD Pulmonary Care",
       "Non-Invasive Oxygen & NIV Ventilation",
       "Allergy & Post-TB Lung Rehabilitation"
-    ]
+    ],
+    photo: getImg("images/doctors/vinoth_kumar.jpg"),
+    timing: "Wednesday (2:00 PM - 6:00 PM)"
   },
   {
-    id: "dr-shunmathi-selvam",
-    name: "Dr. Shunmathi Selvam",
-    degrees: "MBBS., MD., DVL (Dermatology)",
-    specialty: "Dermatologist & Cosmetologist",
-    role: "Consultant Dermatologist",
-    departmentId: "dermatology",
-    experience: "9+ Years",
-    bio: "Experienced dermatologist providing clinical care for skin, hair, and nail conditions. Specializes in medical dermatology, cosmetic anti-aging, PRP hair therapy, and minor skin surgeries.",
+    id: "dr-balasubramani",
+    name: "Dr. Balasubramani",
+    degrees: "MBBS., DA., MD",
+    specialty: "Psychiatrist",
+    role: "Consultant Psychiatrist",
+    departmentId: "gen-med",
+    experience: "16+ Years",
+    bio: "Experienced psychiatrist specializing in clinical counseling, mental health assessment, and stress management therapies.",
     highlights: [
-      "Cosmetic Chemical Peels & Anti-Aging",
-      "Hair PRP & Scalp Restoration",
-      "Mole, Cyst & Skin Lesion Excisions"
-    ]
+      "Stress & Anxiety Management",
+      "Mental Health Consultation",
+      "Psychiatric Diagnosis & Treatment"
+    ],
+    photo: null,
+    timing: "Sunday (10:00 AM - 2:00 PM)"
   },
   {
     id: "dr-ramkumar",
@@ -524,48 +525,54 @@ export const doctors = [
     role: "Chief Laparoscopic Surgeon",
     departmentId: "surgery",
     experience: "14+ Years",
-    bio: "Highly experienced general and laparoscopic surgeon specializing in minimally invasive procedures for quick recovery, minimal scarring, and enhanced surgical safety.",
+    bio: "Highly experienced general and laparoscopic surgeon specializing in minimally invasive surgeries and emergency trauma care.",
     highlights: [
       "Laparoscopic Hernia & Appendix Removal",
       "Thyroid & Endocrine Surgery",
       "Breast Lump Excision & Reconstructive Care"
-    ]
+    ],
+    photo: getImg("images/doctors/ramkumar.jpg"),
+    timing: "On Call"
+  },
+  {
+    id: "dr-saravanakumar",
+    name: "Dr. Saravanakumar",
+    degrees: "MBBS., MS (OG)",
+    specialty: "Obstetrics Surgeon (OG)",
+    role: "Senior Obstetric Surgeon",
+    departmentId: "obgyn",
+    experience: "13+ Years",
+    bio: "Expert obstetric surgeon with extensive experience in managing complex, high-risk pregnancies and emergency cesarean deliveries.",
+    highlights: [
+      "High-Risk C-Section & Fetal Distress Response",
+      "Ectopic Pregnancy Laparoscopic Repair",
+      "Post-Partum Surgical Care & Cervical Support"
+    ],
+    photo: null,
+    timing: "On Call"
   },
   {
     id: "dr-rathish-rajendran",
     name: "Dr. Rathish Rajendran",
     degrees: "MBBS., MS., MCH",
-    specialty: "Urologist | Andrologist",
+    specialty: "Urology & Andrology",
     role: "Consultant Urologist",
     departmentId: "urology",
     experience: "12+ Years",
-    bio: "Combines advanced urological expertise with a precision-focused approach to address the full spectrum of urinary stones, prostate issues, and male reproductive health.",
+    bio: "Combines advanced urological expertise with a precision-focused approach to address urinary stones, prostate issues, and male reproductive health.",
     highlights: [
       "Laser Kidney Stone Lithotripsy",
       "Prostate & Bladder Care",
       "Male Fertility & Microsurgical Reconstructions"
-    ]
-  },
-  {
-    id: "dr-praveen-sundhar",
-    name: "Dr. Praveen Sundhar",
-    degrees: "MBBS., MS., MCH",
-    specialty: "Urologist",
-    role: "Consultant Urologist",
-    departmentId: "urology",
-    experience: "11+ Years",
-    bio: "Delivers accurate diagnosis, effective treatment, and minimally invasive options for kidney, bladder, and urinary tract disorders in both adult and pediatric cases.",
-    highlights: [
-      "Minimal Access Urological Procedures",
-      "Pediatric Congenital Urinary Care",
-      "Endoscopic Prostate Resection"
-    ]
+    ],
+    photo: null,
+    timing: "On Call"
   },
   {
     id: "dr-manivannan",
     name: "Dr. Manivannan",
     degrees: "MBBS., MD., DA",
-    specialty: "Anesthesiologist",
+    specialty: "Anaesthesia",
     role: "Senior Anesthesiology Consultant",
     departmentId: "gen-med",
     experience: "15+ Years",
@@ -574,97 +581,145 @@ export const doctors = [
       "General Anesthesia & Vital Monitoring",
       "Epidural & Spinal Regional Nerve Blocks",
       "ICU Critical Care Sedation Support"
-    ]
+    ],
+    photo: null,
+    timing: "On Call"
   },
   {
     id: "dr-muthumani",
     name: "Dr. Muthumani",
     degrees: "MBBS., DNB",
-    specialty: "Anesthesiologist",
+    specialty: "Anaesthesia",
     role: "Consultant Anesthetist",
     departmentId: "gen-med",
     experience: "12+ Years",
-    bio: "Skilled anesthetist dedicated to patient safety and tailored anesthesia planning, delivering effective acute post-operative pain relief and procedural sedation.",
+    bio: "Skilled anesthetist dedicated to patient safety and tailored anesthesia planning, delivering effective acute post-operative pain relief.",
     highlights: [
       "Post-Operative Acute Pain Relief",
       "Childbirth Epidural Pain Management",
       "Conscious Sedation for Endoscopy"
-    ]
+    ],
+    photo: null,
+    timing: "On Call"
   },
   {
     id: "dr-arunathiselvam",
     name: "Dr. Arunathiselvam",
     degrees: "MBBS., MS., MCH",
-    specialty: "Surgical Oncologist",
+    specialty: "Surgical Oncology",
     role: "Chief Cancer Surgeon",
     departmentId: "oncology",
     experience: "13+ Years",
-    bio: "Committed surgical oncologist with advanced MCh training in cancer surgery. Focuses on evidence-based tumor resections, organ-preserving procedures, and multi-disciplinary care.",
+    bio: "Committed surgical oncologist focusing on evidence-based tumor resections, organ-preserving procedures, and multi-disciplinary care.",
     highlights: [
       "Robotic & Laparoscopic Tumor Surgery",
       "Breast & Soft Tissue Sarcoma Resection",
       "Gastrointestinal & Thoracic Oncology"
-    ]
+    ],
+    photo: null,
+    timing: "On Call"
   },
   {
-    id: "dr-bharathi",
-    name: "Dr. Bharathi",
+    id: "dr-saranya",
+    name: "Dr. Saranya",
     degrees: "MBBS., DCH",
-    specialty: "Pediatrician",
+    specialty: "Pediatrics",
     role: "Consultant Pediatrician",
     departmentId: "pediatrics",
     experience: "10+ Years",
-    bio: "Warm and empathetic pediatrician nurturing the health of infants, children, and teens through vaccinations, NICU support, developmental checks, and emergency pediatric care.",
+    bio: "Experienced pediatrician nurturing the health of infants and children through NICU support, vaccinations, and growth tracking.",
     highlights: [
       "Newborn Screening & NICU Care",
       "Pediatric Infection & Asthma Control",
       "Childhood Immunizations & Growth Tracking"
-    ]
+    ],
+    photo: null,
+    timing: "6:00 PM - 9:00 PM"
   },
   {
     id: "dr-cibivishnu",
     name: "Dr. Cibivishnu Ilavarasu",
-    degrees: "BDS., MDS",
-    specialty: "Dental Therapist & Surgeon",
+    degrees: "BDS., MDS (Dental Therapist)",
+    specialty: "Dental Medicine",
     role: "Chief Dental Specialist",
     departmentId: "dental",
     experience: "9+ Years",
-    bio: "Forward-thinking dental specialist combining advanced clinical therapy with smile restoration, preventive dentistry, root canals, and maxillofacial surgery.",
+    bio: "Dental specialist combining advanced clinical therapy with smile restoration, preventive dentistry, root canals, and maxillofacial surgery.",
     highlights: [
       "Painless Root Canal Treatments",
       "Cosmetic Fillings & Crowns",
-      "Wisdom Tooth & Trauma Extractions"
-    ]
+      "Wisdom Tooth & Facial Trauma Extractions"
+    ],
+    photo: null,
+    timing: "Wednesday (10:00 AM - 2:00 PM)"
+  },
+  {
+    id: "dr-shreeram",
+    name: "Dr. Shreeram",
+    degrees: "MS (Ortho), DNO, MNAMS, RIAS",
+    specialty: "Arthroscopic & Orthopaedic Surgeon",
+    role: "Senior Arthroscopy Surgeon",
+    departmentId: "orthopedics",
+    experience: "14+ Years",
+    bio: "Renowned orthopedic and arthroscopic surgeon committed to helping patients reclaim active lifestyles using minimally invasive procedures.",
+    highlights: [
+      "Keyhole Arthroscopic Knee & Shoulder Repair",
+      "Total Knee & Hip Replacements",
+      "Sports Injury Management & Athlete Rehabilitation"
+    ],
+    photo: null,
+    timing: "On Call"
   },
   {
     id: "dr-premkumar",
     name: "Dr. Premkumar",
-    degrees: "MBBS., MD., DM",
-    specialty: "Endocrinologist",
+    degrees: "MBBS., DM (Endocrinologist)",
+    specialty: "Endocrinology",
     role: "Consultant Endocrinologist",
     departmentId: "endocrinology",
     experience: "12+ Years",
-    bio: "DM Specialist in managing complex hormonal, metabolic, diabetes, thyroid, adrenal, and osteoporosis conditions through evidence-based personalized therapies.",
+    bio: "Specialist in managing complex hormonal, metabolic, diabetes, thyroid, adrenal, and osteoporosis conditions through evidence-based personalized therapies.",
     highlights: [
       "Thyroid & Adrenal Gland Therapies",
       "Metabolic Syndrome & Medical Obesity Care",
       "Bone Density Osteoporosis Prevention"
-    ]
+    ],
+    photo: null,
+    timing: "Sunday (10:00 AM - 2:00 PM)"
   },
   {
     id: "dr-sivasubramaniyam",
     name: "Dr. Sivasubramaniyam",
-    degrees: "MBBS., MD., DM",
-    specialty: "Gastroenterologist",
+    degrees: "MBBS., MD, DM (Gastroenterology)",
+    specialty: "Gastroenterology",
     role: "Consultant Gastroenterologist",
     departmentId: "gastroenterology",
     experience: "14+ Years",
-    bio: "DM Gastroenterology specialist dedicated to diagnosing and treating digestive system, liver, gallbladder, pancreatic, and intestinal disorders with endoscopic precision.",
+    bio: "Gastroenterology specialist dedicated to diagnosing and treating digestive system, liver, gallbladder, pancreatic, and intestinal disorders.",
     highlights: [
       "Endoscopic Reflux & Ulcer Diagnosis",
       "Fatty Liver & Hepatitis Management",
       "Colonoscopy & ERCP Gallstone Procedures"
-    ]
+    ],
+    photo: null,
+    timing: "Sunday (10:00 AM - 2:00 PM)"
+  },
+  {
+    id: "dr-siddhesh",
+    name: "Dr. Siddhesh",
+    degrees: "MBBS., RD",
+    specialty: "Radiologist",
+    role: "Consultant Radiologist",
+    departmentId: "ct-scan",
+    experience: "11+ Years",
+    bio: "Radiology and diagnostics specialist, analyzing CT scans, X-rays, spiral angiographies, and ultrasound imaging for precise clinical diagnoses.",
+    highlights: [
+      "Advanced CT Scan Interpretations",
+      "Multi-Detector Spiral Angiography",
+      "Precision Diagnostic Ultrasound Reports"
+    ],
+    photo: null,
+    timing: "On Call"
   }
 ];
 
@@ -673,8 +728,8 @@ export const facilities = [
     title: "24/7 Emergency & Trauma Unit",
     desc: "Fully equipped rapid response trauma bay with on-duty emergency physicians, life support, and ambulance dispatch.",
     icon: "Ambulance",
-    badge: "24/7 Active",
-    image: getImg("images/emergency_ramp.jpeg")
+    badge: "Always Open",
+    image: getImg("images/emergency_ward_new.jpg")
   },
   {
     title: "Dedicated Intensive Care Units (ICU, NICU, HDU)",
@@ -818,9 +873,9 @@ export const hospitalGallery = [
     desc: "Friendly reception desk for quick outpatient registration and hospital admissions."
   },
   {
-    title: "Emergency & Stretcher Ramp",
+    title: "New Emergency Ward & Trauma Care",
     category: "Trauma Unit",
-    image: getImg("images/emergency_ramp.jpeg"),
+    image: getImg("images/emergency_ward_new.jpg"),
     desc: "Direct stretcher and wheelchair entrance for 24/7 emergency casualty admissions."
   }
 ];

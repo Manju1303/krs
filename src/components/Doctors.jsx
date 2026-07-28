@@ -97,10 +97,16 @@ export default function Doctors({
                 {filteredDoctors.map((doc) => (
                   <div key={doc.id} className="premium-card p-6 group flex flex-col" style={{ background: '#f8fafc' }}>
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 font-heading text-white"
-                        style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                        {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                      </div>
+                      {doc.photo ? (
+                        <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-sm" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
+                          <img src={doc.photo} alt={doc.name} className="w-full h-full object-cover" />
+                        </div>
+                      ) : (
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 font-heading text-white"
+                          style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
+                          {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                        </div>
+                      )}
                       <div>
                         <div className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#059669' }}>{doc.role}</div>
                         <h3 className="text-sm font-bold font-heading leading-snug" style={{ color: '#0f172a' }}>{doc.name}</h3>
@@ -152,12 +158,18 @@ export default function Doctors({
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-backdrop animate-fade-in">
             <div className="max-w-md w-full p-7 rounded-2xl relative space-y-5"
               style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.10)', boxShadow: '0 24px 64px rgba(0,0,0,0.18)' }}>
-              <div className="flex items-start justify-between">
+                <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm font-heading shrink-0 text-white"
-                    style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                    {selectedDoctorModal.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                  </div>
+                  {selectedDoctorModal.photo ? (
+                    <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-sm" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
+                      <img src={selectedDoctorModal.photo} alt={selectedDoctorModal.name} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm font-heading shrink-0 text-white"
+                      style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
+                      {selectedDoctorModal.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    </div>
+                  )}
                   <div>
                     <h3 className="font-bold text-base font-heading" style={{ color: '#0f172a' }}>{selectedDoctorModal.name}</h3>
                     <p className="text-xs font-semibold" style={{ color: '#059669' }}>{selectedDoctorModal.degrees}</p>
