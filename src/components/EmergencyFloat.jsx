@@ -12,7 +12,8 @@ export default function EmergencyFloat({ onOpenBooking }) {
           style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.10)', boxShadow: '0 16px 40px rgba(0,0,0,0.15)' }}>
           <div className="flex justify-between items-center pb-2" style={{ borderBottom: '1px solid rgba(15,23,42,0.07)' }}>
             <span className="font-bold flex items-center gap-1.5" style={{ color: '#0f172a' }}>
-              <ShieldAlert className="w-4 h-4 text-rose-500 animate-pulse" /> Hospital Helplines
+              <ShieldAlert className="w-4 h-4 text-rose-500 animate-pulse" />
+              <span className="font-tamil font-bold text-slate-800">24/7 அவசர சிகிச்சை</span>
             </span>
             <button onClick={() => setExpanded(false)} style={{ color: '#94a3b8' }}>
               <X className="w-4 h-4" />

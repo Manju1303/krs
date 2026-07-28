@@ -80,11 +80,16 @@ export default function Hero({ onOpenBooking }) {
           {/* ── Left Column: Headline & Messaging ── */}
           <div className="lg:col-span-7 space-y-6 text-white animate-fade-in-up">
 
-            {/* Patients Trust Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-950/60 border border-emerald-400/30 backdrop-blur-md text-[11px] font-bold text-emerald-300">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-              <UserCheck className="w-3.5 h-3.5 text-emerald-300" />
-              <span>Over 50,000+ Satisfied Patients Treated</span>
+            {/* Bilingual Tamil Trust Motto Pill (Kauvery Hospital Style) */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-950/70 border border-emerald-400/40 backdrop-blur-md text-xs font-bold text-emerald-200 shadow-lg font-tamil">
+                <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>உயிர் காக்கும் உயர்தர மருத்துவம் • 24/7 Emergency Care</span>
+              </div>
+              <div className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-[11px] font-semibold text-slate-200">
+                <UserCheck className="w-3.5 h-3.5 text-emerald-300" />
+                <span>50,000+ Patients Treated</span>
+              </div>
             </div>
 
             {/* Giant Title & Section Text */}

@@ -142,10 +142,15 @@ export default function AboutUs() {
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
               <div className="section-divider" style={{ margin: '0 0 14px' }} />
-              <span className="section-label-pill">
-                <Target className="w-3.5 h-3.5" />
-                Our Core Principles
-              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="section-label-pill">
+                  <Target className="w-3.5 h-3.5" />
+                  Our Core Principles
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-800 font-tamil">
+                  28+ ஆண்டுகள் தொடரும் மக்கள் நம்பிக்கை
+                </span>
+              </div>
               <h2 className="text-4xl sm:text-5xl font-extrabold font-heading mt-3" style={{ color: '#0f172a' }}>
                 A Legacy of Trust in <span className="text-gradient-emerald">Edappadi</span>
               </h2>

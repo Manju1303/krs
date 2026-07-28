@@ -21,7 +21,12 @@ export default function WhyChooseUs({ onOpenBooking }) {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <div className="section-divider" />
-          <span className="section-label-pill"><ShieldCheck className="w-3.5 h-3.5" />The KRS Difference</span>
+          <div className="flex flex-wrap justify-center items-center gap-2">
+            <span className="section-label-pill"><ShieldCheck className="w-3.5 h-3.5" />The KRS Difference</span>
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-800 font-tamil">
+              அன்பான கவனிப்பு • துல்லியமான மருத்துவம்
+            </span>
+          </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold font-heading mt-3" style={{ color: '#0f172a' }}>
             Why Choose <span className="text-gradient-emerald">KRS Hospital?</span>
           </h2>
