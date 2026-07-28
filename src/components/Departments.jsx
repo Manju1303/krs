@@ -168,21 +168,21 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                         className="p-4 rounded-xl flex items-center justify-between gap-3 text-left transition-all border hover:border-emerald-300 hover:shadow-md cursor-pointer group"
                         style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.07)' }}
                       >
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-4">
                           {doc.photo ? (
-                            <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 shadow-sm transition-transform group-hover:scale-105" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
+                            <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-sm border-2 border-slate-100 transition-transform group-hover:scale-105" style={{ border: '2px solid rgba(15,23,42,0.06)' }}>
                               <img src={doc.photo} alt={doc.name} className="w-full h-full object-cover" />
                             </div>
                           ) : (
-                            <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 text-white transition-transform group-hover:scale-105"
+                            <div className="w-14 h-14 rounded-xl flex items-center justify-center font-extrabold text-base shrink-0 text-white transition-transform group-hover:scale-105"
                               style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
                               {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                             </div>
                           )}
-                          <div>
-                            <h5 className="text-sm font-bold transition-colors group-hover:text-emerald-700" style={{ color: '#0f172a' }}>{doc.name}</h5>
-                            <p className="text-xs font-medium" style={{ color: '#059669' }}>{doc.degrees}</p>
-                            <p className="text-[11px]" style={{ color: '#94a3b8' }}>{doc.specialty}</p>
+                          <div className="space-y-1">
+                            <h5 className="text-sm font-extrabold transition-colors group-hover:text-emerald-700" style={{ color: '#0f172a' }}>{doc.name}</h5>
+                            <p className="text-xs font-bold" style={{ color: '#059669' }}>{doc.degrees}</p>
+                            <p className="text-[11px] font-medium" style={{ color: '#64748b' }}>{doc.specialty}</p>
                           </div>
                         </div>
                         <div className="flex flex-col items-end shrink-0">

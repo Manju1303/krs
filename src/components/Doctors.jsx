@@ -92,24 +92,28 @@ export default function Doctors({
             </div>
 
             {/* Scrollable Container for doctor profiles */}
-            <div className="max-h-[620px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
+            <div className="max-h-[660px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-1">
                 {filteredDoctors.map((doc) => (
-                  <div key={doc.id} className="premium-card p-6 group flex flex-col" style={{ background: '#f8fafc' }}>
-                    <div className="flex items-center gap-3 mb-4">
-                      {doc.photo ? (
-                        <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-sm" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
-                          <img src={doc.photo} alt={doc.name} className="w-full h-full object-cover" />
+                  <div key={doc.id} className="premium-card p-6 group flex flex-col hover-card-lift" style={{ background: '#f8fafc' }}>
+                    <div className="flex flex-col gap-3.5 mb-4">
+                      <div className="flex items-start gap-4">
+                        {doc.photo ? (
+                          <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm border-2 border-slate-100" style={{ border: '2px solid rgba(15,23,42,0.06)' }}>
+                            <img src={doc.photo} alt={doc.name} className="w-full h-full object-cover" />
+                          </div>
+                        ) : (
+                          <div className="w-16 h-16 rounded-xl flex items-center justify-center font-extrabold text-lg shrink-0 font-heading text-white"
+                            style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
+                            {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                          </div>
+                        )}
+                        <div className="space-y-1.5 flex-1 min-w-0">
+                          <h3 className="text-base font-extrabold font-heading leading-tight text-slate-900 truncate" title={doc.name}>{doc.name}</h3>
+                          <div className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-100 inline-block truncate max-w-full" title={doc.role}>
+                            {doc.role}
+                          </div>
                         </div>
-                      ) : (
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 font-heading text-white"
-                          style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                          {doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                        </div>
-                      )}
-                      <div>
-                        <div className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#059669' }}>{doc.role}</div>
-                        <h3 className="text-sm font-bold font-heading leading-snug" style={{ color: '#0f172a' }}>{doc.name}</h3>
                       </div>
                     </div>
 
@@ -156,35 +160,40 @@ export default function Doctors({
         {/* Modal */}
         {selectedDoctorModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-backdrop animate-fade-in">
-            <div className="max-w-md w-full p-7 rounded-2xl relative space-y-5"
+            <div className="max-w-md w-full p-7 rounded-2xl relative space-y-5 max-h-[90vh] overflow-y-auto animate-popup-in"
               style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.10)', boxShadow: '0 24px 64px rgba(0,0,0,0.18)' }}>
                 <div className="flex items-start justify-between">
-                <div className="flex items-center gap-3.5">
+                <div className="flex items-center gap-4">
                   {selectedDoctorModal.photo ? (
-                    <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-sm" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
+                    <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm border border-slate-100">
                       <img src={selectedDoctorModal.photo} alt={selectedDoctorModal.name} className="w-full h-full object-cover" />
                     </div>
                   ) : (
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-sm font-heading shrink-0 text-white"
+                    <div className="w-16 h-16 rounded-xl flex items-center justify-center font-extrabold text-base font-heading shrink-0 text-white"
                       style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
                       {selectedDoctorModal.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                     </div>
                   )}
-                  <div>
-                    <h3 className="font-bold text-base font-heading" style={{ color: '#0f172a' }}>{selectedDoctorModal.name}</h3>
-                    <p className="text-xs font-semibold" style={{ color: '#059669' }}>{selectedDoctorModal.degrees}</p>
+                  <div className="space-y-1">
+                    <h3 className="font-extrabold text-lg font-heading leading-tight" style={{ color: '#0f172a' }}>{selectedDoctorModal.name}</h3>
+                    <p className="text-xs font-bold text-emerald-600">{selectedDoctorModal.degrees}</p>
                   </div>
                 </div>
                 <button onClick={() => setSelectedDoctorModal(null)}
-                  className="p-1.5 rounded-lg transition-colors" style={{ background: '#f1f5f9', color: '#64748b' }}>
+                  className="p-1.5 rounded-lg transition-colors hover:bg-slate-100" style={{ color: '#64748b' }}>
                   <X className="w-4 h-4" />
                 </button>
               </div>
               <div style={{ height: '1px', background: 'rgba(15,23,42,0.07)' }} />
               <div className="space-y-4 text-sm">
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: '#94a3b8' }}>Specialty</div>
-                  <p style={{ color: '#059669' }}>{selectedDoctorModal.specialty} — {selectedDoctorModal.role}</p>
+                  <div className="text-[10px] font-bold uppercase tracking-widest mb-1.5" style={{ color: '#94a3b8' }}>Specialty & Role</div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm font-semibold text-slate-800">{selectedDoctorModal.specialty}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-100 inline-block">
+                      {selectedDoctorModal.role}
+                    </span>
+                  </div>
                 </div>
                 <div>
                   <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: '#94a3b8' }}>About</div>

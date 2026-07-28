@@ -173,7 +173,7 @@ export default function AboutUs() {
                   </div>
                   <div className="space-y-2">
                     {aboutData.mission.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs" style={{ color: '#475569' }}>
+                      <div key={idx} className="flex items-start gap-2 text-sm font-semibold" style={{ color: '#334155' }}>
                         <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: '#059669' }} />
                         <span>{item}</span>
                       </div>
@@ -181,7 +181,7 @@ export default function AboutUs() {
                   </div>
                 </div>
                 {aboutData.missionClosing && (
-                  <p className="text-[11px] italic font-medium text-emerald-800 pt-2 border-t border-slate-200">
+                  <p className="text-xs italic font-bold text-emerald-805 pt-2 border-t border-slate-200">
                     "{aboutData.missionClosing}"
                   </p>
                 )}
@@ -194,7 +194,7 @@ export default function AboutUs() {
                 </div>
                 <div className="space-y-2">
                   {aboutData.qualityPolicy.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs" style={{ color: '#475569' }}>
+                    <div key={idx} className="flex items-start gap-2 text-sm font-semibold" style={{ color: '#334155' }}>
                       <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: '#0d9488' }} />
                       <span>{item}</span>
                     </div>
@@ -212,7 +212,7 @@ export default function AboutUs() {
           </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {aboutData.vision.map((v, idx) => (
-              <div key={idx} className="p-4 rounded-xl flex items-start gap-3 text-xs" style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.07)', color: '#475569' }}>
+              <div key={idx} className="p-4 rounded-xl flex items-start gap-3 text-sm font-semibold hover-card-lift" style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.07)', color: '#334155' }}>
                 <Sparkles className="w-4 h-4 shrink-0 mt-0.5" style={{ color: '#059669' }} />
                 <span>{v}</span>
               </div>
