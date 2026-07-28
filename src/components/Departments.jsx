@@ -77,8 +77,8 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                   }}
                 >
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors flex-shrink-0"
-                    style={{ background: isActive ? '#059669' : '#f0fdf4' }}>
-                    <IconComponent className="w-4 h-4" style={{ color: isActive ? '#fff' : '#059669' }} />
+                    style={{ background: isActive ? '#e6f4ea' : '#f8fafc', border: isActive ? '1px solid #a7f3d0' : '1px solid rgba(15,23,42,0.06)' }}>
+                    <IconComponent className="w-4 h-4" style={{ color: isActive ? '#047857' : '#0f766e' }} />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h4 className="text-xs font-bold truncate" style={{ color: isActive ? '#047857' : '#0f172a' }}>{dept.name}</h4>
@@ -106,8 +106,8 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors flex-shrink-0"
-                      style={{ background: isActive ? '#059669' : '#f0fdf4', border: isActive ? 'none' : '1px solid #a7f3d0' }}>
-                      <IconComponent className="w-5 h-5" style={{ color: isActive ? '#fff' : '#059669' }} />
+                      style={{ background: isActive ? '#e6f4ea' : '#f8fafc', border: isActive ? '1px solid #a7f3d0' : '1px solid rgba(15,23,42,0.06)' }}>
+                      <IconComponent className="w-5 h-5" style={{ color: isActive ? '#047857' : '#0f766e' }} />
                     </div>
                     <div>
                       <h4 className="text-sm font-bold" style={{ color: isActive ? '#047857' : '#0f172a' }}>{dept.name}</h4>
@@ -127,8 +127,8 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
               
               <div className="flex flex-wrap items-center justify-between gap-4 pb-6" style={{ borderBottom: '1px solid rgba(15,23,42,0.07)' }}>
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md" style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                    {React.createElement(iconMap[activeDept.icon] || Stethoscope, { className: 'w-7 h-7 text-white' })}
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center border border-slate-150 shadow-sm" style={{ background: '#f8fafc' }}>
+                    {React.createElement(iconMap[activeDept.icon] || Stethoscope, { className: 'w-7 h-7', style: { color: '#0f766e' } })}
                   </div>
                   <div>
                     <h3 className="text-2xl font-extrabold font-heading" style={{ color: '#0f172a' }}>{activeDept.name}</h3>

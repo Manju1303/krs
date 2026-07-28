@@ -40,9 +40,9 @@ export default function Facilities() {
                     style={{ background: '#d1fae5', border: '1px solid #a7f3d0', color: '#047857' }}>
                     {fac.badge}
                   </span>
-                  <div className="absolute bottom-3 left-3 w-9 h-9 rounded-xl flex items-center justify-center shadow-md"
-                    style={{ background: 'linear-gradient(135deg, #059669, #0d9488)' }}>
-                    <IconComponent className="w-4 h-4 text-white" />
+                  <div className="absolute bottom-3 left-3 w-9 h-9 rounded-xl flex items-center justify-center border border-slate-100 shadow-sm"
+                    style={{ background: '#f8fafc' }}>
+                    <IconComponent className="w-4 h-4" style={{ color: '#0f766e' }} />
                   </div>
                 </div>
 
