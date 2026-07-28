@@ -339,7 +339,7 @@ export const departments = [
     name: "CT Scan & Advanced Imaging",
     icon: "Scan",
     desc: "Round-the-clock 128-slice CT scan, multi-detector spiral angiography, brain, chest & emergency trauma cross-sectional imaging.",
-    image: getImg("images/ct_scan.png"),
+    image: getImg("images/ct_scan_simple.jpg"),
     services: [
       "24/7 Emergency CT Brain & Head Injury Evaluation",
       "High-Speed High-Resolution Whole Body & Abdominal CT",

@@ -13,7 +13,7 @@ export default function Hero({ onOpenBooking }) {
 
   const backgroundSlides = [
     {
-      url: getImg('images/ct_scan.png'),
+      url: getImg('images/ct_scan_simple.jpg'),
       caption: '24/7 128-Slice CT Scan & Diagnostic Imaging',
       sub: 'High-speed precision CT brain, chest & trauma scanning'
     },
@@ -88,12 +88,10 @@ export default function Hero({ onOpenBooking }) {
             </div>
 
             {/* Giant Title & Section Text */}
-            <div className="space-y-3">
-              <span className="text-emerald-400 text-xs sm:text-sm font-extrabold tracking-widest uppercase font-heading block">
-                KRS Multispeciality Hospital
-              </span>
-              <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-black tracking-tight leading-[1.05] font-heading text-white">
-                MEDICAL
+            <div className="space-y-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] font-heading text-white">
+                KRS Multispeciality <br className="hidden sm:inline" />
+                <span className="text-emerald-400">Hospital & Trauma Care Centre</span>
               </h1>
               <p className="text-slate-100 text-sm sm:text-base max-w-xl font-normal leading-relaxed drop-shadow-sm">
                 Founded by <strong className="text-emerald-300 font-semibold">Dr. K. Ravisuthan</strong> in 1996. 
