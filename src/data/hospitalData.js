@@ -412,7 +412,7 @@ export const doctors = [
       "Arthritic Joint Management",
       "Spine & Joint Rehabilitation Care"
     ],
-    photo: getImg("images/doctors/sharji_immam.jpg"),
+    photo: null,
     timing: "2:00 PM - 9:00 PM"
   },
   {
@@ -429,7 +429,7 @@ export const doctors = [
       "24/7 Critical Patient Stabilization",
       "Advanced Diagnostic & Lifestyle Guidance"
     ],
-    photo: getImg("images/doctors/vivek.jpg"),
+    photo: null,
     timing: "4:00 PM - 10:00 PM"
   },
   {
@@ -446,7 +446,7 @@ export const doctors = [
       "Inpatient Medical Management",
       "Chronic Disease Control Protocols"
     ],
-    photo: getImg("images/doctors/govindharaju.jpg"),
+    photo: null,
     timing: "6:00 PM - 9:00 PM"
   },
   {
@@ -463,7 +463,7 @@ export const doctors = [
       "Epilepsy & Seizure Protocols",
       "Spine & Sciatica Image-Guided Injections"
     ],
-    photo: getImg("images/doctors/balasubramaniyam.jpg"),
+    photo: null,
     timing: "Saturday (10:00 AM - 2:00 PM)"
   },
   {
@@ -480,7 +480,7 @@ export const doctors = [
       "Laparoscopic Cyst & Fibroid Surgeries",
       "Fertility Evaluation & PCOS Management"
     ],
-    photo: getImg("images/doctors/srija.jpg"),
+    photo: null,
     timing: "4:00 PM - 9:00 PM"
   },
   {
@@ -497,7 +497,7 @@ export const doctors = [
       "Non-Invasive Oxygen & NIV Ventilation",
       "Allergy & Post-TB Lung Rehabilitation"
     ],
-    photo: getImg("images/doctors/vinoth_kumar.jpg"),
+    photo: null,
     timing: "Wednesday (2:00 PM - 6:00 PM)"
   },
   {
@@ -531,7 +531,7 @@ export const doctors = [
       "Thyroid & Endocrine Surgery",
       "Breast Lump Excision & Reconstructive Care"
     ],
-    photo: getImg("images/doctors/ramkumar.jpg"),
+    photo: null,
     timing: "On Call"
   },
   {
@@ -725,7 +725,7 @@ export const doctors = [
 
 export const facilities = [
   {
-    title: "24/7 Emergency & Trauma Unit",
+    title: "24/7 Emergency Casualty & Trauma Care",
     desc: "Fully equipped rapid response trauma bay with on-duty emergency physicians, life support, and ambulance dispatch.",
     icon: "Ambulance",
     badge: "Always Open",
@@ -736,7 +736,7 @@ export const facilities = [
     desc: "State-of-the-art multi-bed ICUs with continuous multi-para monitoring, ventilator support, and 24/7 critical care specialists.",
     icon: "HeartPulse",
     badge: "Critical Care",
-    image: getImg("images/icu_beds.jpeg")
+    image: getImg("images/emergency_icu_beds.jpg")
   },
   {
     title: "Advanced Operation Theatres",
@@ -754,24 +754,24 @@ export const facilities = [
   },
   {
     title: "24/7 Pharmacy & Medication Services",
-    desc: "Comprehensive hospital pharmacy stocking genuine lifesaving drugs, surgical supplies, and patient prescription support.",
+    desc: "Fully stocked in-house pharmacy providing genuine prescription medicines, critical care drugs, and surgical supplies round the clock.",
     icon: "Pill",
-    badge: "Always Open",
-    image: getImg("images/pharmacy.jpeg")
+    badge: "24/7 In-House",
+    image: getImg("images/pharmacy.jpg")
   },
   {
     title: "Patient Lounge & Inpatient Suites",
-    desc: "Spacious reception lounge, private AC suites, semi-private rooms, and deluxe general wards for comfort and safety.",
+    desc: "Comfortable air-conditioned private rooms, semi-private wards, and visitor seating with 24/7 nursing assistance.",
     icon: "Bed",
-    badge: "Patient First",
-    image: getImg("images/reception_lounge.jpeg")
+    badge: "Air-Conditioned",
+    image: getImg("images/reception_lounge_new.jpg")
   },
   {
     title: "Nursing Station & Outpatient Counters",
-    desc: "Dedicated OPD counters and round-the-clock nursing care stations for quick registration and symptom evaluation.",
+    desc: "Friendly reception desk for quick outpatient registration and hospital admissions.",
     icon: "Activity",
-    badge: "High Precision",
-    image: getImg("images/nursing_station.jpeg")
+    badge: "OPD Guidance",
+    image: getImg("images/nursing_station_new.jpg")
   },
   {
     title: "Digital Records & Smart Healthcare",
@@ -855,10 +855,10 @@ export const hospitalGallery = [
     desc: "Life support and mechanical ventilation equipment for emergency respiratory care."
   },
   {
-    title: "24/7 In-House Pharmacy",
+    title: "24/7 In-House Pharmacy & Medical Store",
     category: "Pharmacy",
-    image: getImg("images/pharmacy.jpeg"),
-    desc: "Fully stocked 24-hour hospital pharmacy providing genuine medicines & surgical supplies."
+    image: getImg("images/pharmacy_counter.jpg"),
+    desc: "Fully stocked pharmacy counter for quick prescription dispensing and emergency medicines."
   },
   {
     title: "Patient Lounge & Waiting Hall",
@@ -876,7 +876,37 @@ export const hospitalGallery = [
     title: "New Emergency Ward & Trauma Care",
     category: "Trauma Unit",
     image: getImg("images/emergency_ward_new.jpg"),
-    desc: "Direct stretcher and wheelchair entrance for 24/7 emergency casualty admissions."
+    desc: "Direct emergency casualty ward and triage facility."
+  },
+  {
+    title: "24/7 Emergency ICU Beds",
+    category: "Trauma Unit",
+    image: getImg("images/emergency_icu_beds.jpg"),
+    desc: "Continuous multi-para monitoring and critical care beds."
+  },
+  {
+    title: "24/7 In-House Pharmacy & Medical Store",
+    category: "Pharmacy",
+    image: getImg("images/pharmacy.jpg"),
+    desc: "Fully stocked medical store counter for genuine prescription medicines & surgical supplies."
+  },
+  {
+    title: "Patient Reception & Waiting Lounge",
+    category: "Campus & Building",
+    image: getImg("images/reception_lounge_new.jpg"),
+    desc: "Spacious reception lounge and outpatient waiting seating."
+  },
+  {
+    title: "Nursing Counter & OPD Registration",
+    category: "Campus & Building",
+    image: getImg("images/nursing_station_new.jpg"),
+    desc: "OPD registration desk and nursing assistance."
+  },
+  {
+    title: "Emergency Stretcher Ramp Entrance",
+    category: "Trauma Unit",
+    image: getImg("images/emergency_ramp_new.jpg"),
+    desc: "Direct stretcher and wheelchair entrance for emergency casualty admissions."
   }
 ];
 
