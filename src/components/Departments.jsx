@@ -165,7 +165,7 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                       <div 
                         key={doc.id}
                         onClick={() => onSelectDoctor && onSelectDoctor(doc)}
-                        className="p-4 rounded-xl flex items-center justify-between gap-3 text-left transition-all border hover:border-emerald-300 hover:shadow-md cursor-pointer group"
+                        className="p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-left transition-all border hover:border-emerald-300 hover:shadow-md cursor-pointer group"
                         style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.07)' }}
                       >
                         <div className="flex items-center gap-4">
@@ -185,8 +185,8 @@ export default function Departments({ onOpenBooking, selectedDeptId, onSelectDep
                             <p className="text-[11px] font-medium" style={{ color: '#64748b' }}>{doc.specialty}</p>
                           </div>
                         </div>
-                        <div className="flex flex-col items-end shrink-0">
-                          <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-150 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                        <div className="flex w-full sm:w-auto shrink-0 sm:justify-end">
+                          <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-3 py-2 rounded-lg border border-emerald-150 group-hover:bg-emerald-600 group-hover:text-white transition-all text-center w-full sm:w-auto">
                             View Profile →
                           </span>
                         </div>
