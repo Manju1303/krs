@@ -110,6 +110,9 @@ export default function Doctors({
                         )}
                         <div className="space-y-1.5 flex-1 min-w-0">
                           <h3 className="text-base font-extrabold font-heading leading-tight text-slate-900 truncate" title={doc.name}>{doc.name}</h3>
+                          {doc.regNo && (
+                            <p className="text-[10px] text-slate-400 font-semibold leading-none">Reg. No. {doc.regNo}</p>
+                          )}
                           <div className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-100 inline-block truncate max-w-full" title={doc.role}>
                             {doc.role}
                           </div>
@@ -177,6 +180,9 @@ export default function Doctors({
                 )}
                 <div className="space-y-1">
                   <h3 className="font-extrabold text-lg font-heading leading-tight" style={{ color: '#0f172a' }}>{selectedDoctorModal.name}</h3>
+                  {selectedDoctorModal.regNo && (
+                    <p className="text-[10px] text-slate-400 font-semibold leading-none">Reg. No. {selectedDoctorModal.regNo}</p>
+                  )}
                   <p className="text-xs font-bold text-emerald-600">{selectedDoctorModal.degrees}</p>
                 </div>
               </div>

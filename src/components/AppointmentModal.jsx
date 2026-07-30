@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Calendar as CalendarIcon, Clock, User, Phone, CheckCircle2, Stethoscope, ChevronRight, AlertCircle, ArrowLeft, MessageSquare } from 'lucide-react';
+import { X, Calendar as CalendarIcon, Clock, User, Phone, CheckCircle2, Stethoscope, ChevronRight, AlertCircle, ArrowLeft, MessageSquare, Mail } from 'lucide-react';
 import { departments, doctors, hospitalInfo } from '../data/hospitalData';
 
 export default function AppointmentModal({ isOpen, onClose, initialDeptId, initialDoctorName }) {
@@ -417,23 +417,44 @@ export default function AppointmentModal({ isOpen, onClose, initialDeptId, initi
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               <a
-                href={`https://wa.me/916380898608?text=Hello%20KRS%20Hospital,%20I%20have%20booked%20an%20appointment%20Ref:%20${bookingRef}%20for%20${patientName}%20(${visitType})%20on%20${appointmentDate}%20at%20${appointmentTime}%20Dept:%20${activeDeptObj.name}`}
+                href={`https://wa.me/${hospitalInfo.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(
+                  `Hello KRS Hospital, I have booked an appointment Ref: ${bookingRef} for ${patientName} (${visitType}) on ${appointmentDate} at ${appointmentTime} Dept: ${activeDeptObj.name}`
+                )}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition-colors flex items-center justify-center space-x-2"
+                className="py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition-colors flex items-center justify-center gap-1.5"
               >
-                <span>Send WhatsApp Confirmation</span>
+                <MessageSquare className="w-4 h-4 shrink-0" />
+                <span>WhatsApp</span>
               </a>
 
-              <button
-                onClick={resetForm}
-                className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition-colors"
+              <a
+                href={`tel:${hospitalInfo.hospitalMobile}`}
+                className="py-3 bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs rounded-xl shadow transition-colors flex items-center justify-center gap-1.5"
               >
-                Close
-              </button>
+                <Phone className="w-4 h-4 shrink-0" />
+                <span>Call Now</span>
+              </a>
+
+              <a
+                href={`mailto:${hospitalInfo.email}?subject=${encodeURIComponent(`Appointment Request - Ref: ${bookingRef}`)}&body=${encodeURIComponent(
+                  `Hello KRS Hospital,\n\nI have submitted an appointment booking request.\n\nDetails:\n- Ref ID: ${bookingRef}\n- Patient Name: ${patientName}\n- Department: ${activeDeptObj.name}\n- Date: ${appointmentDate}\n- Time: ${appointmentTime}\n- Mobile: ${patientPhone}\n\nPlease confirm my slot.\n\nThank you.`
+                )}`}
+                className="py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow transition-colors flex items-center justify-center gap-1.5"
+              >
+                <Mail className="w-4 h-4 shrink-0" />
+                <span>Email Details</span>
+              </a>
             </div>
+
+            <button
+              onClick={resetForm}
+              className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition-colors"
+            >
+              Close
+            </button>
           </div>
         )}
 

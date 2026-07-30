@@ -195,6 +195,20 @@ export const departments = [
     ]
   },
   {
+    id: "endocrinology",
+    name: "Endocrinology",
+    icon: "Activity",
+    desc: "Specialized diagnostics and hormone therapies for thyroid, adrenal, pituitary gland conditions, and metabolic health.",
+    image: getImg("images/nursing_station.jpeg"),
+    services: [
+      "Thyroid Function Testing & Goitre Treatment",
+      "Growth Hormone & Pituitary Evaluation",
+      "PCOS & Reproductive Hormone Management",
+      "Adrenal Gland & Osteoporosis Therapies",
+      "Hormonal Imbalance & Medical Obesity Care"
+    ]
+  },
+  {
     id: "orthopedics",
     name: "Orthopedics & Arthroscopy",
     icon: "Bone",
@@ -404,6 +418,20 @@ export const departments = [
       "Digital X-Ray & Ultrasound Imaging Reports",
       "Musculoskeletal & Neuro-Radiology Reporting"
     ]
+  },
+  {
+    id: "gastroenterology",
+    name: "Gastroenterology",
+    icon: "Stethoscope",
+    desc: "Comprehensive care for digestive diseases, liver disorders, endoscopy, colonoscopy, and abdominal health.",
+    image: getImg("images/nursing_station.jpeg"),
+    services: [
+      "Diagnostic & Therapeutic Upper GI Endoscopy",
+      "Colonoscopy & Polypectomy Procedures",
+      "Acid Reflux, GERD & Chronic Ulcer Management",
+      "Liver Health Clinic (Fatty Liver, Hepatitis, Cirrhosis)",
+      "Irritable Bowel Syndrome (IBS) & Inflammatory Bowel Disease (IBD) Care"
+    ]
   }
 ];
 
@@ -411,8 +439,8 @@ export const doctors = [
   {
     id: "dr-ravisuthan",
     name: "Dr. K. Ravisuthan",
-    degrees: "MBBS., MHSC (Diabetology)",
-    specialty: "Primary Consultant Diabetologist",
+    degrees: "MBBS, MHSc (Diabetology)",
+    specialty: "General Medicine & Diabetology",
     role: "Founder & Primary Consultant Diabetologist",
     departmentId: "diabetology",
     experience: "28+ Years",
@@ -423,31 +451,33 @@ export const doctors = [
       "Focus on Evidence-Based Medical Protocols & Prevention",
       "Renowned for Compassionate Patient-Centered Care"
     ],
-    photo: getImg("images/doctors/ravisuthan.jpg"),
-    timing: "9:00 AM - 2:00 PM, 6:00 PM - 9:00 PM"
+    photo: getImg("images/founder 2.jpeg"),
+    timing: "9:00 AM - 2:00 PM, 6:00 PM - 9:00 PM",
+    regNo: "57783"
   },
   {
-    id: "dr-premkumar",
-    name: "Dr. Premkumar",
-    degrees: "MBBS., DM (Endocrinologist)",
-    specialty: "Diabetology & Endocrinology Specialist",
-    role: "Consultant Diabetologist & Endocrinologist",
-    departmentId: "diabetology",
-    experience: "12+ Years",
-    bio: "Specialist in managing complex diabetes, hormonal imbalances, thyroid disorders, and metabolic conditions through personalized evidence-based therapies.",
+    id: "dr-sharji-immam",
+    name: "Dr. S. Mohamed Sharji Immam",
+    degrees: "MBBS, MS (Ortho)",
+    specialty: "Orthopedic Surgeon",
+    role: "Consultant Orthopedic Surgeon",
+    departmentId: "orthopedics",
+    experience: "10+ Years",
+    bio: "Consultant Orthopedic Surgeon specializing in bone and joint trauma, complex fracture fixations, and joint care.",
     highlights: [
-      "Comprehensive Diabetology & Insulin Management",
-      "Thyroid & Adrenal Gland Therapies",
-      "Metabolic Syndrome & Medical Obesity Care"
+      "Emergency Fracture Fixation & Trauma Care",
+      "Joint Pain & Arthritis Management",
+      "General Orthopedic Consultations"
     ],
     photo: null,
-    timing: "Sunday (10:00 AM - 2:00 PM)"
+    timing: "2:00 PM - 9:00 PM",
+    regNo: "82528"
   },
   {
     id: "dr-vivek",
     name: "Dr. Vivek Muthukrishnan",
-    degrees: "MBBS., MEM",
-    specialty: "Emergency & Critical Care Specialist",
+    degrees: "MBBS, MEM",
+    specialty: "General Medicine & Emergency",
     role: "Senior Emergency Physician",
     departmentId: "emergency-care",
     experience: "10+ Years",
@@ -458,12 +488,13 @@ export const doctors = [
       "ICU Triage & Emergency Medical Guidance"
     ],
     photo: null,
-    timing: "4:00 PM - 10:00 PM"
+    timing: "4:00 PM - 10:00 PM",
+    regNo: "113658"
   },
   {
     id: "dr-govindharaju",
-    name: "Dr. Govindhaju",
-    degrees: "MBBS., MD",
+    name: "Dr. Govindharaju",
+    degrees: "MBBS, MD",
     specialty: "General Medicine",
     role: "Consultant Physician",
     departmentId: "gen-med",
@@ -475,13 +506,14 @@ export const doctors = [
       "Chronic Disease Control Protocols"
     ],
     photo: null,
-    timing: "6:00 PM - 9:00 PM"
+    timing: "6:00 PM - 9:00 PM",
+    regNo: "120267"
   },
   {
     id: "dr-balasubramaniyam",
     name: "Dr. Balasubramaniyam",
-    degrees: "MBBS., MS., MCH",
-    specialty: "Neurology Surgeon",
+    degrees: "MBBS, MS, MCh",
+    specialty: "Neurosurgeon",
     role: "Consultant Neurosurgeon",
     departmentId: "neurology",
     experience: "15+ Years",
@@ -492,13 +524,14 @@ export const doctors = [
       "Spine & Sciatica Image-Guided Injections"
     ],
     photo: null,
-    timing: "Saturday (10:00 AM - 2:00 PM)"
+    timing: "Saturday: 10:00 AM - 2:00 PM",
+    regNo: "71446"
   },
   {
     id: "dr-srija",
     name: "Dr. Srija",
-    degrees: "MBBS., MS (OG)",
-    specialty: "Obstetrician & Gynaecologist",
+    degrees: "MBBS, MS (OG)",
+    specialty: "Obstetrics & Gynaecology",
     role: "Consultant Gynecologist",
     departmentId: "obgyn",
     experience: "11+ Years",
@@ -509,13 +542,14 @@ export const doctors = [
       "Fertility Evaluation & PCOS Management"
     ],
     photo: null,
-    timing: "4:00 PM - 9:00 PM"
+    timing: "4:00 PM - 9:00 PM",
+    regNo: "132876"
   },
   {
     id: "dr-vinoth-kumar",
     name: "Dr. Vinoth Kumar",
-    degrees: "MBBS., MD",
-    specialty: "Pulmonologist",
+    degrees: "MBBS, MD",
+    specialty: "Pulmonology",
     role: "Consultant Pulmonologist",
     departmentId: "pulmonology",
     experience: "10+ Years",
@@ -526,13 +560,14 @@ export const doctors = [
       "Allergy & Post-TB Lung Rehabilitation"
     ],
     photo: null,
-    timing: "Wednesday (2:00 PM - 6:00 PM)"
+    timing: "Wednesday: 2:00 PM - 6:00 PM",
+    regNo: "137931"
   },
   {
     id: "dr-balasubramani",
     name: "Dr. Balasubramani",
-    degrees: "MBBS., DA., MD",
-    specialty: "Psychiatrist & Mental Health Specialist",
+    degrees: "MBBS, DA, MD",
+    specialty: "Psychiatry",
     role: "Consultant Psychiatrist",
     departmentId: "psychiatry",
     experience: "16+ Years",
@@ -543,13 +578,67 @@ export const doctors = [
       "De-Addiction & Behavioral Therapies"
     ],
     photo: null,
-    timing: "Sunday (10:00 AM - 2:00 PM)"
+    timing: "Sunday: 10:00 AM - 2:00 PM",
+    regNo: "58426"
+  },
+  {
+    id: "dr-ramkumar",
+    name: "Dr. Ramkumar",
+    degrees: "MBBS, MS (General Surgery)",
+    specialty: "General & Laparoscopic Surgeon",
+    role: "Consultant General & Laparoscopic Surgeon",
+    departmentId: "surgery",
+    experience: "10+ Years",
+    bio: "Experienced surgical specialist performing general surgeries and laparoscopic keyhole procedures for hernia, appendix, gallbladder, and thyroid care.",
+    highlights: [
+      "Laparoscopic Keyhole Surgery",
+      "Hernia & Appendix Repair",
+      "General Endocrine & Thyroid Resection"
+    ],
+    photo: null,
+    timing: "On Call",
+    regNo: "111631"
+  },
+  {
+    id: "dr-saravanakumar",
+    name: "Dr. Saravanakumar",
+    degrees: "MBBS, MS (OG)",
+    specialty: "Obstetrics & Gynaecology Surgeon",
+    role: "Consultant OBGYN Surgeon",
+    departmentId: "obgyn",
+    experience: "12+ Years",
+    bio: "Consultant OBGYN Surgeon specializing in pregnancy, high-risk birthing, and laparoscopic gynecologic procedures.",
+    highlights: [
+      "Laparoscopic Gynecologic Surgery",
+      "High-Risk Obstetrics & Emergency Deliveries",
+      "General Gynaecological Care"
+    ],
+    photo: null,
+    timing: "On Call"
+  },
+  {
+    id: "dr-rathish-rajendran",
+    name: "Dr. Rathish Rajendran",
+    degrees: "MBBS, MS, MCh",
+    specialty: "Urology & Andrology",
+    role: "Consultant Urologist & Andrologist",
+    departmentId: "urology",
+    experience: "11+ Years",
+    bio: "Urology and Andrology consultant specializing in laser kidney stone removal, prostate treatment, and male health.",
+    highlights: [
+      "Laser Kidney Stone Removal (Lithotripsy)",
+      "Prostate Management (BPH)",
+      "Male Infertility & Andrological Care"
+    ],
+    photo: null,
+    timing: "On Call",
+    regNo: "88289"
   },
   {
     id: "dr-manivannan",
     name: "Dr. Manivannan",
-    degrees: "MBBS., MD., DA",
-    specialty: "Anesthesiology & Pain Management",
+    degrees: "MBBS, MD, DA",
+    specialty: "Anaesthesiology",
     role: "Senior Anesthesiology Consultant",
     departmentId: "anesthesiology",
     experience: "15+ Years",
@@ -560,13 +649,14 @@ export const doctors = [
       "Acute & Chronic Pain Management Support"
     ],
     photo: null,
-    timing: "On Call"
+    timing: "On Call",
+    regNo: "94881"
   },
   {
     id: "dr-muthumani",
     name: "Dr. Muthumani",
-    degrees: "MBBS., DNB",
-    specialty: "Anesthesiology & Pain Management",
+    degrees: "MBBS, DNB",
+    specialty: "Anaesthesiology",
     role: "Consultant Anesthetist",
     departmentId: "anesthesiology",
     experience: "12+ Years",
@@ -577,12 +667,13 @@ export const doctors = [
       "Conscious Sedation for Procedures"
     ],
     photo: null,
-    timing: "On Call"
+    timing: "On Call",
+    regNo: "131706"
   },
   {
     id: "dr-arunathiselvam",
     name: "Dr. Arunathiselvam",
-    degrees: "MBBS., MS., MCH",
+    degrees: "MBBS, MS, MCh",
     specialty: "Surgical Oncology",
     role: "Chief Cancer Surgeon",
     departmentId: "oncology",
@@ -599,7 +690,7 @@ export const doctors = [
   {
     id: "dr-saranya",
     name: "Dr. Saranya",
-    degrees: "MBBS., DCH",
+    degrees: "MBBS, DCH",
     specialty: "Pediatrics",
     role: "Consultant Pediatrician",
     departmentId: "pediatrics",
@@ -611,12 +702,13 @@ export const doctors = [
       "Childhood Immunizations & Growth Tracking"
     ],
     photo: null,
-    timing: "6:00 PM - 9:00 PM"
+    timing: "6:00 PM - 9:00 PM",
+    regNo: "111716"
   },
   {
     id: "dr-cibivishnu",
     name: "Dr. Cibivishnu Ilavarasu",
-    degrees: "BDS., MDS (Dental Therapist)",
+    degrees: "BDS, MDS",
     specialty: "Dental Medicine",
     role: "Chief Dental Specialist",
     departmentId: "dental",
@@ -628,13 +720,31 @@ export const doctors = [
       "Wisdom Tooth & Facial Trauma Extractions"
     ],
     photo: null,
-    timing: "Wednesday (10:00 AM - 2:00 PM)"
+    timing: "Wednesday: 10:00 AM - 2:00 PM",
+    regNo: "27513"
+  },
+  {
+    id: "dr-dhanushya",
+    name: "Dr. Dhanushya",
+    degrees: "BDS, MDS (Dental Therapist)",
+    specialty: "Dental Medicine",
+    role: "Consultant Dental Specialist",
+    departmentId: "dental",
+    experience: "5+ Years",
+    bio: "Consultant dental therapist specializing in advanced oral therapies, preventive dental care, root canals, and aesthetic smile restoration.",
+    highlights: [
+      "Advanced Oral Therapy & Smile Care",
+      "Aesthetic Fillings & Restorative Crowns",
+      "Preventive & Painless Dental Treatments"
+    ],
+    photo: null,
+    timing: "On Call"
   },
   {
     id: "dr-shreeram",
     name: "Dr. Shreeram",
-    degrees: "MS (Ortho), DNO, MNAMS, RIAS",
-    specialty: "Arthroscopic & Orthopaedic Surgeon",
+    degrees: "MS (Ortho), DNB, MNAMS, RIAS",
+    specialty: "Arthroscopic & Orthopedic Surgeon",
     role: "Senior Arthroscopy Surgeon",
     departmentId: "orthopedics",
     experience: "14+ Years",
@@ -650,7 +760,7 @@ export const doctors = [
   {
     id: "dr-premkumar",
     name: "Dr. Premkumar",
-    degrees: "MBBS., DM (Endocrinologist)",
+    degrees: "MBBS, DM (Endocrinology)",
     specialty: "Endocrinology",
     role: "Consultant Endocrinologist",
     departmentId: "endocrinology",
@@ -662,12 +772,13 @@ export const doctors = [
       "Bone Density Osteoporosis Prevention"
     ],
     photo: null,
-    timing: "Sunday (10:00 AM - 2:00 PM)"
+    timing: "Sunday: 10:00 AM - 2:00 PM",
+    regNo: "73299"
   },
   {
     id: "dr-sivasubramaniyam",
     name: "Dr. Sivasubramaniyam",
-    degrees: "MBBS., MD, DM (Gastroenterology)",
+    degrees: "MBBS, MD, DM (Gastroenterology)",
     specialty: "Gastroenterology",
     role: "Consultant Gastroenterologist",
     departmentId: "gastroenterology",
@@ -679,13 +790,14 @@ export const doctors = [
       "Colonoscopy & ERCP Gallstone Procedures"
     ],
     photo: null,
-    timing: "Sunday (10:00 AM - 2:00 PM)"
+    timing: "Sunday: 10:00 AM - 2:00 PM",
+    regNo: "58106"
   },
   {
     id: "dr-siddhesh",
     name: "Dr. Siddhesh",
-    degrees: "MBBS., MD (Radiology)",
-    specialty: "MD Radiologist | Radiology & Imaging",
+    degrees: "MBBS, RD",
+    specialty: "Radiology",
     role: "Consultant Radiologist",
     departmentId: "radiology",
     experience: "11+ Years",
@@ -696,7 +808,8 @@ export const doctors = [
       "Precision Diagnostic Ultrasound & Radiological Reports"
     ],
     photo: null,
-    timing: "On Call"
+    timing: "On Call",
+    regNo: "95327"
   }
 ];
 

@@ -13,7 +13,6 @@ export default function Footer({ onOpenBooking }) {
     { href: '#about', label: 'About KRS Hospital' },
     { href: '#departments', label: 'Medical Specialties' },
     { href: '#doctors', label: 'Our Specialists' },
-    { href: '#packages', label: 'Health Packages' },
     { href: '#facilities', label: 'Hospital Facilities' },
     { href: '#gallery', label: 'Campus Gallery' },
   ];
