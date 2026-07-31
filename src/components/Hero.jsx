@@ -138,8 +138,8 @@ export default function Hero({ onOpenBooking }) {
             {/* Doctor Card Wrapper */}
             <div className="relative z-10 w-full max-w-sm rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-slate-950/30 backdrop-blur-md">
               <img
-                src={getImg('images/hero_doctor_portrait.png')}
-                alt="KRS Medical Professional"
+                src={getImg('images/founder 2.jpeg')}
+                alt="Dr. K. Ravisuthan - Founder & Managing Director"
                 className="w-full h-auto object-cover transform hover:scale-102 transition-transform duration-500"
               />
 
