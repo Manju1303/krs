@@ -18,6 +18,7 @@ export const hospitalInfo = {
   email: "krsmultispecialityh@gmail.com",
   facebook: "https://www.facebook.com/profile.php?id=61583509866582",
   instagram: "https://www.instagram.com/krs_hospital?igsh=MTA5bWZ4a2VlNTJvNA==",
+  justdial: "https://www.justdial.com/Salem/Krs-Multi-Speciality-Hospital-And-Trauma-Care-Centre/0427PX427-X427-240207122520-Z5K9_BZDET",
   googleMaps: "https://maps.google.com/?q=KRS+Hospital+Edappadi+Salem+Tamil+Nadu",
   whatsapp: "+91 63808 98608",
   workingHours: "24 Hours / 7 Days Open (Emergency, ICU & Lab Available 24/7)",
