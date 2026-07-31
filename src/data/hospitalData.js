@@ -17,7 +17,7 @@ export const hospitalInfo = {
   labPhone: "+91 99444 49559",
   email: "krsmultispecialityh@gmail.com",
   facebook: "https://www.facebook.com/profile.php?id=61583509866582",
-  instagram: "https://www.instagram.com/krshospital?igsh=MXdxanowcDY1eXQzZA==",
+  instagram: "https://www.instagram.com/krs_hospital?igsh=MTA5bWZ4a2VlNTJvNA==",
   googleMaps: "https://maps.google.com/?q=KRS+Hospital+Edappadi+Salem+Tamil+Nadu",
   whatsapp: "+91 63808 98608",
   workingHours: "24 Hours / 7 Days Open (Emergency, ICU & Lab Available 24/7)",
