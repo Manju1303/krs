@@ -451,7 +451,7 @@ export const doctors = [
       "Focus on Evidence-Based Medical Protocols & Prevention",
       "Renowned for Compassionate Patient-Centered Care"
     ],
-    photo: getImg("images/founder 2.jpeg"),
+    photo: getImg("images/founder_2.jpeg"),
     timing: "9:00 AM - 2:00 PM, 6:00 PM - 9:00 PM",
     regNo: "57783"
   },
