@@ -22,8 +22,19 @@ export default function AboutUs() {
 
           {/* Left: Hospital Image */}
           <div className="lg:col-span-5 space-y-5">
-            <div className="rounded-2xl overflow-hidden border p-2" style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
-              <div className="relative rounded-xl overflow-hidden shadow-lg bg-slate-900 aspect-[4/3] group/carousel">
+            <div className="rounded-2xl overflow-hidden border p-3 space-y-3" style={{ background: '#fff', border: '1px solid rgba(15,23,42,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
+              
+              {/* Header bar with Est badge */}
+              <div className="flex items-center justify-between px-1">
+                <span className="text-xs font-bold text-slate-800">Hospital Campus</span>
+                <div className="flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full"
+                  style={{ background: '#d1fae5', border: '1px solid #a7f3d0', color: '#047857' }}>
+                  <Award className="w-3.5 h-3.5" />
+                  Est. 1996 · Edappadi
+                </div>
+              </div>
+
+              <div className="relative rounded-xl overflow-hidden shadow-md bg-slate-900 aspect-[4/3] group/carousel">
                 {/* Images with soft backdrop for 100% full view fit */}
                 {buildingImages.map((imgUrl, idx) => (
                   <div
@@ -46,9 +57,6 @@ export default function AboutUs() {
                   </div>
                 ))}
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 pointer-events-none z-10" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.45) 0%, transparent 60%)' }} />
-
                 {/* Left Arrow */}
                 <button
                   onClick={() => setCurrentIdx((prev) => (prev - 1 + buildingImages.length) % buildingImages.length)}
@@ -68,7 +76,7 @@ export default function AboutUs() {
                 </button>
 
                 {/* Dot Indicators */}
-                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
                   {buildingImages.map((_, idx) => (
                     <button
                       key={idx}
@@ -78,21 +86,14 @@ export default function AboutUs() {
                     />
                   ))}
                 </div>
+              </div>
 
-                {/* Est. Badge */}
-                <div className="absolute top-3 left-3 flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-20"
-                  style={{ background: '#d1fae5', border: '1px solid #a7f3d0', color: '#047857' }}>
-                  <Award className="w-3.5 h-3.5" />
-                  Est. 1996 · Edappadi, Tamil Nadu
-                </div>
-
-                {/* Hospital Tag Overlay */}
-                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl shadow-md z-20" style={{ background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', border: '1px solid rgba(15,23,42,0.08)' }}>
-                  <div className="text-xs font-bold" style={{ color: '#0f172a' }}>KRS Multispeciality Hospital</div>
-                  <div className="flex items-center gap-1 mt-0.5 text-[10px]" style={{ color: '#059669' }}>
-                    <MapPin className="w-3 h-3 shrink-0" />
-                    Salem Main Road, Vellandivalasu, Edappadi
-                  </div>
+              {/* Hospital Details Bar (outside image) */}
+              <div className="p-2.5 rounded-xl border" style={{ background: '#f8fafc', borderColor: 'rgba(15,23,42,0.06)' }}>
+                <div className="text-xs font-bold text-slate-900">KRS Multispeciality Hospital</div>
+                <div className="flex items-center gap-1 mt-0.5 text-[11px] text-emerald-700 font-medium">
+                  <MapPin className="w-3.5 h-3.5 shrink-0 text-emerald-600" />
+                  Salem Main Road, Vellandivalasu, Edappadi
                 </div>
               </div>
             </div>
@@ -180,11 +181,6 @@ export default function AboutUs() {
                     ))}
                   </div>
                 </div>
-                {aboutData.missionClosing && (
-                  <p className="text-xs italic font-bold text-emerald-805 pt-2 border-t border-slate-200">
-                    "{aboutData.missionClosing}"
-                  </p>
-                )}
               </div>
               {/* Quality */}
               <div className="p-6 rounded-2xl space-y-3" style={{ background: '#f8fafc', border: '1px solid rgba(15,23,42,0.08)' }}>
